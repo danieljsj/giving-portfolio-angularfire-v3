@@ -19,5 +19,6 @@ angular.module('gpApp', [
     'firebase.ref',
     'firebase.auth',
 
+    'ui.bootstrap',
     'highcharts-ng'
   ]);
