@@ -74,6 +74,10 @@ angular.module('gpApp')
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
+      .when('/budget', {
+        templateUrl: 'views/budget.html',
+        controller: 'BudgetCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
