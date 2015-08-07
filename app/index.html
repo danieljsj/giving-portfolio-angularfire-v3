@@ -22,32 +22,52 @@
     <!-- Add your site or application content here -->
     <div class="header" ng-cloak="">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+          <div class="container">
+            <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+              <button ng-show-auth="" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-            <a class="navbar-brand" href="#/">gp</a>
-          </div>
+              <a class="navbar-brand" href="#/">GivingPortfolio</a>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+              <a ng-hide-auth="" href="#/login" class="btn navbar-toggle" role="button">Log in</a>
+            </div>
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+            <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+              <ul ng-hide-auth="" class="nav navbar-nav">
+                <li>
+                  <a href="#/login">Log in</a>
+                </li>
+              </ul>
+
+              <ul ng-show-auth-NOT="" class="nav navbar-nav">
+              <!-- <li class="active-NOT">
+                <a href="#/">Home</a>
+              </li> -->
               <!-- //angularfire -->
-              <li><a ng-href="#/chat">chat</a></li>
+              <!-- <li>
+                <a ng-href="#/chat">Chat</a>
+              </li> -->
               <li>
-              <a ng-hide-auth="" href="#/login">log in</a>
-              <a ng-show-auth="" href="#/account">account</a>
-            </li>
-
+                <a href="#/budget">Budget</a>
+              </li>
+              <!-- <li>
+                <a href="#/portfolio">Portfolio</a>
+              </li> -->
+              <!-- <li>
+                <a href="#/recipients">Recipients</a>
+              </li> -->
+              <li>
+                <a href="#/account">Account</a>
+              </li>
             </ul>
           </div>
+          <!-- todo: turn the menu into this kind, maybe: https://angular-ui.github.io/bootstrap/#dropdown -->
         </div>
       </div>
     </div>
