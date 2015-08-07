@@ -17,5 +17,7 @@ angular.module('gpApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+
+    'highcharts-ng'
   ]);
