@@ -1,1 +1,114 @@
-<p>This is the budget view.</p>
+<h3>Giving Budget Settings:</h3>
+
+
+<label>Budget Basis:</label>
+<div class="btn-group">
+	<label class="btn btn-primary" ng-model="b.givingBasis" btn-radio="'income'">% of Income</label>
+	<label class="btn btn-primary" ng-model="b.givingBasis" btn-radio="'fixed'">Fixed Amount</label>
+</div>
+
+<br/><br/>
+
+<div ng-if="'income'==b.givingBasis" class="panel panel-default">
+	<div class="panel-body" class="container-fluid">
+		<div id="income" class="row">
+			<div class="col-sm-4"><!-- for some reason only col xs- is working???-->
+				<label>Your Income:</label>
+			</div>
+			<div class="col-sm-4"><!-- for some reason only col xs- is working???-->
+				<div class="input-group">
+					<div class="input-group-addon">
+						<currency ng-if="'usd'==b.currency">$</currency>
+					</div>
+					<input ng-model="b.incomeAmount" type="number" class="form-control" placeholder="Amount">
+					<div class="input-group-addon">
+						.00
+					</div>
+				</div>
+				<!-- <sp/> -->
+			</div>
+			<div class="col-sm-4"><!-- for some reason only col xs- is working???-->
+				<div id="incomeTimeframe" class="btn-group">
+					<label ng-model="b.incomeTimeframe" class="btn btn-primary" btn-radio="'yearly'">Yearly</label>
+					<label ng-model="b.incomeTimeframe" class="btn btn-primary" btn-radio="'monthly'">Monthly</label>
+				</div>
+			</div>
+		</div>
+		<!-- <sp/> -->
+		<hr>
+		<div id="percentageGiving" class="row">
+			<div class="col-sm-4">
+				<label>Percentage Giving:</label>
+			</div>
+			<div class="col-sm-3">
+				<div class="input-group">
+					<input ng-model="b.incomeGivingPercentage" type="number" class="form-control" placeholder="Amount">
+					<div class="input-group-addon">
+						%
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<div id="beforeOrAfterTaxes" class="btn-group">
+					<label ng-model="b.incomeBeforeOrAfterTaxes" class="btn btn-small btn-primary" btn-radio="'before'">Before Taxes</label>
+					<label ng-model="b.incomeBeforeOrAfterTaxes" class="btn btn-primary" btn-radio="'after'">After Taxes</label>
+				</div>
+			</div>
+		</div>
+		<sp/>
+		<hr/>
+		<div id="taxes" ng-if=" 'after' == b.incomeBeforeOrAfterTaxes " class="row">
+			<div class="col-sm-4">
+				<label>Estimated percent taxes:</label>
+			</div>
+			<div class="col-sm-3">
+				<div class="input-group">
+					<input ng-model="b.incomeTaxPercentage" type="number" class="form-control" placeholder="Amount">
+					<div class="input-group-addon">
+						%
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div ng-if="'fixed'==b.givingBasis" class="panel panel-default">
+	<div class="panel-body row">
+		<div class="col-sm-4">
+			<label>Your Giving Budget:</label>
+		</div>
+		<div class="col-sm-4">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<currency ng-if="'usd'==b.currency">$</currency>
+				</div>
+				<input ng-model="b.fixedGivingAmount" type="number" class="form-control" placeholder="Amount">
+				<div class="input-group-addon">
+					.00
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="btn-group">
+				<label ng-model="b.fixedGivingTimeframe" class="btn btn-primary" btn-radio="'yearly'">Yearly</label>
+				<label ng-model="b.fixedGivingTimeframe" class="btn btn-primary" btn-radio="'monthly'">Monthly</label>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-if="b.givingBasis" class="panel panel-default">
+	<div class="panel-body row">
+		<div class="col-sm-4">
+			<label>Your Budget Amounts:</label>
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control text-center input-lg" value="${{ budget.yearly() | number:2 }} / yr" disabled></input> 
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control text-center" value="${{ budget.monthly() | number:2 }} / mo" disabled></input> 
+		</div>
+	</div>
+</div>

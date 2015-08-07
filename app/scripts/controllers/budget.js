@@ -8,10 +8,21 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('BudgetCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('BudgetCtrl', ['$scope', 'budget', function ($scope, budget) {
+ 
+
+    var b = budget.fbObj
+
+    if( b.hasOwnProperty('currency') ) { init(); } else { b.$loaded(init); }
+
+
+    function init(){
+      
+      b.$bindTo($scope, 'b');
+
+      $scope.budget = budget;
+
+    }
+
+
+  }]);

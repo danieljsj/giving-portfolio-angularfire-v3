@@ -15,6 +15,10 @@ angular.module('gpApp')
 
 	var o = this.fbObj;
 
+	angular.extend(o,{
+		currency: 'usd'
+	});
+
   	this.yearly = function(){ // not sure whether storing things with funcs in firebase will break things.
 
   		switch ( o.givingBasis ) { // note: angular template is trying to read stuff before it even comes in... how do we prevent this?
