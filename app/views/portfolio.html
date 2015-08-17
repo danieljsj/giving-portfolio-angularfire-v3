@@ -4,15 +4,28 @@
 
 <div class="sm-col-6-push-6~">
 
-	<highchart id="givingChartFlat" config="pie.config" ng-if-NOT="{ ! chart~category }"></highchart>
+	<highchart id="givingChartFlat" config="pie.config"></highchart><!-- ng-if-NOT="{ ! chart~category } -->
 
-	<highchart id="givingChartCategorized" config="donut.config" ng-if-NOT="{ chart~category }"></highchart>
+	<highchart id="givingChartCategorized" config="donut.config"></highchart><!-- ng-if-NOT="{ chart~category }" -->
 
 </div>
 
+ORG CONTROLS:
 <div class="sm-col-6-pull-6~">
 
-	<recipient-controls ng-repeat~="recipient in recipientOrgs | recipient.isSelected()~ "></recipient-controls>
+	<org-controls ng-repeat="org in orgs">
+		this is an org
+		{{ org.name }}
+		<br/>
+		{{ org.portion }}
+		<br/>
+	</org-controls>
+
+	<org-controls ng-repeat="org in orgs | filter: {isSelected:true}">
+		{{ org.name }}
+		<br/>
+		{{ org.portion }}
+	</org-controls>
 
 </div>
 

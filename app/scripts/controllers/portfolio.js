@@ -11,7 +11,7 @@ angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
    					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
-    $scope.org = [];
+    $scope.orgs = [];
 
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){

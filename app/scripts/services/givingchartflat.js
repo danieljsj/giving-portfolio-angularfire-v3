@@ -8,7 +8,7 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('GivingChartFlat', function () {
+  .service('GivingChartFlat', function () { // using scope in here is cheating...
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -89,11 +89,14 @@ angular.module('gpApp')
 								// select: function(){ // was causing infinite loop, since the external selector func programmatically selects a piechart item
 								click: function(){
 									// EXTERNAL_SELECT_POINT_BY_ID(this.id); // no such thing
-									// this.select(true);
+									this.isSelected = true; // this.selected = true breaks it, prevents clicking from selecting
+									orgs[0].isSelected = true;
+									
 								},
 								unselect: function(){
 									// externalSelectPointById(false); 
 									// nope; this is firing AFTER the selection event, unselecting whatever was newly selected!
+									this.isSelected = false;
 								}
 							}
 						}
