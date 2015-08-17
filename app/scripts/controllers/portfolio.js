@@ -8,15 +8,17 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('PortfolioCtrl', ['$scope', 'budget', 'recipients',
-   					function 	($scope,   budget,   recipients) {
+  .controller('PortfolioCtrl', ['$scope', 'recipients', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
+   					function   ( $scope ,  recipients ,  budget ,  Pie,               Donut                  ) {
     
-   // var b = budget.fbObj
 
+   	// old analog from budget shows we're basically waiting for firebase stuff to come in, and once it's in, we launch.
+
+   		// one remaining question would be: do we allow recipients as a dependency for the giving charts, or will we inject it here? 
+   			// I think it's better to inject it here, so we're not counting on behind-the-scenes singleton magic *within* a view/route.
+
+	// var b = budget.fbObj
     // if( b.hasOwnProperty('currency') ) { init(); } else { b.$loaded(init); } // will need to set up some double-barrelled async for this, since I'll be waiting for both budget and recipients
-
-    recipients();
-
 
     function init(){
       
@@ -30,5 +32,32 @@ angular.module('gpApp')
 
 
     }
+
+
+    // $scope.~stuff = stuff~from~services
+
+
+    // as the current portfolio.html will show, we'll want lots of things bound to the $scope. so it makes sense to me that portfolio will be a big (but still service-oriented/thin) controller, pulling in lots of services.
+
+    // 	PortfolioCtrl
+    // 		budget
+    // 		recipients
+    // 		GivingChartFlat
+    // 		GivingChartCategorized // these will be newed up, with the orgs list, and possibly with some funcs from recipients, as args. what will get dicey is when orgs are moved between categories. I think we might just make new donutcharts to make it simple. new Donut(
+    // 			Donut.hierarchicalize(recipients, ~taxonomy)
+    // 		)
+
+    // 
+
+    // 	so the question would be: 
+    // 		would I want the portfolio without the highchart?
+    // 		would I want the highchart without the portfolio?
+
+    // 		the highchart is a wrapper for the recipients... 
+    // 		it will have settings for donut vs. flat, and the donut will need to show a category.
+    // 			or more likely, it will be "categorize by", and "none"/null will be a value, if null, we switch
+
+
+
 
   }]);
