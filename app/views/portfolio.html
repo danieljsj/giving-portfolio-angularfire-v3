@@ -2,23 +2,23 @@
 
 
 
-<!-- <div class="sm-col-6-push-6~">
+<div class="sm-col-6-push-6~">
 
-	<highchart id="givingChartFlat" config="givingChartFlat~config" ng-if="{ ! chart~category }"></highchart>
+	<highchart id="givingChartFlat" config="pie.config" ng-if-NOT="{ ! chart~category }"></highchart>
 
-	<highchart id="givingChartCategorized" config="givingChartCategorized~config" ng-if="{ chart~category }"></highchart>
+	<highchart id="givingChartCategorized" config="donut.config" ng-if-NOT="{ chart~category }"></highchart>
 
 </div>
 
 <div class="sm-col-6-pull-6~">
 
-	<recipient-controls ng-repeat="recipient in recipientOrgs | recipient.isSelected()~ "></recipient-controls>
+	<recipient-controls ng-repeat~="recipient in recipientOrgs | recipient.isSelected()~ "></recipient-controls>
 
 </div>
 
 <div class="budget-vs-portfolio-report">
 
-	<div id="money~left" ng~model="{ budget.yearly() - recipientOrgs.totalGiving()~">
+	<div id="money~left" ng-model-NOT="{ budget.yearly() - recipientOrgs.totalGiving()~">
 	</div>
 
-</div> -->
+</div>

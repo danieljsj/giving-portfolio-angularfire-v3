@@ -8,16 +8,21 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'highcharts-ng' 'GivingChartFlat', 'GivingChartCategorized',
-   					function   ( $scope ,  recipientOrgs ,  budget ,  highcharts-ng   Pie,               Donut                  ) {
+  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
+   					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
 
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){
+	   	for (var i = 0; i < orgs.length; i++) {
+	   		Object.defineProperty(orgs[i], "y", { get: function () { return this.portion; } });
+	   	};
    		$scope.orgs = orgs;
    		console.log(orgs);
    	});
-   	
+
+
+	$scope.pie = new Pie($scope.orgs);
 
    	// old analog from budget shows we're basically waiting for firebase stuff to come in, and once it's in, we launch.
 
