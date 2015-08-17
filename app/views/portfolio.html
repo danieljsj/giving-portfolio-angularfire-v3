@@ -6,25 +6,46 @@
 
 	<highchart id="givingChartFlat" config="pie.config"></highchart><!-- ng-if-NOT="{ ! chart~category } -->
 
-	<highchart id="givingChartCategorized" config="donut.config"></highchart><!-- ng-if-NOT="{ chart~category }" -->
+	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> -->
+	<!-- ng-if-NOT="{ chart~category }" -->
 
 </div>
-
+<button ng-click="">Apply</button>
+<hr>
 ORG CONTROLS:
 <div class="sm-col-6-pull-6~">
+	orgs.selectedOrg
+	<org-controls>
+		this is an org
+		{{ orgs.selectedOrg.name }}
+		<br/>
+		{{ orgs.selectedOrg.portion }}
+		<br/>
+		<span ng-if="orgs.selectedOrg.isSelected">SELECTED</span>
+	</org-controls>
+	
+	<hr>
 
+	{isSelected: true}
+	<org-controls ng-repeat="org in orgs | filter:isSelectedFilterObj">
+		this is an org
+		{{ org.name }}
+		<br/>
+		{{ org.portion }}
+		<br/>
+		{{ org.isSelected }}
+	</org-controls>
+	
+	<hr>
+
+	ALL ORGS:
 	<org-controls ng-repeat="org in orgs">
 		this is an org
 		{{ org.name }}
 		<br/>
 		{{ org.portion }}
 		<br/>
-	</org-controls>
-
-	<org-controls ng-repeat="org in orgs | filter: {isSelected:true}">
-		{{ org.name }}
-		<br/>
-		{{ org.portion }}
+		<span ng-if="org.isSelected">SELECTED</span>
 	</org-controls>
 
 </div>

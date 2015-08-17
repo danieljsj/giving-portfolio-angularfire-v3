@@ -13,6 +13,11 @@ angular.module('gpApp')
     
     $scope.orgs = [];
 
+
+    $scope.isSelectedFilterObj = {
+    	isSelected: true
+    }
+
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){
 
@@ -23,7 +28,7 @@ angular.module('gpApp')
 	   	};
 
    		console.log('orgs inside getOrgs, after saving to $scope: ', orgs);
-		$scope.pie = new Pie($scope.orgs);
+		$scope.pie = new Pie(orgs, orgs.selectOrg);
 
    	});
 

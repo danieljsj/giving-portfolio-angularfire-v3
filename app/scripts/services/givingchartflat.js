@@ -27,7 +27,7 @@ angular.module('gpApp')
 
 
 
-	return function(orgs){
+	return function(orgs, selectOrg){
 
 		console.log('orgs at time of givingflatchart new-ing: ',orgs);
 
@@ -88,15 +88,20 @@ angular.module('gpApp')
 							events: {
 								// select: function(){ // was causing infinite loop, since the external selector func programmatically selects a piechart item
 								click: function(){
+									console.log(this);
 									// EXTERNAL_SELECT_POINT_BY_ID(this.id); // no such thing
 									this.isSelected = true; // this.selected = true breaks it, prevents clicking from selecting
 									orgs[0].isSelected = true;
+									this.y = ++this.portion;
+									selectOrg(this.$id);
 									
 								},
 								unselect: function(){
+									console.log(this);
 									// externalSelectPointById(false); 
 									// nope; this is firing AFTER the selection event, unselecting whatever was newly selected!
 									this.isSelected = false;
+									this.y = ++this.portion;
 								}
 							}
 						}
