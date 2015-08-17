@@ -14,9 +14,6 @@ angular.module('gpApp')
 
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){
-	   	for (var i = 0; i < orgs.length; i++) {
-	   		Object.defineProperty(orgs[i], "y", { get: function () { return this.portion; } });
-	   	};
    		$scope.orgs = orgs;
    		console.log(orgs);
    	});
