@@ -12,6 +12,11 @@ angular.module('gpApp')
    					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
 
+   	console.log(recipientOrgs);
+   	var orgs = recipientOrgs.getOrgs();
+   	orgs.loaded(function(){
+   		console.log("recipientOrgs loaded :", recipientOrgs);
+   	})
    	// old analog from budget shows we're basically waiting for firebase stuff to come in, and once it's in, we launch.
 
    		// one remaining question would be: do we allow recipientOrgs as a dependency for the giving charts, or will we inject it here? 
