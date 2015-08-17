@@ -12,13 +12,13 @@
 
 <div class="sm-col-6-pull-6~">
 
-	<recipient-controls ng-repeat="recipient in recipients | recipient.isSelected()~ "></recipient-controls>
+	<recipient-controls ng-repeat="recipient in recipientOrgs | recipient.isSelected()~ "></recipient-controls>
 
 </div>
 
 <div class="budget-vs-portfolio-report">
 
-	<div id="money~left" ng~model="{ budget.yearly() - recipients.totalGiving()~">
+	<div id="money~left" ng~model="{ budget.yearly() - recipientOrgs.totalGiving()~">
 	</div>
 
 </div>

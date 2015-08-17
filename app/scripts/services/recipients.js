@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name gpApp.recipients
+ * @name gpApp.recipientOrgs
  * @description
- * # recipients
+ * # recipientOrgs
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('recipients', ['Ref', '$firebaseArray', 
+  .service('recipientOrgs', ['Ref', '$firebaseArray', 
   				function ( Ref,   $firebaseArray) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     

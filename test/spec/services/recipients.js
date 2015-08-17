@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: recipients', function () {
+describe('Service: recipientOrgs', function () {
 
   // load the service's module
   beforeEach(module('gpApp'));
 
   // instantiate service
-  var recipients;
-  beforeEach(inject(function (_recipients_) {
-    recipients = _recipients_;
+  var recipientOrgs;
+  beforeEach(inject(function (_recipientOrgs_) {
+    recipientOrgs = _recipientOrgs_;
   }));
 
   it('should do something', function () {
-    expect(!!recipients).toBe(true);
+    expect(!!recipientOrgs).toBe(true);
   });
 
 });
