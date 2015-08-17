@@ -8,8 +8,8 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
-   					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
+  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'highcharts-ng' 'GivingChartFlat', 'GivingChartCategorized',
+   					function   ( $scope ,  recipientOrgs ,  budget ,  highcharts-ng   Pie,               Donut                  ) {
     
 
    	console.log(recipientOrgs);
