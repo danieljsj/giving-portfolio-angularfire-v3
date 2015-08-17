@@ -27,14 +27,11 @@ angular.module('gpApp')
 
 
 
-	return function(___ORGS___){
+	return function(orgs){
 
-		var setYsToPortions = function(){
-			for (var i = 0; i < ___ORGS___.length; i++) {
-		   		Object.defineProperty(___ORGS___[i], "y", { get: function () { return this.portion; } });
-		   	};
-		}
-		setInterval(setYsToPortions, 500);
+		console.log('orgs at time of givingflatchart new-ing: ',orgs);
+
+		var ___ORGS___ = orgs;
 
 		return {
 			config: {

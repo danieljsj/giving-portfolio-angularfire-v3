@@ -11,15 +11,17 @@ angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
    					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
+    $scope.org = [];
 
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){
+
    		$scope.orgs = orgs;
-   		console.log(orgs);
+   		console.log('orgs inside getOrgs, after saving to $scope: ', orgs);
+		$scope.pie = new Pie($scope.orgs);
    	});
 
 
-	$scope.pie = new Pie($scope.orgs);
 
    	// old analog from budget shows we're basically waiting for firebase stuff to come in, and once it's in, we launch.
 
