@@ -14,26 +14,13 @@
 <hr>
 ORG CONTROLS:
 <div class="sm-col-6-pull-6~">
-	orgs.selectedOrg
+	SELECTED ORG:
 	<org-controls>
-		this is an org
 		{{ orgs.selectedOrg.name }}
 		<br/>
 		{{ orgs.selectedOrg.portion }}
 		<br/>
 		<span ng-if="orgs.selectedOrg.isSelected">SELECTED</span>
-	</org-controls>
-	
-	<hr>
-
-	{isSelected: true}
-	<org-controls ng-repeat="org in orgs | filter:isSelectedFilterObj">
-		this is an org
-		{{ org.name }}
-		<br/>
-		{{ org.portion }}
-		<br/>
-		{{ org.isSelected }}
 	</org-controls>
 	
 	<hr>

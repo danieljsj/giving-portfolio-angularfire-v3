@@ -82,26 +82,18 @@ angular.module('gpApp')
 				series: [
 					{
 						name: "Giving",
-						data: ___ORGS___,    // used to be: get data () { return $scope.organizations; },
+						data: ___ORGS___,
 						id: "giving-data",
 						point: {
 							events: {
-								// select: function(){ // was causing infinite loop, since the external selector func programmatically selects a piechart item
+								// select: function(){           was causing infinite loop, since the external selector func programmatically selects a piechart item
 								click: function(){
-									console.log(this);
-									// EXTERNAL_SELECT_POINT_BY_ID(this.id); // no such thing
-									this.isSelected = true; // this.selected = true breaks it, prevents clicking from selecting
-									orgs[0].isSelected = true;
-									this.y = ++this.portion;
+									console.log("point on click", this);
 									selectOrg(this.$id);
 									
 								},
 								unselect: function(){
-									console.log(this);
-									// externalSelectPointById(false); 
-									// nope; this is firing AFTER the selection event, unselecting whatever was newly selected!
-									this.isSelected = false;
-									this.y = ++this.portion;
+									console.log("point on unselect", this);
 								}
 							}
 						}
