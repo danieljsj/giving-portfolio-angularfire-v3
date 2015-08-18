@@ -1,41 +1,120 @@
 
 
-
-
-<div class="sm-col-6-push-6~">
-
-	<highchart id="givingChartFlat" config="pie.config"></highchart><!-- ng-if-NOT="{ ! chart~category } -->
-
-	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> -->
+<div class="col-sm-6 col-sm-push-6">
+	<highchart id="givingChartFlat" config="pie.config"></highchart>
+	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> --><!-- ng-if-NOT="{ ! chart~category } -->
 	<!-- ng-if-NOT="{ chart~category }" -->
-
 </div>
-<button ng-click="">Apply</button>
-<hr>
-ORG CONTROLS:
-<div class="sm-col-6-pull-6~">
-	SELECTED ORG:
-	<org-controls>
-		{{ orgs.selectedOrg.name }}
-		<br/>
-		{{ orgs.selectedOrg.portion }}
-		<br/>
-		<span ng-if="orgs.selectedOrg.isSelected">SELECTED</span>
-	</org-controls>
+
+
+<div id="org-controls" class="col-sm-6 col-sm-pull-6">
+	<div class="panel panel-default">
+		<div class="panel-body">	
+			<div id="org-editor" ng-if="orgs.selectedOrg">
+				<div class="row">
+					<div class="col-xs-12">
+						Organization:
+						<sp/>
+						<input class="form-control input-lg" ng-model="orgs.selectedOrg.name">	
+					</div>
+					<!-- <div class="col-xs-2">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</div> -->
+				</div>
+				<sp/>
+				<div class="row">
+					<div class="col-xs-12 text-left">
+						Parts/portions of total giving:
+					</div>
+				</div>
+				<sp/>
+				<div class="row">
+					<div class="col-xs-4">
+						<input class="form-control input-lg text-center" type="number" ng-model="orgs.selectedOrg.portion">
+					</div>
+					<div class="col-xs-8">
+						<sp/>
+						<div class="btn-group">
+							<button class="decrease btn btn-sm"
+								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -5)">
+								<span></span>
+								<span></span>
+							</button>
+							<button class="decrease btn btn-sm"
+								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -1)">
+								<span></span>
+							</button>
+							<button class="increase btn btn-sm"
+								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 1)">
+								<span></span>
+							</button>
+							<button class="increase btn btn-sm"
+								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 5)">
+								<span></span>
+								<span></span>
+							</button>
+						</div><!-- .btn-group -->
+					</div>						
+				</div>
+				<hr>
+				<div id="report">
+					<div class="row">
+						<div class="col-xs-7">% of total Giving:</div>
+						<div class="col-xs-5"><output>{{orgs.getOrgGivingCoefficient(
+								orgs.selectedOrg
+							)*100 | number:0 }} %</output></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-7">Monthly Giving:</div>
+						<div class="col-xs-5"><output>
+							$ {{ orgs.getOrgGivingCoefficient(
+								orgs.selectedOrg
+							)*budget.monthly() | number:2 }}</output></div>
+					</div>					
+					<div class="row">
+						<div class="col-xs-7">Yearly Giving:</div>
+						<div class="col-xs-5"><output>$ {{orgs.getOrgGivingCoefficient(
+								orgs.selectedOrg
+							)*budget.yearly() | number:2 }}</output></div>
+					</div>
+				</div>				
+				<!-- <hr>
+				<div class="row">
+					<div class="col-xs-5">Category</div>
+					<div class="col-xs-7">Category thing here</div>
+				</div> -->
+		    	<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    Remove
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				    <li><a ng-click='orgs.removeSelectedOrg()'>Remove this Organization Permanently</a></li>
+				  </ul>
+				</div>
+			</div><!-- ng-if="orgs.selectedOrg" -->
+			<div id="select-org-message" ng-if="!orgs.selectedOrg">
+				Please select or add an organization.
+			</div>
+		</div><!-- .panel-body -->
+	</div><!-- .panel -->
+	<div id="#orgsNav" class="text-center">
+		<div class="btn-group">
+			<button class="btn btn-default btn-sm"
+				ng-click="orgs.selectPrev()">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</button>
+			<button class="btn btn-primary btn-sm"
+				ng-click="orgs.addOrg();">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+			<button class="btn btn-default btn-sm"
+				ng-click="orgs.selectNext()">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+		</div>
+	</div><!-- #orgsNav -->
+</div><!-- #org-controls -->
 	
-	<hr>
-
-	ALL ORGS:
-	<org-controls ng-repeat="org in orgs">
-		this is an org
-		{{ org.name }}
-		<br/>
-		{{ org.portion }}
-		<br/>
-		<span ng-if="org.isSelected">SELECTED</span>
-	</org-controls>
-
-</div>
 
 <div class="budget-vs-portfolio-report">
 
