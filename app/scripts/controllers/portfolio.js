@@ -22,6 +22,8 @@ angular.module('gpApp')
    	recipientOrgs.getOrgs(function(orgs){
 
    		$scope.orgs = orgs;
+
+   		orgs.scopeDigest = $scope.$digest;
    		for (var i = 0; i < orgs.length; i++) {
 	   		// Object.defineProperty(orgs[i], "y", { get: function () { return this.portion; } }); // nope; using a getter
 	   		orgs[i].y = orgs[i].portion; // getter didn't work, needs to be literal.
