@@ -20,5 +20,6 @@ angular.module('gpApp', [
     'firebase.auth',
 
     'ui.bootstrap',
-    'highcharts-ng'
+    'highcharts-ng',
+    'angularSpectrumColorpicker'
   ]);
