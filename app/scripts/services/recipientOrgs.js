@@ -123,6 +123,7 @@ angular.module('gpApp')
 		incrementOrgPortion: function(org, delta){
 			// TODO: if ( 0 <= org.portion + delta ) {  
 			org.portion += delta;
+			org.y = org.portion;
 			// } else {
 			// 	alert("Giving for an organization cannot be less than 0!")
 			// }
