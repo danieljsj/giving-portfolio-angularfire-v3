@@ -92,6 +92,7 @@ angular.module('gpApp')
 								click: function(){
 									console.log("point on click", this);
 									___SELECT_ORG___(this.$id);
+									this.selected = true; // needed, though counterintuitive. this actually BREAKS the normal pie-chart behavior of slicing out the pie chart. (explanation-guess: it probably has a check for "if this is not selected, then select and slice", or something.)
 									
 								},
 								unselect: function(){
