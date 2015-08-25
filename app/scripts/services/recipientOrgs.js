@@ -130,8 +130,8 @@ angular.module('gpApp')
 		},
 		pushOrgState: function(org){
 			console.log(org.portion);
-			
-			org.marker = { fillColor: org.color } // highcharts
+			// org.marker
+			// org.marker = { fillColor: org.color } // highcharts
 			if ( 
 				( ! ( undefined === org.portion ) ) 
 				&&
