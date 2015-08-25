@@ -41,7 +41,8 @@ angular.module('gpApp')
 					return {
 						chart: this.chart,
 						plotOptions: this.plotOptions,
-						tooltip: this.tooltip
+						tooltip: this.tooltip,
+						exporting: this.exporting
 					}
 				},
 
