@@ -25,7 +25,12 @@ angular.module('gpApp')
 
 			// this.$add({portion:0, name:''}).then(this.selectOrg);
 
-			this.$add({portion:1, name: "Org #" + orgCounter++ }).then(function(ref) {
+			this.$add({
+				portion: 1, 
+				y: 1,
+				name: "Org #" + orgCounter++,
+				color: '#'+Math.floor(Math.random()*16777215).toString(16)
+			}).then(function(ref) {
 			  // var id = ref.key();
 			  // console.log("added record with id: "); console.log( id );
 			  // console.log("org's index in array: "); console.log( this.$indexFor(id) );
