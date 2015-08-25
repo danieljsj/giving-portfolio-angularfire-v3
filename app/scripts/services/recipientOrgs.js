@@ -123,14 +123,14 @@ angular.module('gpApp')
 		incrementOrgPortion: function(org, delta){
 			// TODO: if ( 0 <= org.portion + delta ) {  
 			org.portion += delta;
-			org.y = org.portion;
+			this.pushOrgState(org);
 			// } else {
 			// 	alert("Giving for an organization cannot be less than 0!")
 			// }
-			// anything else? i don't think so, because our deep-watch will trigger an update for the chart. and yes, we even want the chart to update with each keystroke in the name field, because that allows the highchart slice names to update realtime.
+		},
+		pushOrgState: function(org){
+			org.y = org.portion;
 			this.$save(org);
-			console.log(this);
-			// this.scopeDigest(); // error: $apply already in progress... 
 		},
 		getOrgGivingCoefficient: function(org){
 			var totalPortions = 0;
