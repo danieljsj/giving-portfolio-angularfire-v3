@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
-   					function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
+                    function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
     $scope.orgs = [];
 
@@ -30,7 +30,7 @@ angular.module('gpApp')
 	   	};
 
    		console.log('orgs inside getOrgs, after saving to $scope: ', orgs);
-		$scope.pie = new Pie(orgs, orgs.selectOrg);
+		  $scope.pie = new Pie(orgs, orgs.selectOrg);
 
    	});
 
