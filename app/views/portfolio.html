@@ -29,7 +29,7 @@
 				<sp/>
 				<div class="row">
 					<div class="col-xs-4">
-						<input class="form-control input-lg text-center" type="number" ng-model="orgs.selectedOrg.portion">
+						<input ng-change="orgs.pushOrgState(orgs.selectedOrg);" class="form-control input-lg text-center" type="number" ng-model="orgs.selectedOrg.portion">
 					</div>
 					<div class="col-xs-8">
 						<sp/>

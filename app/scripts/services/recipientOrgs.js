@@ -121,16 +121,25 @@ angular.module('gpApp')
 			console.log(orgRep); throw Error("gpError: getOrgId does not support the layout of the incoming variable");
 		},
 		incrementOrgPortion: function(org, delta){
-			// TODO: if ( 0 <= org.portion + delta ) {  
-			org.portion += delta;
-			this.pushOrgState(org);
-			// } else {
-			// 	alert("Giving for an organization cannot be less than 0!")
-			// }
+			if ( 0 < delta || 0 <= org.portion + delta ) {  
+					org.portion += delta;
+					this.pushOrgState(org);
+			} else {
+			 	alert("Giving for an organization cannot be less than 0!")
+			}
 		},
 		pushOrgState: function(org){
-			org.y = org.portion;
-			this.$save(org);
+			console.log(org.portion);
+			if ( 
+				( ! ( undefined === org.portion ) ) 
+				&&
+				( ! ( null === org.portion ) ) 
+				&& 
+				( 0 <= org.portion ) 
+			) {
+				org.y = org.portion;
+				this.$save(org);
+			}
 		},
 		getOrgGivingCoefficient: function(org){
 			var totalPortions = 0;
