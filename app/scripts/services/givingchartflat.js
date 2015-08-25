@@ -32,6 +32,7 @@ angular.module('gpApp')
 		console.log('orgs at time of givingflatchart new-ing: ',orgs);
 
 		var ___ORGS___ = orgs;
+		var ___SELECT_ORG___ = selectOrg;
 
 		return {
 			config: {
@@ -90,7 +91,7 @@ angular.module('gpApp')
 								// select: function(){           was causing infinite loop, since the external selector func programmatically selects a piechart item
 								click: function(){
 									console.log("point on click", this);
-									selectOrg(this.$id);
+									___SELECT_ORG___(this.$id);
 									
 								},
 								unselect: function(){
