@@ -14,7 +14,12 @@
 					<div class="col-xs-10">
 						Organization:
 						<sp/>
-						<input class="form-control input-lg" ng-model="orgs.selectedOrg.name">	
+						<input 
+							ng-model="orgs.selectedOrg.name"
+							ng-style-NOT="{color: orgs.selectedOrg.color}"
+							class="form-control input-lg" 
+						/>
+
 					</div>
 					<!-- <div class="col-xs-2">
 						<span class="glyphicon glyphicon-chevron-down"></span>
@@ -39,7 +44,13 @@
 				<sp/>
 				<div class="row">
 					<div class="col-xs-4">
-						<input ng-change="orgs.pushOrgState(orgs.selectedOrg);" class="form-control input-lg text-center" type="number" ng-model="orgs.selectedOrg.portion">
+						<input 
+							ng-model="orgs.selectedOrg.portion"
+							ng-change="orgs.pushOrgState(orgs.selectedOrg);" 
+							ng-style-NOT="{color: orgs.selectedOrg.color}"
+							class="form-control input-lg text-center" 
+							type="number"
+						/>
 					</div>
 					<div class="col-xs-8">
 						<sp/>

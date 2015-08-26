@@ -74,8 +74,10 @@
     // border: solid 1px #222;
     // border:
     @extend .form-control;
-    border-radius: 4px;
     // margin-right: 5px;
     // float:left;
     // z-index: 0;
+}
+.sp-preview-inner {
+    border-radius: 3px; // one less than border-radius of .form-control
 }
