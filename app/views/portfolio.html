@@ -111,12 +111,15 @@
 								number:0 
 							}} 
 							%
-							<input
-								ng-model="orgs.selectedOrg.percentage"
-								ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
-								type="number"
-								class="form-control"
-							/>
+							<div class="input-group">
+								<input
+									ng-model="orgs.selectedOrg.percentage"
+									ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
+									type="number"
+									class="form-control"
+								/>
+								<div class="input-group-addon">%</div>
+							</div>
 						</output></div>
 					</div>
 					<div class="row">
@@ -130,12 +133,15 @@
 								| 
 								number:2 
 							}}
-							<input
-								ng-model="orgs.selectedOrg.monthly"
-								ng-change="orgs.applyChangedMonthly(orgs.selectedOrg)"
-								type="number"
-								class="form-control"
-							/>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input
+									ng-model="orgs.selectedOrg.monthly"
+									ng-change="orgs.applyChangedMonthly(orgs.selectedOrg)"
+									type="number"
+									class="form-control"
+								/>
+							</div>
 					</output></div>
 					</div>					
 					<div class="row">
