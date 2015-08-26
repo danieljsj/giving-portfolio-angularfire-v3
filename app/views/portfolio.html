@@ -56,6 +56,7 @@
 									ng-model="orgs.selectedOrg.percentage"
 									ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
 									type="number"
+									step="{{ orgs.selectedOrg.percentage / 5 }}"
 									class="form-control"
 								/>
 								<div class="input-group-addon">%</div>
@@ -76,6 +77,7 @@
 									ng-model="orgs.selectedOrg.monthly"
 									ng-change="orgs.applyChangedMonthly(orgs.selectedOrg)"
 									type="number"
+									step="{{ orgs.selectedOrg.monthly / 5 }}"
 									class="form-control"
 								/>
 							</div>
@@ -95,6 +97,7 @@
 									ng-model="orgs.selectedOrg.yearly"
 									ng-change="orgs.applyChangedYearly(orgs.selectedOrg)"
 									type="number"
+									step="{{ orgs.selectedOrg.yearly / 5 }}"
 									class="form-control"
 								/>
 							</div>
