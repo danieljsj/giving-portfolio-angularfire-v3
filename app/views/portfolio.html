@@ -16,6 +16,7 @@
 						<sp/>
 						<input 
 							ng-model="orgs.selectedOrg.name"
+							ng-change="orgs.pushOrgState(orgs.selectedOrg)"
 							ng-style-NOT="{color: orgs.selectedOrg.color}"
 							class="form-control input-lg" 
 						/>
