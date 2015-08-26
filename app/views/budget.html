@@ -20,7 +20,12 @@
 					<div class="input-group-addon">
 						<currency ng-if="'usd'==b.currency">$</currency>
 					</div>
-					<input ng-model="b.incomeAmount" type="number" class="form-control" placeholder="Amount">
+					<input 
+						ng-model="b.incomeAmount" 
+						type="number" 
+						class="form-control" 
+						placeholder="Amount"
+					>
 					<div class="input-group-addon">
 						.00
 					</div>
@@ -29,8 +34,20 @@
 			</div>
 			<div class="col-sm-4"><!-- for some reason only col xs- is working???-->
 				<div id="incomeTimeframe" class="btn-group">
-					<label ng-model="b.incomeTimeframe" class="btn btn-primary" btn-radio="'yearly'">Yearly</label>
-					<label ng-model="b.incomeTimeframe" class="btn btn-primary" btn-radio="'monthly'">Monthly</label>
+					<label 
+						ng-model="b.incomeTimeframe" 
+						class="btn btn-primary" 
+						btn-radio="'yearly'"
+					>
+						Yearly
+					</label>
+					<label
+						ng-model="b.incomeTimeframe"
+						class="btn btn-primary"
+						btn-radio="'monthly'"
+					>
+						Monthly
+					</label>
 				</div>
 			</div>
 		</div>
@@ -42,7 +59,12 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
-					<input ng-model="b.incomeGivingPercentage" type="number" class="form-control" placeholder="Amount">
+					<input 
+						ng-model="b.incomeGivingPercentage" 
+						type="number" 
+						class="form-control" 
+						placeholder="Amount"
+					/>
 					<div class="input-group-addon">
 						%
 					</div>
@@ -50,8 +72,20 @@
 			</div>
 			<div class="col-sm-5">
 				<div id="beforeOrAfterTaxes" class="btn-group">
-					<label ng-model="b.incomeBeforeOrAfterTaxes" class="btn btn-small btn-primary" btn-radio="'before'">Before Taxes</label>
-					<label ng-model="b.incomeBeforeOrAfterTaxes" class="btn btn-primary" btn-radio="'after'">After Taxes</label>
+					<label
+						ng-model="b.incomeBeforeOrAfterTaxes"
+						class="btn btn-small btn-primary"
+						btn-radio="'before'"
+					>
+						Before Taxes
+					</label>
+					<label
+						ng-model="b.incomeBeforeOrAfterTaxes"
+						class="btn btn-primary"
+						btn-radio="'after'"
+					>
+						After Taxes
+					</label>
 				</div>
 			</div>
 		</div>
@@ -63,7 +97,12 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
-					<input ng-model="b.incomeTaxPercentage" type="number" class="form-control" placeholder="Amount">
+					<input 
+						ng-model="b.incomeTaxPercentage" 
+						type="number" 
+						class="form-control" 
+						placeholder="Amount"
+					/>
 					<div class="input-group-addon">
 						%
 					</div>
@@ -84,7 +123,12 @@
 				<div class="input-group-addon">
 					<currency ng-if="'usd'==b.currency">$</currency>
 				</div>
-				<input ng-model="b.fixedGivingAmount" type="number" class="form-control" placeholder="Amount">
+				<input
+					ng-model="b.fixedGivingAmount"
+					type="number"
+					class="form-control"
+					placeholder="Amount"
+				/>
 				<div class="input-group-addon">
 					.00
 				</div>
@@ -92,8 +136,20 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="btn-group">
-				<label ng-model="b.fixedGivingTimeframe" class="btn btn-primary" btn-radio="'yearly'">Yearly</label>
-				<label ng-model="b.fixedGivingTimeframe" class="btn btn-primary" btn-radio="'monthly'">Monthly</label>
+				<label
+					ng-model="b.fixedGivingTimeframe"
+					class="btn btn-primary"
+					btn-radio="'yearly'"
+				>
+					Yearly
+				</label>
+				<label 
+					ng-model="b.fixedGivingTimeframe"
+					class="btn btn-primary"
+					btn-radio="'monthly'"
+				>
+					Monthly
+				</label>
 			</div>
 		</div>
 	</div>
@@ -105,10 +161,18 @@
 			<label>Your Budget Amounts:</label>
 		</div>
 		<div class="col-sm-4">
-			<input class="form-control text-center input-lg" value="${{ budget.yearly() | number:2 }} / yr" disabled></input> 
+			<input 
+				class="form-control text-center input-lg" 
+				value="${{ budget.yearly() | number:2 }} / yr" 
+				disabled
+			></input> 
 		</div>
 		<div class="col-sm-4">
-			<input class="form-control text-center" value="${{ budget.monthly() | number:2 }} / mo" disabled></input> 
+			<input 
+				class="form-control text-center" 
+				value="${{ budget.monthly() | number:2 }} / mo" 
+				disabled
+			></input> 
 		</div>
 	</div>
 </div>
