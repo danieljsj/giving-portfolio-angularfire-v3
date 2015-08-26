@@ -37,80 +37,125 @@
 					</div>
 				</div>
 				<sp/>
-				<div class="row">
-					<div class="col-xs-12 text-left">
-						Parts/portions of total giving:
-					</div>
-				</div>
-				<sp/>
-				<div class="row">
-					<div class="col-xs-4">
-						<input 
-							ng-model="orgs.selectedOrg.portion"
-							ng-change="orgs.pushOrgState(orgs.selectedOrg);" 
-							ng-style-NOT="{color: orgs.selectedOrg.color}"
-							class="form-control input-lg text-center" 
-							type="number"
-						/>
-					</div>
-					<div class="col-xs-8">
-						<sp/>
-						<!-- coming soon: 
-							leave "portion" totally behind. instead:
+				
+				<div ng-if=" 'portion' == orgs.givingBasis ">
 
-							can enter `percentage` or `monthly` dollar or `yearly` dollar amount, 
-								and the others will update. 
-									one func per field-updated, 
-										rolling the values from this field into the other.
-							dollars used instead of 'portion' for y vals.
-							NOW:
-								"undesignated giving budget" and "surplus giving over budget" are displayed on portfolio view.
-									LATER: option to show 'undesignated' slice (gray)... is a receipient.
-									we're literally creating an org
-						-->
-						<div class="btn-group">
-							<button class="decrease btn btn-sm btn-warning"
-								
-								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -5)">
-
-								<span class="glyphicon glyphicon-minus"></span>
-								<span class="glyphicon glyphicon-minus"></span>
-							</button>
-							<button class="decrease btn btn-sm btn-warning"
-								
-								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -1)">
-
-								<span class="glyphicon glyphicon-minus"></span>
-							</button>
-							<button class="increase btn btn-sm btn-success"
-
-								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 1)">
-
-								<span class="glyphicon glyphicon-plus"></span>
-							</button>
-							<button class="increase btn btn-sm btn-success"
-
-								ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 5)">
-								
-								<span class="glyphicon glyphicon-plus"></span>
-								<span class="glyphicon glyphicon-plus"></span>
-							</button>
-						</div><!-- .btn-group -->
-					</div>						
-				</div>
-				<hr>
-				<div id="report">
 					<div class="row">
-						<div class="col-xs-6">% of total Giving:</div>
-						<div class="col-xs-6"><output>
-							{{
-								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
-								*
-								100 
-								| 
-								number:0 
-							}} 
-							%
+						<div class="col-xs-12 text-left">
+							Parts/portions of total giving:
+						</div>
+					</div>
+					<sp/>
+					<div class="row">
+						<div class="col-xs-4">
+							<input 
+								ng-model="orgs.selectedOrg.portion"
+								ng-change="orgs.pushOrgState(orgs.selectedOrg);" 
+								ng-style-NOT="{color: orgs.selectedOrg.color}"
+								class="form-control input-lg text-center" 
+								type="number"
+							/>
+						</div>
+						<div class="col-xs-8">
+							<sp/>
+							<!-- coming soon: 
+								leave "portion" totally behind. instead:
+
+								can enter `percentage` or `monthly` dollar or `yearly` dollar amount, 
+									and the others will update. 
+										one func per field-updated, 
+											rolling the values from this field into the other.
+								dollars used instead of 'portion' for y vals.
+								NOW:
+									"undesignated giving budget" and "surplus giving over budget" are displayed on portfolio view.
+										LATER: option to show 'undesignated' slice (gray)... is a receipient.
+										we're literally creating an org
+							-->
+							<div class="btn-group">
+								<button class="decrease btn btn-sm btn-warning"
+									
+									ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -5)">
+
+									<span class="glyphicon glyphicon-minus"></span>
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+								<button class="decrease btn btn-sm btn-warning"
+									
+									ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, -1)">
+
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+								<button class="increase btn btn-sm btn-success"
+
+									ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 1)">
+
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+								<button class="increase btn btn-sm btn-success"
+
+									ng-click="orgs.incrementOrgPortion(orgs.selectedOrg, 5)">
+									
+									<span class="glyphicon glyphicon-plus"></span>
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div><!-- .btn-group -->
+						</div>						
+					</div>
+					
+
+					<div id="report">
+						<hr>
+						<div class="row">
+							<div class="col-xs-6">% of total Giving:</div>
+							<div class="col-xs-6"><output>
+								{{
+									orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+									*
+									100 
+									| 
+									number:0 
+								}} 
+								%
+							</output></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">Monthly Giving:</div>
+							<div class="col-xs-5"><output>
+								$ 
+								{{ 
+									orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+									*
+									budget.monthly() 
+									| 
+									number:2 
+								}}
+							</output></div>
+						</div>					
+						<div class="row">
+							<div class="col-xs-4">Yearly Giving:</div>
+							<div class="col-xs-5"><output>
+								$
+								{{
+									orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+									*
+									budget.yearly() 
+									| 
+									number:2 
+								}}
+							</output></div>
+						</div>
+					</div><!-- report -->
+				</div><!-- ng-if=" 'givingBudget' == orgs.givingBasis" -->
+
+
+
+
+
+				<div ng-if="true"><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->
+					<hr>
+					<div class="row">
+						<div class="col-xs-4">% of total Giving:</div>
+						<div class="col-xs-5"><output>
 							<div class="input-group">
 								<input
 									ng-model="orgs.selectedOrg.percentage"
@@ -121,18 +166,14 @@
 								<div class="input-group-addon">%</div>
 							</div>
 						</output></div>
+						<div class="col-xs-3">
+					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'percentage'">{{ 'percentage' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
+					    </div>
 					</div>
+					<hr>
 					<div class="row">
-						<div class="col-xs-6">Monthly Giving:</div>
-						<div class="col-xs-6"><output>
-							$ 
-							{{ 
-								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
-								*
-								budget.monthly() 
-								| 
-								number:2 
-							}}
+						<div class="col-xs-4">Monthly Giving:</div>
+						<div class="col-xs-5"><output>
 							<div class="input-group">
 								<div class="input-group-addon">$</div>
 								<input
@@ -142,18 +183,15 @@
 									class="form-control"
 								/>
 							</div>
-					</output></div>
+						</output></div>
+						<div class="col-xs-3">
+					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
+						</div>
 					</div>					
+					<hr>
 					<div class="row">
-						<div class="col-xs-6">Yearly Giving:</div>
-						<div class="col-xs-6"><output>$ 
-							{{
-								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
-								*
-								budget.yearly() 
-								| 
-								number:2 
-							}}
+						<div class="col-xs-4">Yearly Giving:</div>
+						<div class="col-xs-5"><output>
 							<div class="input-group">
 								<div class="input-group-addon">$</div>
 								<input
@@ -164,13 +202,24 @@
 								/>
 							</div>
 						</output></div>
+					    <div class="col-xs-3">
+					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
+					    </div>
 					</div>
-				</div>				
-				<!-- <hr>
+					<hr>
+				</div><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->			
+				
+
+
+				<!-- 
+				<hr>
 				<div class="row">
 					<div class="col-xs-5">Category</div>
 					<div class="col-xs-7">Category thing here</div>
-				</div> -->
+				</div> 
+				-->
+
+
 		    	<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    Remove
