@@ -17,31 +17,45 @@ angular.module('gpApp')
 
 	var orgsFuncs = {
 
-		normalize: function() {
-			// TODO: set portions to total 100, rounded by greatest remainder
-		},
-
+		// CREATION, SAVING, DELETING:
+		
 		addOrg: function(){
 
-			// this.$add({portion:0, name:''}).then(this.selectOrg);
-
-			this.$add({
+			var orgAtts = {
 				portion: 1, 
-				y: 1,
+				percentage: 10, /// WILL NEED SOME FIXES
+				yearly: 1000,
+				monthly: 100,
+				y: 10, // use percentage as y in case of fixed-giving display. Namely because highcharts will create another, built-in value for 'percentage', I believe. And because we want to easily expose percentage for display.
 				name: "Org #" + orgCounter++,
 				color: '#'+Math.floor(Math.random()*16777215).toString(16)
-			}).then(function(ref) {
-			  // var id = ref.key();
-			  // console.log("added record with id: "); console.log( id );
-			  // console.log("org's index in array: "); console.log( this.$indexFor(id) );
-			  // // this.selectOrg(id);
-			  // console.log("ref: "); console.log(ref);
-			  
-			  // note: "then" is when FB has saved the record, I believe, NOT when it's present in the fbArr; sometimes it's not, as comments below indicate.
+			}
+			this.$add(orgAtts).then(function(ref) {
+
 			  this.selectOrg(ref);
-			}.bind(this)); // is bind(this) necessary? perhaps then() is a good wrapper, and does the binding, and it won't just be window.
+
+			}.bind(this));
 
 		},
+
+		saveOrgsChanges: function(newOrgs, oldOrgs){ // this really needs to be in orgsmanager!
+			for (var i = newOrgs.length - 1; i >= 0; i--) {
+				// if (! angular.equals( newOrgs[i], oldOrgs.getOrg( newOrgs[i].id ) ) ){
+					newOrgs.$save(newOrgs[i]);
+				// }
+			}
+		},
+
+		removeSelectedOrg: function(){
+			// var index = this.indexOf(this.selectedOrg); // in case we wanted to select the next org afterward
+			this.$remove(this.selectedOrg);
+			this.selectOrg(false);
+		},
+
+
+
+		// SELECTION:
+
 		selectOrg: function(orgRep){
 			
 			if (false === orgRep) return this.selectedOrg = false;
@@ -125,6 +139,16 @@ angular.module('gpApp')
 			
 			console.log(orgRep); throw Error("gpError: getOrgId does not support the layout of the incoming variable");
 		},
+
+
+
+
+
+
+		// FIXED BUDGET: (based on 'portion')
+		// 
+			// let's be real; this was nice for prelim. chart-building, but nobody is going to want to use 'portion', at least not until distributed giving is automated by the system, because people's real giving context is this: auto-deposits set up at a variety of recipients. they're not going to want to go change all their giving-vals to some crazy new decimal just cuz they added an org. Now. It's fine to keep this around if desired; keep some commented-out stuff at the bottom, or off in another file, because it may be nice to enable switching between modes, as perhaps some people would want to do portion. BUT -- switching between them quickly will be non-compelling, because eithe A) the amounts would jump when reverting back to old portions, or B) the portions will be calculated, and thus will be crazy decimals, losing the niceness of "1 part OrgA, 2 parts OrgB". so yup, for now I'm going to bury the "portion" features. ALSO BECAUSE if desired, we can replicate the "portion" advantage, namely the ability to auto-scale all other giving to make room for new giving, by using a "normalize" button, or a "nomralize > scale all giving" and "normalize > scale only percent-based giving" feature.
+		
 		incrementOrgPortion: function(org, delta){
 			if ( 0 < delta || 0 <= org.portion + delta ) {  
 					org.portion += delta;
@@ -134,6 +158,42 @@ angular.module('gpApp')
 			}
 		},
 
+		getOrgGivingCoefficient: function(org){
+			var totalPortions = 0;
+			for (var i = this.length - 1; i >= 0; i--) {
+				totalPortions += this[i].portion;
+			};
+			return ( org.portion / totalPortions );
+		},
+
+
+		// MOSTLY FIXED BUDGET:
+		
+		pushOrgState: function(org){ // should be: pushOrgPortion()
+			if (this.basis = 'portions'){
+				console.log(org.portion);
+				// org.marker
+				// org.marker = { fillColor: org.color } // highcharts
+				if ( 
+					( ! ( undefined === org.portion ) ) 
+					&&
+					( ! ( null === org.portion ) ) 
+					&& 
+					( 0 <= org.portion ) 
+				) {
+					org.y = org.portion;
+					this.$save(org);
+				}
+			}
+			// if ( true || this.givingBasis = 'amountsAndPercentages' ){
+			// 	org.y = org.monthly;
+			// }
+		},
+
+
+
+
+		// FIXED GIVING: (based on '.yearly', '.monthly', 'percentage' );
 
 		applyOrgPortion: function(org, portion){
 			org.yearly = Math.round( portion * budget.yearly() *100)/100;
@@ -154,23 +214,6 @@ angular.module('gpApp')
 			this.applyOrgPortion( org, org.percentage / 100 );
 		},
 
-		pushOrgState: function(org){
-			console.log(org.portion);
-			// org.marker
-			// org.marker = { fillColor: org.color } // highcharts
-			if ( 
-				( ! ( undefined === org.portion ) ) 
-				&&
-				( ! ( null === org.portion ) ) 
-				&& 
-				( 0 <= org.portion ) 
-			) {
-				org.y = org.portion;
-				this.$save(org);
-			}
-		},
-
-
 		reapplyBudget: function(){
 			for (var i = this.length - 1; i >= 0; i--) {
 				var org = this[i];
@@ -183,28 +226,6 @@ angular.module('gpApp')
 			};
 		},
 
-
-		getOrgGivingCoefficient: function(org){
-			var totalPortions = 0;
-			for (var i = this.length - 1; i >= 0; i--) {
-				totalPortions += this[i].portion;
-			};
-			return ( org.portion / totalPortions );
-		},
-		saveOrgsChanges: function(newOrgs, oldOrgs){ // this really needs to be in orgsmanager!
-			for (var i = newOrgs.length - 1; i >= 0; i--) {
-				// if (! angular.equals( newOrgs[i], oldOrgs.getOrg( newOrgs[i].id ) ) ){
-					newOrgs.$save(newOrgs[i]);
-				// }
-			}
-		},
-		removeSelectedOrg: function(){
-			// var index = this.indexOf(this.selectedOrg);
-			this.$remove(this.selectedOrg);
-			this.selectOrg(false);
-		},
-
-
 		/// maybe this should be in givingChart.controls?
 		highchartDeselectAllPoints: function(){
 			for (var i = this.series.length - 1; i >= 0; i--) {
@@ -214,12 +235,19 @@ angular.module('gpApp')
 			};
 		}
 		// , highchartShiftSelection: function(shift){}
+
+
 		
 	}
+
+
+
 	
 	this.taxonomies = [ // note: if I can use angular.extend or something other than a funcs-only loop-duper, then I can include this.
 		{}
 	];
+
+
 
 
 
