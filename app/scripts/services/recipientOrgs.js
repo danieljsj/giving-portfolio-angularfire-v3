@@ -8,8 +8,8 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('recipientOrgs', ['Ref', '$firebaseArray', 
-  				function ( Ref,   $firebaseArray) {
+  .service('recipientOrgs', ['Ref', '$firebaseArray', 'budget', 
+                   function ( Ref,   $firebaseArray,   budget) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
 
@@ -133,6 +133,23 @@ angular.module('gpApp')
 			 	alert("Giving for an organization cannot be less than 0!")
 			}
 		},
+
+		applyOrgPortion: function(org, portion){
+			org.yearly = portion * budget.yearly();
+			org.monthly = portion * budget.monthly();
+			org.percentage = portion * 100;
+			pushOrgState(org);
+		},
+		applyChangedYearly: function(org){
+			this.applyOrgPortion( org, org.yearly / budget.yearly() );
+		},
+		applyChangedMonthly: function(org){
+			this.applyOrgPortion( org, org.monthly / budget.monthly() );
+		},
+		applyChangedPercentage: function(org){
+			this.applyOrgPortion( org, org.percentage / 100 );
+		},
+
 		pushOrgState: function(org){
 			console.log(org.portion);
 			// org.marker
