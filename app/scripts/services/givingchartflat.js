@@ -65,7 +65,7 @@ angular.module('gpApp')
 							distance: -30,
 							color: 'white',
 							// align: 'center', // nope; this is not text-align, it's alignment relative to the point.
-							format: '<b>{point.name}</b><br/>{point.percentage:.1f} %',
+							format: '<b>{point.name}</b><br/>y: {point.y:.1f}<br/>hc percentage: {point.percentage:.1f} %<br/>portion: {point.portion:.1f}<br/>monthly: {point.monthly:.1f}<br/>yearly: {point.yearly:.1f}',
 							style: {
 								// color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 								// textAlign: "center" // nope; looks like it only accepts a few different params, and this ain't one. i'll try actual css.
@@ -79,7 +79,7 @@ angular.module('gpApp')
 					enabled: false
 				},
 				tooltip: {
-					pointFormat: '<h5 fail>{series.name}:</h5><br/><b>{point.y}</b> parts<br/><b>{point.percentage:.1f}%</percentage></b> of giving.'
+					pointFormat: '<b>{point.name}</b><br/>y: {point.y:.1f}<br/>hc percentage: {point.percentage:.1f} %<br/>portion: {point.portion:.1f}<br/>monthly: {point.monthly:.1f}<br/>yearly: {point.yearly:.1f}'
 				},
 				series: [
 					{
