@@ -40,6 +40,13 @@ angular.module('gpApp')
 
 		},
 
+		saveOrgs: function(){
+			alert("calling orgs.saveOrgs, this=",this);
+			for (var i = this.length - 1; i >= 0; i--) {
+				this.$save(this[i]);
+			};
+		},
+
 		saveOrgsChanges: function(newOrgs, oldOrgs){ // this really needs to be in orgsmanager!
 			for (var i = newOrgs.length - 1; i >= 0; i--) {
 				// if (! angular.equals( newOrgs[i], oldOrgs.getOrg( newOrgs[i].id ) ) ){
