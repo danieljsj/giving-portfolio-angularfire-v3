@@ -88,22 +88,41 @@
 				<div id="report">
 					<div class="row">
 						<div class="col-xs-7">% of total Giving:</div>
-						<div class="col-xs-5"><output>{{orgs.getOrgGivingCoefficient(
-								orgs.selectedOrg
-							)*100 | number:0 }} %</output></div>
+						<div class="col-xs-5"><output>
+							{{
+								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+								*
+								100 
+								| 
+								number:0 
+							}} 
+							%
+						</output></div>
 					</div>
 					<div class="row">
 						<div class="col-xs-7">Monthly Giving:</div>
 						<div class="col-xs-5"><output>
-							$ {{ orgs.getOrgGivingCoefficient(
-								orgs.selectedOrg
-							)*budget.monthly() | number:2 }}</output></div>
+							$ 
+							{{ 
+								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+								*
+								budget.monthly() 
+								| 
+								number:2 
+							}}
+					</output></div>
 					</div>					
 					<div class="row">
 						<div class="col-xs-7">Yearly Giving:</div>
-						<div class="col-xs-5"><output>$ {{orgs.getOrgGivingCoefficient(
-								orgs.selectedOrg
-							)*budget.yearly() | number:2 }}</output></div>
+						<div class="col-xs-5"><output>$ 
+							{{
+								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
+								*
+								budget.yearly() 
+								| 
+								number:2 
+							}}
+						</output></div>
 					</div>
 				</div>				
 				<!-- <hr>
