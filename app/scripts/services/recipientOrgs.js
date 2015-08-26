@@ -194,22 +194,21 @@ angular.module('gpApp')
 
 
 
-	// I really want to do this differently, i.e. have the thing actually return the promise... but I'm not sure if I'll be able to, and I don't want to pick extra fights just yet...
+	// I really want to do this async-initialization stuff differently, i.e. have the thing actually return the promise... but I'm not sure if I'll be able to, and I don't want to pick extra fights just yet...
 
 	this.getOrgs = function(ctrlSaveToScopeOrgsThenInit){
 		
-		// console.log($firebaseArray); // yup
 		var query = Ref.child('organizations').limitToLast(100);
 
-		//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded
+		
 		var orgs = $firebaseArray(query);
-		orgs.$loaded()
+		orgs.$loaded() 	//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded
 		  .then(function(loadedOrgs) {
 			if (loadedOrgs === orgs ){
 				for (var funcName in orgsFuncs){
 					orgs[funcName] = orgsFuncs[funcName].bind(orgs);
 				}				
-				// angular.extend(orgs,OrgsCollectionFuncs); // "this", I believe, was pointing to the "var OrgsCollectionFuncs = {}" object; so not going to do the extending here.
+				// angular.extend(orgs,OrgsCollectionFuncs);   // decided not to go with angular.extend, I guess... // under angular.extend, the resulting `this` for the funcs, I believe, was pointing to the "var OrgsCollectionFuncs = {}" object; so not going to do the extending here.
 				ctrlSaveToScopeOrgsThenInit(orgs);
 			}
 		  })

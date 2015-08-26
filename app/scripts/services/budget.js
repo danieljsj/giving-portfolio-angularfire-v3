@@ -19,9 +19,9 @@ angular.module('gpApp')
 		currency: 'usd'
 	});
 
-  	this.yearly = function(){ // not sure whether storing things with funcs in firebase will break things.
+  	this.yearly = function(){  // i'm keeping the funcs separate from the fbObj rather than "extending firebase" because it was giving me all kinds of issues with binding/sync. (unlike with fbArrays, where you're only saving individual elements, vs. syncing whole object.) with fbObjects, I've decided it's easier to store the fbObject as a separate property
 
-  		switch ( o.givingBasis ) { // note: angular template is trying to read stuff before it even comes in... how do we prevent this?
+  		switch ( o.givingBasis ) {
 			
 			case 'fixed':
 				switch ( o.fixedGivingTimeframe ) {
