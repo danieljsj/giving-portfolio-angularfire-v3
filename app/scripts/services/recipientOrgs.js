@@ -196,7 +196,7 @@ angular.module('gpApp')
 
 	// I really want to do this differently, i.e. have the thing actually return the promise... but I'm not sure if I'll be able to, and I don't want to pick extra fights just yet...
 
-	this.getOrgs = function(saveToScopeOrgsThenInit){
+	this.getOrgs = function(ctrlSaveToScopeOrgsThenInit){
 		
 		// console.log($firebaseArray); // yup
 		var query = Ref.child('organizations').limitToLast(100);
@@ -210,7 +210,7 @@ angular.module('gpApp')
 					orgs[funcName] = orgsFuncs[funcName].bind(orgs);
 				}				
 				// angular.extend(orgs,OrgsCollectionFuncs); // "this", I believe, was pointing to the "var OrgsCollectionFuncs = {}" object; so not going to do the extending here.
-				saveToScopeOrgsThenInit(orgs);
+				ctrlSaveToScopeOrgsThenInit(orgs);
 			}
 		  })
 		  .catch(function(error) {
