@@ -22,6 +22,10 @@ angular.module('gpApp')
 
       $scope.budget = budget;
 
+      $scope.$watch('b', function(newVal,oldVal){
+      	// was thinking that I'd need to tell it to update orgs giving values when changes are made, but actually I think I can just make the portfolioCtrl do that upon loading the controller.
+      })
+
     }
 
 

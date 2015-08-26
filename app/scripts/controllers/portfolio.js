@@ -16,13 +16,6 @@ angular.module('gpApp')
     $scope.orgs = [];
 
     $scope.colorPickerOptions = {
-        showPalette: true,
-        palette: [
-            ["#000000","#ffffff","#ff0000","#ffc0cb","#0000ff","#008080"],
-            // ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
-        ]
-    };
-    $scope.colorPickerOptions = {
         showPaletteOnly: true,
         togglePaletteOnly: true,
         togglePaletteMoreText: 'more',
