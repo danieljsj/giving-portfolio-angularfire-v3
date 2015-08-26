@@ -11,6 +11,8 @@ angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized',
                     function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut                  ) {
     
+    $scope.budget = budget;
+
     $scope.orgs = [];
 
     $scope.colorPickerOptions = {
