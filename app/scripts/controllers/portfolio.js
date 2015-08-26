@@ -47,6 +47,8 @@ angular.module('gpApp')
    	console.log(recipientOrgs);
    	recipientOrgs.getOrgs(function(orgs){
 
+      orgs.reapplyBudget();
+
    		$scope.orgs = orgs;
 
    		orgs.scopeDigest = $scope.$digest;

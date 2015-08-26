@@ -142,15 +142,15 @@ angular.module('gpApp')
 			this.pushOrgState(org);
 		},
 		applyChangedYearly: function(org){
-			this.selectedOrg.basis = 'amount';
+			org.basis = 'amount';
 			this.applyOrgPortion( org, org.yearly / budget.yearly() );
 		},
 		applyChangedMonthly: function(org){
-			this.selectedOrg.basis = 'amount';
+			org.basis = 'amount';
 			this.applyOrgPortion( org, org.monthly / budget.monthly() );
 		},
 		applyChangedPercentage: function(org){
-			this.selectedOrg.basis = 'percentage';
+			org.basis = 'percentage';
 			this.applyOrgPortion( org, org.percentage / 100 );
 		},
 
@@ -169,6 +169,21 @@ angular.module('gpApp')
 				this.$save(org);
 			}
 		},
+
+
+		reapplyBudget: function(){
+			for (var i = this.length - 1; i >= 0; i--) {
+				var org = this[i];
+				if ('amount' == org.basis){
+					this.applyChangedYearly(org);
+				}
+				if ('percentage' == org.basis){
+					this.applyChangedPercentage(org);
+				}
+			};
+		},
+
+
 		getOrgGivingCoefficient: function(org){
 			var totalPortions = 0;
 			for (var i = this.length - 1; i >= 0; i--) {
