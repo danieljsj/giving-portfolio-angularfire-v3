@@ -101,8 +101,8 @@
 				<hr>
 				<div id="report">
 					<div class="row">
-						<div class="col-xs-7">% of total Giving:</div>
-						<div class="col-xs-5"><output>
+						<div class="col-xs-6">% of total Giving:</div>
+						<div class="col-xs-6"><output>
 							{{
 								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
 								*
@@ -114,13 +114,14 @@
 							<input
 								ng-model="orgs.selectedOrg.percentage"
 								ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
+								type="number"
 								class="form-control"
 							/>
 						</output></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-7">Monthly Giving:</div>
-						<div class="col-xs-5"><output>
+						<div class="col-xs-6">Monthly Giving:</div>
+						<div class="col-xs-6"><output>
 							$ 
 							{{ 
 								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
@@ -132,13 +133,14 @@
 							<input
 								ng-model="orgs.selectedOrg.monthly"
 								ng-change="orgs.applyChangedMonthly(orgs.selectedOrg)"
+								type="number"
 								class="form-control"
 							/>
 					</output></div>
 					</div>					
 					<div class="row">
-						<div class="col-xs-7">Yearly Giving:</div>
-						<div class="col-xs-5"><output>$ 
+						<div class="col-xs-6">Yearly Giving:</div>
+						<div class="col-xs-6"><output>$ 
 							{{
 								orgs.getOrgGivingCoefficient(orgs.selectedOrg)
 								*
@@ -146,11 +148,15 @@
 								| 
 								number:2 
 							}}
-							<input
-								ng-model="orgs.selectedOrg.yearly"
-								ng-change="orgs.applyChangedYearly(orgs.selectedOrg)"
-								class="form-control"
-							/>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input
+									ng-model="orgs.selectedOrg.yearly"
+									ng-change="orgs.applyChangedYearly(orgs.selectedOrg)"
+									type="number"
+									class="form-control"
+								/>
+							</div>
 						</output></div>
 					</div>
 				</div>				

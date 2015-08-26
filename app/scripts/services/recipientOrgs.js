@@ -134,11 +134,12 @@ angular.module('gpApp')
 			}
 		},
 
+
 		applyOrgPortion: function(org, portion){
-			org.yearly = portion * budget.yearly();
-			org.monthly = portion * budget.monthly();
-			org.percentage = portion * 100;
-			pushOrgState(org);
+			org.yearly = Math.round( portion * budget.yearly() *100)/100;
+			org.monthly = Math.round( portion * budget.monthly() *100)/100;
+			org.percentage = Math.round( portion * 100 *10)/10;
+			this.pushOrgState(org);
 		},
 		applyChangedYearly: function(org){
 			this.applyOrgPortion( org, org.yearly / budget.yearly() );
