@@ -62,8 +62,10 @@ angular.module('gpApp')
 						cursor: 'pointer',
 						dataLabels: {
 							enabled: true,
+							
 							distance: -30,
 							color: 'white',
+							// 
 							// align: 'center', // nope; this is not text-align, it's alignment relative to the point.
 							format: '{point.name}',
 							style: {
@@ -72,7 +74,9 @@ angular.module('gpApp')
 							}
 						},
 						center: ["50%","50%"],
-						size: "100%"
+						
+						size: "100%",
+						// size: "67%",
 					}
 				},
 				exporting: {

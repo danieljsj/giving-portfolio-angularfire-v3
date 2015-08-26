@@ -5,6 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @import "_colorpicker.scss";
 @import "_custom.scss";
+@import "_charts.scss";
 
 
 .browsehappy {
@@ -74,7 +75,9 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    // max-width: 730px;
+    // max-width: 960px;
+    max-width: 1024px;
   }
 
   /* Remove the padding we set earlier */
