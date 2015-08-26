@@ -151,11 +151,11 @@
 
 
 
-				<div ng-if="true"><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->
+				<div id="org-fixed-giving" ng-if="true"><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->
 					<hr>
 					<div class="row">
 						<div class="col-xs-4">% of total Giving:</div>
-						<div class="col-xs-5"><output>
+						<div class="col-xs-5">
 							<div class="input-group">
 								<input
 									ng-model="orgs.selectedOrg.percentage"
@@ -165,7 +165,7 @@
 								/>
 								<div class="input-group-addon">%</div>
 							</div>
-						</output></div>
+						</div>
 						<div class="col-xs-3">
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'percentage'">{{ 'percentage' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 					    </div>
@@ -173,7 +173,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-4">Monthly Giving:</div>
-						<div class="col-xs-5"><output>
+						<div class="col-xs-5">
 							<div class="input-group">
 								<div class="input-group-addon">$</div>
 								<input
@@ -183,7 +183,7 @@
 									class="form-control"
 								/>
 							</div>
-						</output></div>
+						</div>
 						<div class="col-xs-3">
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 						</div>
@@ -191,7 +191,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-4">Yearly Giving:</div>
-						<div class="col-xs-5"><output>
+						<div class="col-xs-5">
 							<div class="input-group">
 								<div class="input-group-addon">$</div>
 								<input
@@ -201,7 +201,7 @@
 									class="form-control"
 								/>
 							</div>
-						</output></div>
+						</div>
 					    <div class="col-xs-3">
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 					    </div>
