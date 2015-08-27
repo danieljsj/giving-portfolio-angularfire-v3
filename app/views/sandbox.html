@@ -1,1 +1,16 @@
-<p>This is the sandbox view.</p>
+<ul>
+	<li ng-repeat="tax in taxTree.taxonomies">
+		<input ng-model="tax.name">
+		<ul>
+			<li ng-repeat="term in tax.terms">
+				<input ng-model="term.name">
+			</li>
+			<li>
+				<label class="btn btn-primary" ng-click="taxn.addTermTo(tax);"></label>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<label class="btn btn-primary" ng-click="taxn.addTax();"></label>
+	</li>
+</ul>
