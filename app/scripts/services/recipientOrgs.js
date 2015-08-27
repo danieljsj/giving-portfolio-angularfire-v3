@@ -25,13 +25,12 @@ angular.module('gpApp')
 
 			var orgAtts = {
 				portion: 1, 
-				percentage: 10, /// WILL NEED SOME FIXES
-				yearly: 1000,
-				monthly: 100,
-				y: 10, // use percentage as y in case of fixed-giving display. Namely because highcharts will create another, built-in value for 'percentage', I believe. And because we want to easily expose percentage for display.
+				percentage: 10,
 				name: "Org #" + orgCounter++,
 				color: '#'+Math.floor(Math.random()*16777215).toString(16)
 			}
+			this.applyChangedPercentage(orgAtts);
+			
 			this.$add(orgAtts).then(function(ref) {
 
 			  this.selectOrg(ref);
@@ -156,7 +155,9 @@ angular.module('gpApp')
 																				// ( we are using "FIXED GIVING", based on '.yearly', '.monthly', 'percentage' giving (used to be "FIXED BUDGET", based on budget and org.portions) );		
 		pushOrgState: function(org){ // should be: pushOrgPortion()
 			org.y = org.percentage;
-			this.$save(org);
+			if (org.hasOwnProperty("$id")){
+				this.$save(org);
+			}
 		},
 		applyOrgPortion: function(org, portion){
 			org.yearly = Math.round( portion * budget.yearly() *100)/100;
