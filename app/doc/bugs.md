@@ -1,6 +1,7 @@
 
 
-### Color picker doesn't trigger database save.
+## Color picker doesn't trigger database save.
+
 
 Naturally, just changing a property isn't going to do it. But I don't want to $watch the selectedOrg, because there's not a good way to un-watch. And I don't want to $watch all orgs, because... sloppy.
 
@@ -15,11 +16,13 @@ In theory I could do some extra event listeners or whatever, but for now I'm not
 
 ### Need better breakpoints/scaling for columns
 
+
 iPad horizontal should show it horizontal, even phone probably should. Scaling.
 
 
 
 ### Login/welcome/learning process is less than smooth
+
 
 Confusion on login. Things seemed a bit broken.
 
@@ -28,3 +31,9 @@ Also, it took her to the account info page; it should take her to a "Get Started
 Also... it seemed that she couldn't make orgs at first...
 
 Need some intro guidance for first usage. Esp. for mobile, where you can't see all the controls all at once.
+
+
+
+### make givingbudget an optional feature
+
+when it's not in place, just get messages to enter a budget, but not errors!
