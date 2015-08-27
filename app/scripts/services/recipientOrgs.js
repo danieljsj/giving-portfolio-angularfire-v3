@@ -8,8 +8,8 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('recipientOrgs', ['Ref', '$firebaseArray', 'budget', 
-                   function ( Ref,   $firebaseArray,   budget) {
+  .service('recipientOrgs', ['Auth', 'Ref', '$firebaseArray', 'budget', 
+                   function ( Auth,   Ref,   $firebaseArray,   budget) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
 
@@ -204,8 +204,10 @@ angular.module('gpApp')
 	// I really want to do this async-initialization stuff differently, i.e. have the thing actually return the promise... but I'm not sure if I'll be able to, and I don't want to pick extra fights just yet...
 
 	this.getOrgs = function(ctrlSaveToScopeOrgsThenInit){
+    
+    	var auth = Auth.$getAuth();
 		
-		var query = Ref.child('organizations').limitToLast(100);
+		var query = Ref.child(auth.uid+'/organizations').limitToLast(100);
 
 		
 		var orgs = $firebaseArray(query);
