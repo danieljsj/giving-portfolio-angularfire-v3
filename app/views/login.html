@@ -1,26 +1,27 @@
 
-<h2>Login Page</h2>
+<h2>Log in / Register</h2>
 
-<fieldset>
-  <legend>Oauth</legend>
+<!-- LATER <fieldset>
+  <legend>...with social media:</legend>
   <p>
     <button  class="btn btn-primary" ng-click="oauthLogin('facebook')">Facebook</button>
     <button  class="btn btn-primary" ng-click="oauthLogin('google')">Google</button>
     <button  class="btn btn-primary" ng-click="oauthLogin('twitter')">Twitter</button>
   </p>
-</fieldset>
+</fieldset> -->
 
 <form role="form">
+  <!-- LATER <legend>...with email and password:</legend> -->
   <p class="form-group">
-    <label for="loginEmail">email</label>
+    <label for="loginEmail">Email</label>
     <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
   </p>
   <p class="form-group">
-    <label for="loginPass">password</label>
+    <label for="loginPass">Password</label>
     <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control" />
   </p>
   <p class="form-group" ng-cloak ng-show="createMode">
-    <label for="loginConfirm">confirm pass</label>
+    <label for="loginConfirm">Confirm password</label>
     <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
   </p>
 
@@ -33,4 +34,3 @@
   </p>
 </form>
 <p ng-show="err" class="bg-danger">{{err}}</p>
-
