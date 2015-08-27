@@ -8,10 +8,13 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('budget', ['Ref', '$firebaseObject', function (Ref, $firebaseObject) {
+  .service('budget', ['Ref', '$firebaseObject', 'Auth',
+  	         function (Ref,   $firebaseObject,   Auth ) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-	this.fbObj = new $firebaseObject(Ref.child('budget'));
+    var auth = Auth.$getAuth();
+
+	this.fbObj = new $firebaseObject(Ref.child(auth.uid+'/budget'));
 
 	var o = this.fbObj;
 
