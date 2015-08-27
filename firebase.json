@@ -1,0 +1,9 @@
+{
+  "firebase": "giving-portfolio",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
