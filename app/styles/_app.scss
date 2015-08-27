@@ -12,6 +12,8 @@ body {
   background-image: url(http://pre03.deviantart.net/de4e/th/pre/f/2011/316/5/1/simple_gradient_background_by_waitn2drive-d4fycra.jpg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -96,4 +98,9 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+sp {
+  height:10px;
+  display:block;
 }
