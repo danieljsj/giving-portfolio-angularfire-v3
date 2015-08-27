@@ -62,23 +62,23 @@ angular.module('gpApp')
         controller: 'MainCtrl'
       })
 
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+      .whenAuthenticated('/chat', {
+        templateUrl: 'views/chat.html',
+        controller: 'ChatCtrl'
       })
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
-      .when('/budget', {
+      .whenAuthenticated('/budget', {
         templateUrl: 'views/budget.html',
         controller: 'BudgetCtrl'
       })
-      .when('/portfolio', {
+      .whenAuthenticated('/portfolio', {
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl'
       })
