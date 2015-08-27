@@ -16,3 +16,13 @@ In theory I could do some extra event listeners or whatever, but for now I'm not
 ### Need better breakpoints/scaling for columns
 
 iPad horizontal should show it horizontal, even phone probably should. Scaling.
+
+
+
+### Login process is less than smooth
+
+Confusion on login. Things seemed a bit broken.
+
+Also, it took her to the account info page; it should take her to a "Get Started" page.
+
+Also... it seemed that she couldn't make orgs at first...
