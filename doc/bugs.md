@@ -19,10 +19,12 @@ iPad horizontal should show it horizontal, even phone probably should. Scaling.
 
 
 
-### Login process is less than smooth
+### Login/welcome/learning process is less than smooth
 
 Confusion on login. Things seemed a bit broken.
 
 Also, it took her to the account info page; it should take her to a "Get Started" page.
 
 Also... it seemed that she couldn't make orgs at first...
+
+Need some intro guidance for first usage. Esp. for mobile, where you can't see all the controls all at once.
