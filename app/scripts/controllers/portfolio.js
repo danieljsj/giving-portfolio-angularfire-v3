@@ -39,6 +39,36 @@ angular.module('gpApp')
 		  
       $scope.pie = new Pie(orgs, orgs.selectOrg);
 
+      $scope.foci = {};
+
+
+
+      var arrowKeysShiftSelection = function(e){
+        var focus = false;
+        for ( var key in $scope.foci ) { // 'delete' keyword (e.g. `delete foci.monthly`) doesn't work in angular parser, so we've got and ob full of all or mostly falses, need to see if any are true.
+          if ( $scope.foci[key] ) {
+            focus = true;
+            break;  
+          }
+        }
+        if (!focus){
+          if(e.keyCode === 39) {
+            console.log('right arrow');
+            orgs.selectNext();
+          }    
+          if(e.keyCode === 37) {
+            console.log('left arrow');
+            orgs.selectPrev();
+          }
+        }
+      };
+      var $doc = angular.element(document);
+      $doc.on('keydown', arrowKeysShiftSelection);
+      $scope.$on('$destroy',function(){
+        $doc.off('keydown', arrowKeysShiftSelection);
+      })
+
+
    	});
 
   }]);

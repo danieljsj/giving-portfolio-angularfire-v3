@@ -21,6 +21,8 @@
 							ng-model="orgs.selectedOrg.name"
 							ng-change="orgs.pushOrgState(orgs.selectedOrg)"
 							ng-style-NOT="{color: orgs.selectedOrg.color}"
+							ng-focus="foci.name = true;"
+							ng-blur="foci.name = false;"
 							class="form-control input-lg" 
 						/>
 
@@ -55,6 +57,8 @@
 								<input
 									ng-model="orgs.selectedOrg.percentage"
 									ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
+									ng-focus="foci.percentage = true;"
+									ng-blur="foci.percentage = false;"
 									type="number"
 									step="{{ orgs.selectedOrg.percentage / 5 }}"
 									class="form-control"
@@ -76,6 +80,8 @@
 								<input
 									ng-model="orgs.selectedOrg.monthly"
 									ng-change="orgs.applyChangedMonthly(orgs.selectedOrg)"
+									ng-focus="foci.monthly = true;"
+									ng-blur="foci.monthly = false;"
 									type="number"
 									step="{{ orgs.selectedOrg.monthly / 5 }}"
 									class="form-control"
@@ -96,6 +102,8 @@
 								<input
 									ng-model="orgs.selectedOrg.yearly"
 									ng-change="orgs.applyChangedYearly(orgs.selectedOrg)"
+									ng-focus="foci.yearly = true;"
+									ng-blur="foci.yearly = false;"
 									type="number"
 									step="{{ orgs.selectedOrg.yearly / 5 }}"
 									class="form-control"
