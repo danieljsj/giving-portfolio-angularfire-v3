@@ -188,6 +188,14 @@ angular.module('gpApp')
 			};
 		},
 
+		percentBudgetUsed: function(){
+			var totalMonthlyGiving = 0;
+			for (var i = this.length - 1; i >= 0; i--) {
+				totalMonthlyGiving += this[i].monthly;
+			}
+			return totalMonthlyGiving / budget.monthly() * 100;
+		}
+
 	}
 
 

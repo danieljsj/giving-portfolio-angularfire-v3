@@ -4,6 +4,11 @@
 	<highchart id="givingChartFlat" config="pie.config"></highchart>
 	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> --><!-- ng-if-NOT="{ ! chart~category } -->
 	<!-- ng-if-NOT="{ chart~category }" -->
+	<input 
+				class="form-control text-center" 
+				value="Giving Budget Usage: {{ orgs.percentBudgetUsed() | number:0 }}%" 
+				disabled
+	></input> 
 </div>
 
 <div id="org-controls" class="col-sm-6 col-sm-pull-6">
