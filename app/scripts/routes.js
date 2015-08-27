@@ -82,6 +82,10 @@ angular.module('gpApp')
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl'
       })
+      .when('/dataMigration', {
+        templateUrl: 'views/datamigration.html',
+        controller: 'DatamigrationCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
