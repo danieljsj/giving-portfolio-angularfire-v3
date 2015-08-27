@@ -86,6 +86,10 @@ angular.module('gpApp')
         templateUrl: 'views/datamigration.html',
         controller: 'DatamigrationCtrl'
       })
+      .when('/sandbox', {
+        templateUrl: 'views/sandbox.html',
+        controller: 'SandboxCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 

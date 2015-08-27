@@ -34,11 +34,16 @@ angular.module('gpApp')
     	});
 
 
-    	// SOMEWHERE:
-    	var addTaxonomy = function(taxName){
-    		taxs.$add({name: taxName});
+	// SOMEWHERE:
+	var addTaxonomy = function(taxName){
+		taxs.$add({name: taxName});
 
-    	};
+	};
 
+	return {
+		taxs: taxs,
+		taxTermsTree: taxTermsTree,
+		addTaxonomy: addTaxonomy
+	};
 
   });
