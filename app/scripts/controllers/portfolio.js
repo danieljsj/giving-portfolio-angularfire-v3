@@ -37,7 +37,7 @@ angular.module('gpApp')
 		  
       $scope.pie = new Pie(orgs, orgs.selectOrg);
 
-      if (0 < orgs.length) orgs.selectNext();
+      // if (0 < orgs.length) orgs.selectNext(); // is nice for dev, but as of Sep1'15 this loads too fast and is in before the cats come in.
 
 
       // arrow keys to shift selection

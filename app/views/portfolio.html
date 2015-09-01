@@ -119,14 +119,16 @@
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 					    </div>
 					</div>
-					<hr/>
 				</div><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->			
 				
 
+				<hr/>
 
 				 
 
 				<div id="taxonomization">
+					<label>Categorizations:</label>
+					<sp/>
 					<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
 						<div class="row">
 							<div class="col-xs-5">{{ tax.name }}</div>
@@ -135,7 +137,9 @@
 									ng-model="orgs.selectedOrg.taxTerms[taxId]"
 									ng-change="orgs.pushOrgState(orgs.selectedOrg);"
 									class="form-control"
-								><!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
+								>
+									<!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
+									<!-- TODO! need to $digest the scope or something when the orgs load in! -->
 									<option value="">uncategorized</option>
 									<option ng-repeat="(termId,term) in tax.terms" value="{{termId}}">
 										{{ term.name }}
@@ -143,10 +147,11 @@
 								</select>
 							</div>
 						</div>
-						<hr/>
+						<sp/>
 					</div>
 				</div> 
 				
+				<hr/>
 
 
 		    	<div class="dropdown">
