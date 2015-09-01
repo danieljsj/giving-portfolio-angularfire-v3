@@ -8,8 +8,8 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
-                    function   ( $scope ,  recipientOrgs ,  budget ,  Pie,               Donut,                    Colorpicker ) {
+  .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
+                    function   ( $scope ,  recipientOrgs ,  budget ,  taxn,             Pie,               Donut,                    Colorpicker ) {
 
     window.$scope = $scope; //debug
     
@@ -18,7 +18,7 @@ angular.module('gpApp')
     $scope.orgs = [];
 
     $scope.taxn = taxn;
-    taxn.taxTree.$bindTo($scope, 'taxTree', true );
+    taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
 
     console.log(recipientOrgs);
     recipientOrgs.getOrgs(function(orgs){

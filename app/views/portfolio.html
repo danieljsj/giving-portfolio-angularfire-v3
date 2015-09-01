@@ -126,10 +126,14 @@
 
 				 
 
-				<div class="row">
-					<div class="col-xs-5">Category</div>
-					<div class="col-xs-7">Category thing here</div>
-					<hr/>
+				<div id="taxonomization">
+					<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
+						<div class="row">
+							<div class="col-xs-5">{{ tax.name }}</div>
+							<div class="col-xs-7">{{ org.taxonomyTerms[taxId] }} &larr;Category thing here</div>
+						</div>
+						<hr/>
+					</div>
 				</div> 
 				
 
