@@ -58,9 +58,10 @@ angular.module('gpApp')
     this.addNewTax = function(){
         var newTerms = {};
         newTerms[randId()] = {name:""}; 
-        $scope.taxTree.taxonomies[randId()] = {name:"", terms:newTerms };       // WHOAH! I had to do this to the $scope.thing version, or it wouldn't see the change! But.. but... 
-                                                                                // nope: $scope.$digest(); // $apply already in progress, because ng-click triggers it.
-        console.log(taxTree);
+        this.taxTree.taxonomies[randId()] = {name:"", terms:newTerms };       // WHOAH! you have to use $scope.thing[key] (vs this.thing[key]), or the scope wouldn't see the change! Weird because down below, the addTerm changes are seen by $scope/$digest... heh... I bet i could do a $save on it :)
+        // nope: $scope.$digest(); // $apply already in progress, because ng-click triggers it.
+        this.taxTree.$save(); // lol. not sure why, as noted above, this is needed for adding the prop to the top-level $scope item (tax), but not needed for adding deeper items (terms)....
+        console.log(this.taxTree);
     };
     this.addNewTermTo = function(tax){
         tax.terms[randId()] = {name:""};
