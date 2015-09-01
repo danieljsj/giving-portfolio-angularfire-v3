@@ -1,27 +1,26 @@
 <p><b>Categorization Types</b> + Categories:</p>
 <hr/>
 <ul id="taxn-ctrls">
-	<li ng-repeat="tax in taxTree.taxonomies">
+	<li class="tax" ng-repeat="tax in taxTree.taxonomies">
 		<input 
 			ng-model="tax.name"
 			class="tax-name"
-			style="margin-bottom:.5em; width:200px; font-weight:bold;"
+			type="text"
 			placeholder="Categorization-Type Name"
 		>
 		<ul>
-			<li ng-repeat="term in tax.terms" style="margin-bottom:.5em;">
+			<li class="term" ng-repeat="term in tax.terms">
 				<input 
 					ng-model="term.name" 
-					class="term-name" 
-					style="width:200px"
+					class="term-name"
+					type="text"
 					placeholder="New Category Name"
 				>
 			</li>
-			<li style="margin-bottom:1.5em;">
+			<li>
 				<label
-					class="btn btn-primary btn-med"
+					class="new-term-button   btn btn-primary btn-med"
 					ng-click="taxn.addNewTermTo(tax);"
-					style="padding: 3px 9px;"
 				>
 					New Category
 				</label>
@@ -31,17 +30,19 @@
 	</li>
 	<li>
 		<label 
-			class="btn btn-primary btn-med"
+			class="new-tax-button   btn btn-primary btn-med"
 			ng-click="taxn.addNewTax();"
-			style="padding: 3px 9px; font-weight:bold"
 		>
 			New Categorization Type
 		</label>
 	</li>
 </ul>
+
+
 <pre>
-DEV-TODO: 
+DEV-TODOS: 
 - Only save and sort the items after typing is completed. It's annoying to have it jump partway through.
 - Allow deletion of categories and category-types, including removal of those categories from recipient organizations.
 - Work with Skip, Jim, Alsa to plan default categorizations, and how users adopt and modify those categorizations.
+- Allow manual ordering of categories and categorization-types
 </pre>
