@@ -8,23 +8,9 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('GivingChartFlat', function () { // using scope in here is cheating...
+  .service('GivingChartFlat', ['givingChartsCommon',
+                     function ( givingChartsCommon ) { // using scope in here is cheating...
     // AngularJS will instantiate a singleton by calling "new" on this function
-
-
-    function ___RESIZE_CHART___() {
-
-    	var chart = $("#giving-chart"); // TODO: THIS IS GOING TO FAIL BADLY
-	    
-	    var width = chart.parent().width();
-	    var height = width;
-		var doAnimation = false;
-	    
-	    chart.highcharts().setSize(height, width, doAnimation);
-    }
-
-	// $(window).resize(___RESIZE_CHART___); // TODO
-
 
 
 	return function(orgs, selectOrg){
@@ -100,13 +86,7 @@ angular.module('gpApp')
 					// 
 					// until then, I'll stick to standard pointformat, like this:
 					headerFormat: '',
-					pointFormat: 
-						'<b>{point.name}</b>'+
-						'<br/>% of giving: <b>{point.percentage:.1f} %</td></b>'+
-						'<br/>% of budget: <b>{point.y:.1f} %</td></b>'+
-						'<br/>monthly giving: <b>$ {point.monthly:.2f}</td></b>'+
-						'<br/>yearly giving: <b>$ {point.yearly:.2f}</td</b>'
-					,
+					pointFormat: givingChartsCommon.config.tooltip.pointFormat,
 					footerformat: ''
 				},
 				series: [
@@ -145,4 +125,4 @@ angular.module('gpApp')
 
 
 
-  });
+  }]);
