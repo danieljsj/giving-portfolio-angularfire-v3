@@ -19,27 +19,33 @@ angular.module('gpApp')
 
     var taxTreeVar = $firebaseObject(query);
 
-    taxTreeVar.taxonomies = {
-    	tax1: {
-    		name: "Locality",
-    		terms: {
-    			term1: {name: "Local"},
-    			term2: {name: "State"},
-    			term3: {name: "National"},
-    			term4: {name: "International"}
-    		}
-    	},
-    	tax2: {
-    		name: "Modality",
-    		terms: {
-    			term1: {name: "Relief"},
-    			term2: {name: "Advocacy"},
-    			term3: {name: "Development"}
-    		}
-    	}
-    };
+    console.log('taxTreeVar.taxonomies: ',taxTreeVar.taxonomies);
 
-    // taxTreeVar.$save(); // only did this on first load.
+    // if (! taxTreeVar.taxonomies){
+
+	    taxTreeVar.taxonomies = {
+	    	tax1: {
+	    		name: "Locality",
+	    		terms: [
+	    			{name: "Local"},
+	    			{name: "State"},
+	    			{name: "National"},
+	    			{name: "International"}
+	    		]
+	    	},
+	    	tax2: {
+	    		name: "Modality",
+	    		terms: [
+	    			{name: "Relief"},
+	    			{name: "Advocacy"},
+	    			{name: "Development"}
+	    		]
+	    	}
+	    };
+
+    // }
+
+    taxTreeVar.$save(); // DEV... wait... whoah... this was being necessary! probably just for its $apply();
 
 
 
