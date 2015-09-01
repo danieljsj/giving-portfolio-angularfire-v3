@@ -8,8 +8,8 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('CategoriesCtrl', ['$scope', 'Ref', 'taxonomization', 
-  	                    function ($scope,   Ref,   taxn) {
+  .controller('CategoriesCtrl', ['$scope', 'taxonomization', 
+  	                    function ($scope,   taxn) {
 
 	// taxonomization.taxTree.$bindTo($scope, 'taxTree', true);
 	// $scope.taxn = taxonomization;
