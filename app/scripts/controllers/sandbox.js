@@ -19,9 +19,34 @@ angular.module('gpApp')
 
     var taxTreeVar = $firebaseObject(query);
 
+    taxTreeVar.taxonomies = {
+    	tax1: {
+    		name: "Locality",
+    		terms: {
+    			term1: {name: "Local"},
+    			term2: {name: "State"},
+    			term3: {name: "National"},
+    			term4: {name: "International"}
+    		}
+    	},
+    	tax2: {
+    		name: "Modality",
+    		terms: {
+    			term1: {name: "Relief"},
+    			term2: {name: "Advocacy"},
+    			term3: {name: "Development"}
+    		}
+    	}
+    };
+
+    // taxTreeVar.$save(); // only did this on first load.
+
+
+
+
     // $scope.taxTreeVar = taxTreeVar;
 
-    taxTreeVar.$bindTo($scope, 'taxTree', true);
+    taxTreeVar.$bindTo($scope, 'taxTree' );
 
     window.taxTreeVar = taxTreeVar;
 
