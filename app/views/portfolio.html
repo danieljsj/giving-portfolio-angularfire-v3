@@ -140,7 +140,7 @@
 								>
 									<!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
 									<!-- TODO! need to $digest the scope or something when the orgs load in! -->
-									<option value="">uncategorized</option>
+									<option value=""><!-- uncategorized --></option>
 									<option ng-repeat="(termId,term) in tax.terms" value="{{termId}}">
 										{{ term.name }}
 									</option>
