@@ -8,42 +8,24 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('taxonomization', function (Auth, Ref, $firebaseArray) {
+  .service('taxonomization', function (Auth, Ref, $firebaseObject) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
     // "taxs" is short of "taxonomies"
 
-	var taxTermsTree = [];
-
     var uid = Auth.$getAuth().uid;
 
-    var taxsQuery = Ref.child('userTaxonomySets/'+uid);
+    var query = Ref.child('userTaxonomizationTrees/'+uid);
 
-    var taxs = new $firebaseArray(taxsQuery)
-    	.$loaded()
-    	.then(function(loadedTaxs){
-    		if ( loadedTaxs == taxs ){
-    			console.log(taxs);
-    			// for (var i = 0; i < taxs.length; i++) {
-    				
-    			// 	var termsQuery = Ref.child('userTaxTermsTrees/'+uid+'/'+taxs[i].$id); // api-url structure here is feeling a bit weird... would prefer user/:uid/taxonomies/:taxId/terms .  however, because in firebase, you always get all children of a query, it makes sense to flatten out the data, i.e. being a bit more relational than you would in mongo.
-
-
-    			// };
-    		}
-    	});
-
-
-	// SOMEWHERE:
-	var addTaxonomy = function(taxName){
-		taxs.$add({name: taxName});
-
-	};
-
-	return {
-		taxs: taxs,
-		taxTermsTree: taxTermsTree,
-		addTaxonomy: addTaxonomy
-	};
-
+    return { 
+    	taxTree: new $firebaseObject(query),
+    	addTax: function(){
+    		if ( ! this.taxTree ) { this.taxTree = []; }
+    		if ( ! this.taxTree.taxonomies ) { this.taxTree.taxonomies = []; }
+    		this.taxTree.taxonomies.push({name:"New Taxonomy"});
+    	},
+       	addTermTo: function(tax){
+    		tax.terms.push({name:"New Term"});
+    	}
+    };
   });
