@@ -8,32 +8,23 @@
  * Controller of the gpApp
  */
 angular.module('gpApp')
-  .controller('CategoriesCtrl', function ($scope, Ref, taxonomization, $firebaseObject, Auth) {
+  .controller('CategoriesCtrl', ['$scope', 'Ref', 'taxonomization', 
+  	                    function ($scope,   Ref,   taxn) {
 
 	// taxonomization.taxTree.$bindTo($scope, 'taxTree', true);
 	// $scope.taxn = taxonomization;
 
+	$scope.taxn = taxn;
+    window.taxn = taxn;
+    taxn.taxTree.$bindTo($scope, 'taxTree', true );
 
+	// taxTree.taxonomies = [{name: "tax1"}];
+	// console.log('taxTree immediately after `taxTree.taxonomies = [{name: "tax1"}];`',taxTree);
+	// // wow. it just doesn't even let that new array in there...
+	// // AHA! it IS letting it in! Just for a teeny weeny second; it's showing up in the instantaneous text-summary of the object, but by the time Chrome can make the dropdown, it's GONE.
 
-		bindTaxTree = function(taxTree){
+	// taxTree.taxonomies = "foo";
+	// console.log('taxTree immediately after `taxTree.taxonomies = "foo";`',taxTree);
+	// // wait a blooming second here... it's not even accepting "foo"?
 
-		    $scope.taxTree = taxTree;
-
-		    taxTree.$bindTo($scope, 'taxTree', true );
-
-		    window.taxTree = taxTree;
-
-		};
-
-		$scope.taxn = new Taxonomization(bindTaxTree);
-
-		// taxTree.taxonomies = [{name: "tax1"}];
-		// console.log('taxTree immediately after `taxTree.taxonomies = [{name: "tax1"}];`',taxTree);
-		// // wow. it just doesn't even let that new array in there...
-		// // AHA! it IS letting it in! Just for a teeny weeny second; it's showing up in the instantaneous text-summary of the object, but by the time Chrome can make the dropdown, it's GONE.
-
-		// taxTree.taxonomies = "foo";
-		// console.log('taxTree immediately after `taxTree.taxonomies = "foo";`',taxTree);
-		// // wait a blooming second here... it's not even accepting "foo"?
-
-  });
+  }]);
