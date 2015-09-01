@@ -62,6 +62,20 @@ angular.module('gpApp')
 
 	    $scope.taxTree = taxTree;
 
+	    $scope.taxn = { // eventually this will go live in its own service
+	    	addNewTax: function(){
+	    		var newTerms = {};
+	    		newTerms[randId()] = {name:""}; 
+				$scope.taxTree.taxonomies[randId()] = {name:"", terms:newTerms }; // WHOAH! I had to do this to the $scope.thing version, or it wouldn't see the change! But.. but... 
+				// $scope.$digest(); // $apply already in progress, because ng-click triggers it.
+				console.log(taxTree);
+			},
+			addNewTermTo: function(tax){
+				tax.terms[randId()] = {name:""};
+				// $scope.$digest(); // $apply already in progress, because ng-click triggers it.
+			}
+		};
+
 	    taxTree.$bindTo($scope, 'taxTree', true );
 
 	    window.taxTree = taxTree;
@@ -75,18 +89,5 @@ angular.module('gpApp')
 		// console.log('taxTree immediately after `taxTree.taxonomies = "foo";`',taxTree);
 		// // wait a blooming second here... it's not even accepting "foo"?
     }
-
-
-
-    $scope.taxn = {
-    	addNewTax: function(){
-			taxTree.taxonomies[randId()] = {name:"New Taxonomy"};
-			// $scope.$digest();
-		},
-		addNewTermTo: function(tax){
-			tax.terms[randId()] = {name:"New Term"};
-			// $scope.$digest(); // not needed because it's on ng-click
-		}
-	};
 
   });
