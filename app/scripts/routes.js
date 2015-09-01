@@ -90,6 +90,10 @@ angular.module('gpApp')
         templateUrl: 'views/sandbox.html',
         controller: 'SandboxCtrl'
       })
+      .when('/categories', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoriesCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
