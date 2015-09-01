@@ -94,6 +94,10 @@ angular.module('gpApp')
         templateUrl: 'views/categories.html',
         controller: 'CategoriesCtrl'
       })
+      .when('/givingChartCategorized', {
+        templateUrl: 'views/givingchartcategorized.html',
+        controller: 'GivingchartcategorizedCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
