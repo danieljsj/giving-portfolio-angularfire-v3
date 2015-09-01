@@ -119,18 +119,19 @@
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 					    </div>
 					</div>
-					<hr>
+					<hr/>
 				</div><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->			
 				
 
 
-				<!-- 
-				<hr>
+				 
+
 				<div class="row">
 					<div class="col-xs-5">Category</div>
 					<div class="col-xs-7">Category thing here</div>
+					<hr/>
 				</div> 
-				-->
+				
 
 
 		    	<div class="dropdown">
@@ -141,6 +142,8 @@
 				    <li><a ng-click='orgs.removeSelectedOrg()'>Remove this Organization Permanently</a></li>
 				  </ul>
 				</div>
+
+
 			</div><!-- ng-if="orgs.selectedOrg" -->
 			<div id="select-org-message" ng-if="!orgs.selectedOrg">
 				Please select or add an organization.
@@ -181,4 +184,5 @@ DEV-TODOS:
 - Display the %-giving-budget-usage as pretty horizontal completion-bar
 - Don't require budget as a prerequesite for portfolio/organizations input. Rather, do something like "Input your desired giving budget to show % of budget usage".
 - Smoother transitions between screens
+- Better view, esp. mobile, when no pie is ready
 </pre>

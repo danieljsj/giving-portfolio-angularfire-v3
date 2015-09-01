@@ -17,10 +17,8 @@ angular.module('gpApp')
 
     $scope.orgs = [];
 
-
-    $scope.isSelectedFilterObj = {
-      isSelected: true
-    }
+    $scope.taxn = taxn;
+    taxn.taxTree.$bindTo($scope, 'taxTree', true );
 
     console.log(recipientOrgs);
     recipientOrgs.getOrgs(function(orgs){
@@ -39,10 +37,11 @@ angular.module('gpApp')
 		  
       $scope.pie = new Pie(orgs, orgs.selectOrg);
 
+      if (0 < orgs.length) orgs.selectNext();
+
+
+      // arrow keys to shift selection
       $scope.foci = {};
-
-
-
       var arrowKeysShiftSelection = function(e){
         var focus = false;
         for ( var key in $scope.foci ) { // 'delete' keyword (e.g. `delete foci.monthly`) doesn't work in angular parser, so we've got and ob full of all or mostly falses, need to see if any are true.
