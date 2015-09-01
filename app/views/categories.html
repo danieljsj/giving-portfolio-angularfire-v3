@@ -2,19 +2,41 @@
 <hr/>
 <ul id="taxn-ctrls">
 	<li ng-repeat="tax in taxTree.taxonomies">
-		<input ng-model="tax.name" class="form-control-NOT" style="margin-bottom:.5em; width:200px; font-weight:bold;">
+		<input 
+			ng-model="tax.name"
+			class="tax-name"
+			style="margin-bottom:.5em; width:200px; font-weight:bold;"
+			placeholder="Categorization-Type Name"
+		>
 		<ul>
 			<li ng-repeat="term in tax.terms" style="margin-bottom:.5em;">
-				<input ng-model="term.name" class="form-control-NOT" style="width:200px">
+				<input 
+					ng-model="term.name" 
+					class="term-name" 
+					style="width:200px"
+					placeholder="New Category Name"
+				>
 			</li>
 			<li style="margin-bottom:1.5em;">
-				<label class="btn btn-primary btn-med" ng-click="taxn.addNewTermTo(tax);" style="padding: 3px 9px;">New Category</label>
+				<label
+					class="btn btn-primary btn-med"
+					ng-click="taxn.addNewTermTo(tax);"
+					style="padding: 3px 9px;"
+				>
+					New Category
+				</label>
 				
 			</li>
 		</ul>
 	</li>
 	<li>
-		<label class="btn btn-primary btn-med" ng-click="taxn.addNewTax();" style="padding: 3px 9px;"><b>New Categorization Type</b></label>
+		<label 
+			class="btn btn-primary btn-med"
+			ng-click="taxn.addNewTax();"
+			style="padding: 3px 9px; font-weight:bold"
+		>
+			New Categorization Type
+		</label>
 	</li>
 </ul>
 <pre>
