@@ -103,6 +103,7 @@ body {
 sp {
   height:10px;
   display:block;
+  clear:both;
 }
 
 hr {
@@ -117,4 +118,9 @@ pre {
   opacity: .5;
   word-wrap: normal;
   word-break: normal;
+  clear: both;
+}
+pre:before {
+  clear:both;
+  height:20px;
 }
