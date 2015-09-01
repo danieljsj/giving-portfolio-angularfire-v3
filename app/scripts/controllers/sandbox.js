@@ -38,6 +38,8 @@ angular.module('gpApp')
 
 		    taxTree.taxonomies = {};
 		    var newTax;
+
+		    // TODO: MAYBE: replace this basic method with some 'readonly' / 'fixed' terms, like mint has.
 		    
 		    newTax = {name: "Locality", terms: {} };
 			newTax.terms[randId()] = {name: "Local"},
@@ -59,7 +61,7 @@ angular.module('gpApp')
 	    taxTree.$save(); // WHOAH! this was being necessary to load stuff into page... and $scope.$apply() wasn't cutting it!
 
 
-	    // $scope.taxTree = taxTree;
+	    $scope.taxTree = taxTree;
 
 	    taxTree.$bindTo($scope, 'taxTree', true );
 
@@ -76,14 +78,16 @@ angular.module('gpApp')
     }
 
 
-    $scope.addTax = function(){
-		taxTree.taxonomies[randId()] = {name:"New Taxonomy"};
-		$scope.$digest();
-	};
 
-    $scope.addTermTo = function(tax){
-		tax.terms[randId()] = {name:"New Term"};
-		$scope.$digest();
+    $scope.taxn = {
+    	addNewTax: function(){
+			taxTree.taxonomies[randId()] = {name:"New Taxonomy"};
+			// $scope.$digest();
+		},
+		addNewTermTo: function(tax){
+			tax.terms[randId()] = {name:"New Term"};
+			// $scope.$digest(); // not needed because it's on ng-click
+		}
 	};
 
   });
