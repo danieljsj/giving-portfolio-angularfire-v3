@@ -4,11 +4,9 @@
 	<highchart id="givingChartFlat" config="pie.config"></highchart>
 	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> --><!-- ng-if-NOT="{ ! chart~category } -->
 	<!-- ng-if-NOT="{ chart~category }" -->
-	<input 
-				class="form-control text-center" 
-				value="Giving Budget Usage: {{ orgs.percentBudgetUsed() | number:0 }}%" 
-				disabled
-	></input> 
+	<div class="panel text-center">
+		<a href="#/budget">Budget</a> Usage: <b>{{ orgs.percentBudgetUsed() | number:0 }}%</b>
+	</div>
 </div>
 
 <div id="org-controls" class="col-sm-6 col-sm-pull-6">
@@ -56,7 +54,7 @@
 					<!-- <hr/> -->
 					<sp/>
 					<div id="percentageControl" class="row">
-						<div class="col-xs-4">% of total:</div>
+						<div class="col-xs-4">% of <a href="#/budget">Budget</a>:</div>
 						<div class="col-xs-5">
 							<div class="input-group">
 								<input
@@ -127,12 +125,12 @@
 				 
 
 				<div id="taxonomization">
-					<label>Categorizations:</label>
+					<label>Categorizations:</label> <a style="float:right;" href="#/categories"><sup>[manage]</sup></a>
 					<sp/>
-					<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
-						<div class="row">
-							<div class="col-xs-5">{{ tax.name }}</div>
-							<div class="col-xs-7"> 
+					<div class="row"><!-- one 'row', possibility of much repeating -->
+						<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
+							<div class="col-xs-2">{{ tax.name }}:</div>
+							<div class="col-xs-4"> 
 								<select 
 									ng-model="orgs.selectedOrg.taxTerms[taxId]"
 									ng-change="orgs.pushOrgState(orgs.selectedOrg);"
@@ -145,10 +143,10 @@
 										{{ term.name }}
 									</option>
 								</select>
+								<sp/>
 							</div>
-						</div>
-						<sp/>
-					</div>
+						</div><!-- ng-repeat in taxs -->
+					</div><!-- row -->
 				</div> 
 				
 				<hr/>
@@ -205,4 +203,5 @@ DEV-TODOS:
 - Don't require budget as a prerequesite for portfolio/organizations input. Rather, do something like "Input your desired giving budget to show % of budget usage".
 - Smoother transitions between screens
 - Better view, esp. mobile, when no pie is ready
+- Fix: sometimes the categorizations load too slow and don't show up for the first org you click
 </pre>

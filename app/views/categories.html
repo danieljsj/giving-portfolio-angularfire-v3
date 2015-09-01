@@ -1,42 +1,53 @@
 <p><b>Categorization Types</b> + Categories:</p>
 <hr/>
-<ul id="taxn-ctrls">
-	<li class="tax" ng-repeat="tax in taxTree.taxonomies">
-		<input 
-			ng-model="tax.name"
-			class="tax-name"
-			type="text"
-			placeholder="Categorization-Type Name"
-		>
+
+<div id="taxn-ctrls" class="row">
+	<div class="tax  col-xl-4" ng-repeat="tax in taxTree.taxonomies">
 		<ul>
-			<li class="term" ng-repeat="term in tax.terms">
-				<input 
-					ng-model="term.name" 
-					class="term-name"
-					type="text"
-					placeholder="New Category Name"
-				>
-			</li>
 			<li>
-				<label
-					class="new-term-button   btn btn-primary btn-med"
-					ng-click="taxn.addNewTermTo(tax);"
+				<input 
+					ng-model="tax.name"
+					class="tax-name"
+					type="text"
+					placeholder="Categorization-Type Name"
 				>
-					New Category
-				</label>
-				
+				<ul>
+					<li class="term" ng-repeat="term in tax.terms">
+						<input 
+							ng-model="term.name" 
+							class="term-name"
+							type="text"
+							placeholder="New Category Name"
+						>
+					</li>
+					<li>
+						<label
+							class="new-term-button   btn btn-primary btn-med"
+							ng-click="taxn.addNewTermTo(tax);"
+						>
+							New Category
+						</label>
+						
+					</li>
+				</ul>
 			</li>
 		</ul>
-	</li>
-	<li>
-		<label 
-			class="new-tax-button   btn btn-primary btn-med"
-			ng-click="taxn.addNewTax();"
-		>
-			New Categorization Type
-		</label>
-	</li>
-</ul>
+	</div><!-- .tax -->
+	<div id="new-tax  col-xl-4">
+		<ul>
+			<li style="display:none;">.</li>
+			<li>
+				<label 
+					class="new-tax-button   btn btn-primary btn-lg-NOT"
+					ng-click="taxn.addNewTax();"
+				>
+					New Categorization Type
+				</label>
+			</li>
+			<li  style="display:none;">.</li>
+		</ul>
+	</div><!-- #new-tax -->
+</div><!-- #taxn-ctrls -->
 
 
 <pre>
