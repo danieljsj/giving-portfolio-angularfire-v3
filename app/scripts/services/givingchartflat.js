@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .service('GivingChartFlat', ['givingChartsCommon',
-                     function ( givingChartsCommon ) { // using scope in here is cheating...
+                     function ( gcCommon ) { // using scope in here is cheating...
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -25,12 +25,7 @@ angular.module('gpApp')
 
 				// plumbing/shim converting normal highcharts config layout for highcharts-ng:
 				get options () {
-					return {
-						chart: this.chart,
-						plotOptions: this.plotOptions,
-						tooltip: this.tooltip,
-						exporting: this.exporting
-					}
+					return gcCommon.getOptionsForHighchartsNg.bind(this)();
 				},
 
 
@@ -86,7 +81,7 @@ angular.module('gpApp')
 					// 
 					// until then, I'll stick to standard pointformat, like this:
 					headerFormat: '',
-					pointFormat: givingChartsCommon.config.tooltip.pointFormat,
+					pointFormat: gcCommon.config.tooltip.pointFormat,
 					footerformat: ''
 				},
 				series: [
