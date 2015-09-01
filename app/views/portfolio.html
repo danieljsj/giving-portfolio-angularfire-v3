@@ -5,12 +5,14 @@
 	<!-- <highchart id="givingChartCategorized" config="donut.config"></highchart> --><!-- ng-if-NOT="{ ! chart~category } -->
 	<!-- ng-if-NOT="{ chart~category }" -->
 	<div class="panel text-center">
+		<sp/>
 		<a href="#/budget">Budget</a> Usage: <b>{{ orgs.percentBudgetUsed() | number:0 }}%</b>
+		<sp/>
 	</div>
 </div>
 
 <div id="org-controls" class="col-sm-6 col-sm-pull-6">
-	<div class="panel panel-default">
+	<div class="panel panel-default" style="border-top: 4px solid {{orgs.selectedOrg.color}}; box-shadow:0px 2px 4px -2px {{orgs.selectedOrg.color}}">
 		<div class="panel-body">	
 			<div id="org-editor" ng-if="orgs.selectedOrg">
 				
