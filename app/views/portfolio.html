@@ -130,7 +130,18 @@
 					<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
 						<div class="row">
 							<div class="col-xs-5">{{ tax.name }}</div>
-							<div class="col-xs-7">{{ org.taxonomyTerms[taxId] }} &larr;Category thing here</div>
+							<div class="col-xs-7"> 
+								<select 
+									ng-model="orgs.selectedOrg.taxTerms[taxId]"
+									ng-change="orgs.pushOrgState(orgs.selectedOrg);"
+									class="form-control"
+								><!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
+									<option value="">uncategorized</option>
+									<option ng-repeat="(termId,term) in tax.terms" value="{{termId}}">
+										{{ term.name }}
+									</option>
+								</select>
+							</div>
 						</div>
 						<hr/>
 					</div>
