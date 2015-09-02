@@ -1,4 +1,13 @@
+<!-- Big Text Art: http://patorjk.com/software/taag/ - Font Name: ANSI Shadow -->
+<!-- Little Text Art: http://fsymbols.com/generators/tarty/ - enbale "Brighter" -->
 
+<!-- 
+ ██████╗██╗  ██╗ █████╗ ██████╗ ████████╗
+██╔════╝██║  ██║██╔══██╗██╔══██╗╚══██╔══╝
+██║     ███████║███████║██████╔╝   ██║   
+██║     ██╔══██║██╔══██║██╔══██╗   ██║   
+╚██████╗██║  ██║██║  ██║██║  ██║   ██║   
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    -->
 
 <div class="col-sm-6 col-sm-push-6">
 	<highchart id="givingChartFlat" config="pie.config"></highchart>
@@ -11,17 +20,36 @@
 	</div>
 </div>
 
+<!-- 
+ ██████╗ ██████╗  ██████╗ 
+██╔═══██╗██╔══██╗██╔════╝ 
+██║   ██║██████╔╝██║  ███╗
+██║   ██║██╔══██╗██║   ██║
+╚██████╔╝██║  ██║╚██████╔╝
+ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  -->
+
 <div id="org-controls" class="col-sm-6 col-sm-pull-6">
 	<div class="panel panel-default" style="border-top: 4px solid {{orgs.selectedOrg.color}}; box-shadow:0px 2px 4px -2px {{orgs.selectedOrg.color}}">
 		<div class="panel-body">	
 			<div id="org-editor" ng-if="orgs.selectedOrg">
 				
-
+				<!-- 
+				██████╗ ██╗███████╗██████╗ ██╗      █████╗ ██╗   ██╗
+				██╔══██╗██║██╔════╝██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝
+				██║  ██║██║███████╗██████╔╝██║     ███████║ ╚████╔╝ 
+				██║  ██║██║╚════██║██╔═══╝ ██║     ██╔══██║  ╚██╔╝  
+				██████╔╝██║███████║██║     ███████╗██║  ██║   ██║   
+				╚═════╝ ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝    -->
 
 				<div class="row">
 					<div class="col-xs-9">
-						Organization:
+						<!-- 
+						░█▄─░█ █▀▀█ █▀▄▀█ █▀▀ 
+						░█░█░█ █▄▄█ █─▀─█ █▀▀ 
+						░█──▀█ ▀──▀ ▀───▀ ▀▀▀ 
+						 -->
 						<sp/>
+						Organization:
 						<input 
 							ng-model="orgs.selectedOrg.name"
 							ng-change="orgs.pushOrgState(orgs.selectedOrg)"
@@ -36,6 +64,11 @@
 						<span class="glyphicon glyphicon-chevron-down"></span>
 					</div> -->
 					<div class="col-xs-3">
+						<!-- 
+						░█▀▀█ █▀▀█ █── █▀▀█ █▀▀█ 
+						░█─── █──█ █── █──█ █▄▄▀ 
+						░█▄▄█ ▀▀▀▀ ▀▀▀ ▀▀▀▀ ▀─▀▀ 
+						 -->
 						Color:
 						<sp/>
 						<spectrum-colorpicker 
@@ -48,13 +81,24 @@
 				</div>
 				<sp/>
 
-
+				<!-- 
+				 ██████╗ ██╗██╗   ██╗██╗███╗   ██╗ ██████╗ 
+				██╔════╝ ██║██║   ██║██║████╗  ██║██╔════╝ 
+				██║  ███╗██║██║   ██║██║██╔██╗ ██║██║  ███╗
+				██║   ██║██║╚██╗ ██╔╝██║██║╚██╗██║██║   ██║
+				╚██████╔╝██║ ╚████╔╝ ██║██║ ╚████║╚██████╔╝
+				 ╚═════╝ ╚═╝  ╚═══╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝  -->
 
 				<div id="org-fixed-giving" ng-if="true"><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->
 					<hr/>
 					<label>Giving:</label>
 					<!-- <hr/> -->
 					<sp/>
+					<!--
+					░█▀▀█ █▀▀ █▀▀█ █▀▀ █▀▀ █▀▀▄ ▀▀█▀▀ 
+					░█▄▄█ █▀▀ █▄▄▀ █── █▀▀ █──█ ──█── 
+					░█─── ▀▀▀ ▀─▀▀ ▀▀▀ ▀▀▀ ▀──▀ ──▀── 
+					 -->
 					<div id="percentageControl" class="row">
 						<div class="col-xs-4">% of <a href="#/budget">Budget</a>:</div>
 						<div class="col-xs-5">
@@ -77,6 +121,12 @@
 					</div>
 					<!-- <hr/> -->
 					<sp/>
+					<!-- 
+					░█▀▄▀█ █▀▀█ █▀▀▄ ▀▀█▀▀ █──█ █── █──█ 
+					░█░█░█ █──█ █──█ ──█── █▀▀█ █── █▄▄█ 
+					░█──░█ ▀▀▀▀ ▀──▀ ──▀── ▀──▀ ▀▀▀ ▄▄▄█ 
+                     -->
+
 					<div id="monthlyControl" class="row">
 						<div class="col-xs-4">Monthly:</div>
 						<div class="col-xs-5">
@@ -98,6 +148,11 @@
 						</div>
 					</div>					
 					<!-- <hr/> -->
+					<!-- 
+					░█──░█ █▀▀ █▀▀█ █▀▀█ █── █──█ 
+					░█▄▄▄█ █▀▀ █▄▄█ █▄▄▀ █── █▄▄█ 
+					──░█── ▀▀▀ ▀──▀ ▀─▀▀ ▀▀▀ ▄▄▄█ 
+					 -->
 					<sp/>
 					<div id="yearlyControl" class="row">
 						<div class="col-xs-4">Yearly:</div>
@@ -123,9 +178,13 @@
 				
 
 				<hr/>
-
-				 
-
+				<!--  
+				████████╗ █████╗ ██╗  ██╗███╗   ██╗
+				╚══██╔══╝██╔══██╗╚██╗██╔╝████╗  ██║
+				   ██║   ███████║ ╚███╔╝ ██╔██╗ ██║
+				   ██║   ██╔══██║ ██╔██╗ ██║╚██╗██║
+				   ██║   ██║  ██║██╔╝ ██╗██║ ╚████║
+				   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ -->
 				<div id="taxonomization">
 					<label>Categorizations:</label> <a style="float:right;" href="#/categories"><sup>[manage]</sup></a>
 					<sp/>
@@ -153,6 +212,13 @@
 				
 				<hr/>
 
+				<!-- 
+				███╗   ███╗███████╗████████╗ █████╗ 
+				████╗ ████║██╔════╝╚══██╔══╝██╔══██╗
+				██╔████╔██║█████╗     ██║   ███████║
+				██║╚██╔╝██║██╔══╝     ██║   ██╔══██║
+				██║ ╚═╝ ██║███████╗   ██║   ██║  ██║
+				╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ -->
 
 		    	<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -170,6 +236,13 @@
 			</div>
 		</div><!-- .panel-body -->
 	</div><!-- .panel -->
+	<!-- 
+	███╗   ██╗ █████╗ ██╗   ██╗
+	████╗  ██║██╔══██╗██║   ██║
+	██╔██╗ ██║███████║██║   ██║
+	██║╚██╗██║██╔══██║╚██╗ ██╔╝
+	██║ ╚████║██║  ██║ ╚████╔╝ 
+	╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝   -->
 	<div id="#orgsNav" class="text-center">
 		<div class="btn-group">
 			<button class="btn btn-default btn-sm"
@@ -192,7 +265,6 @@
 <sp/>
 <pre>
 DEV-TODOS:
-- Cute little org-colored band at top of org-controls
 - Orgs' category selections, category-based donut charts!
 - Display the %-giving-budget-usage as pretty horizontal completion-bar
 - Don't require budget as a prerequesite for portfolio/organizations input. Rather, do something like "Input your desired giving budget to show % of budget usage".
