@@ -20,19 +20,6 @@ angular.module('gpApp')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     var colors = Highcharts.getOptions().colors,
         categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'],
         data = [{
@@ -125,14 +112,21 @@ angular.module('gpApp')
 
     // Create the chart
     $('#demo-categorized-chart').highcharts({
+
+
         chart: {
-            type: 'pie'
+        	// renderTo: 'demo-categorized-chart', // if New-ing.
+            type: 'pie',
+			// backgroundColor: null,
+			backgroundColor: "rgba(255,255,255,.5)",
         },
         title: {
-            text: 'Browser market share, January, 2015 to May, 2015'
+            // text: 'Browser market share, January, 2015 to May, 2015'
+            text: ''
         },
         subtitle: {
-            text: 'Source: <a href="http://netmarketshare.com/">netmarketshare.com</a>'
+            // text: 'Source: <a href="http://netmarketshare.com/">netmarketshare.com</a>'
+            text: ''
         },
         yAxis: {
             title: {
@@ -148,6 +142,9 @@ angular.module('gpApp')
         tooltip: {
             valueSuffix: '%'
         },
+		exporting: {
+			enabled: false
+		},
         series: [{
             name: 'Browsers',
             data: browserData,
@@ -157,7 +154,7 @@ angular.module('gpApp')
                     return this.y > 5 ? this.point.name : null;
                 },
                 color: 'white',
-                distance: -30
+                distance: -50
             }
         }, {
             name: 'Versions',
@@ -168,8 +165,10 @@ angular.module('gpApp')
                 formatter: function () {
                     // display only if larger than 1
                     return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
-                }
+                },
+                distance: 10
             }
+            // whoah! I get it! It's 2 totally independent series!! a donut wrapping a pie!!
         }]
     });
 
