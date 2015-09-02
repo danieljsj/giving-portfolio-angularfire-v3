@@ -146,6 +146,9 @@ angular.module('gpApp')
 		exporting: {
 			enabled: false
 		},
+		credits: {
+			enabled: false
+		},
         series: [{
             name: 'Browsers',
             data: browserData,
@@ -153,7 +156,7 @@ angular.module('gpApp')
             dataLabels: {
                 formatter: function () {
                     return this.y > 5 ? 
-                    	'<b style="font-size:13px;">'+this.point.name+'</b>' 
+                    	'<b style="font-size:15px;">'+this.point.name+'</b>' 
                     	: 
                     	null;
                 },
@@ -171,7 +174,7 @@ angular.module('gpApp')
                     // display only if larger than 1
                     // return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
                     return this.y > 2 ?
-                    	'<b style="font-size:11px">'+this.point.name+'</b>' 
+                    	'<b style="font-size:10px">'+this.point.name+'</b>' 
                     	:
                     	null;
                 },
