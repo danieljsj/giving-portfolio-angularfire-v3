@@ -64,22 +64,6 @@ angular.module('gpApp')
 					enabled: false
 				},
 				tooltip: {
-					// NOT WORKING IN HIGHCHARTS-NG:
-					// code exactly like this is not working: http://jsfiddle.net/gh/get/jquery/1.7.2/highslide-software/highcharts.com/tree/master/samples/highcharts/tooltip/footerformat/
-					// some related but not identical questions by other: http://stackoverflow.com/questions/22500559/is-it-possible-to-do-a-custom-rendering-with-highchart-ng
-					// 
-					// useHtml: true,
-					// headerFormat: '<small>{point.key}</small><table>',
-					// pointFormat: 
-					// 	'<tr><th colspan="2">{point.name}</th></tr>'+
-					// 	'<tr><td>% of budget:</td><td>{point.y:.1f}%</td></tr>'+
-					// 	'<tr><td>% of giving:</td><td>{point.percentage:.1f} %</td></tr>'+
-					// 	'<tr><td>monthly giving:</td><td>${point.monthly:.2f}</td></tr>'+
-					// 	'<tr><td>yearly giving:</td><td>${point.yearly:.2f}</td></tr>'
-					// ,
-					// footerFormat: '</table>'
-					// 
-					// until then, I'll stick to standard pointformat, like this:
 					headerFormat: '',
 					pointFormat: gcCommon.config.tooltip.pointFormat,
 					footerformat: ''
