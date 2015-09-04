@@ -10,7 +10,7 @@
 angular.module('gpApp')
   .controller('GivingchartcategorizedCtrl', 
   	         ['$scope', 'GivingChartCategorized',
-  	function ( $scope,  gcCategorized ) 
+  	function ( $scope,  DonutPie ) 
   {
 
 
@@ -111,80 +111,11 @@ angular.module('gpApp')
     }
     // NOTE: this should be pretty easy. Just need to make the categories have a 'y' which is the sum of all the elements with their category. And splice in an 'uncategorized' category for the blanks. can even highcharts-ng it without much trouble. I suppose just making sure it's all always sorted. but I think... I think I should be able to use a getter, or something, or just somethign that is always remaking the categorized array.
 
-    // Create the chart
-    $('#demo-categorized-chart').highcharts({
 
 
-        chart: {
-        	// renderTo: 'demo-categorized-chart', // if New-ing.
-            type: 'pie',
-			// backgroundColor: null,
-			backgroundColor: "rgba(255,255,255,0.0)",
-        },
-        title: {
-            // text: 'Browser market share, January, 2015 to May, 2015'
-            text: ''
-        },
-        subtitle: {
-            // text: 'Source: <a href="http://netmarketshare.com/">netmarketshare.com</a>'
-            text: ''
-        },
-        yAxis: {
-            title: {
-                text: 'Total percent market share'
-            }
-        },
-        plotOptions: {
-            pie: {
-                shadow: false,
-                center: ['50%', '50%']
-            }
-        },
-        tooltip: {
-            valueSuffix: '%'
-        },
-		exporting: {
-			enabled: false
-		},
-		credits: {
-			enabled: false
-		},
-        series: [{
-            name: 'Browsers',
-            data: browserData,
-            size: '60%',
-            dataLabels: {
-                formatter: function () {
-                    return this.y > 5 ? 
-                    	'<b style="font-size:15px;">'+this.point.name+'</b>' 
-                    	: 
-                    	null;
-                },
-                color: 'white',
-                fontSize: '16px',
-                distance: -60
-            }
-        }, {
-            name: 'Versions',
-            data: versionsData,
-            size: '80%',
-            innerSize: '60%',
-            dataLabels: {
-                formatter: function () {
-                    // display only if larger than 1
-                    // return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
-                    return this.y > 2 ?
-                    	'<b style="font-size:10px">'+this.point.name+'</b>' 
-                    	:
-                    	null;
-                },
-                color: 'white',
-                fontSize: '14px',
-                distance: -10
-            }
-            // whoah! I get it! It's 2 totally independent series!! a donut wrapping a pie!!
-        }]
-    });
+
+    $scope.donutPie = new DonutPie(browserData, versionsData);
+
 
 
 

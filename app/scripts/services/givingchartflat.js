@@ -56,8 +56,10 @@ angular.module('gpApp')
 						},
 						center: ["50%","50%"],
 						
-						size: "100%",
+						// size: "100%",
 						// size: "67%",
+						// size: "85%",
+						size: "90%",
 					}
 				},
 				exporting: {

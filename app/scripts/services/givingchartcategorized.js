@@ -9,7 +9,87 @@
  */
 angular.module('gpApp')
   .service('GivingChartCategorized', ['givingChartsCommon',
-  	                        function ( gcCommon ) {
+  	                        function ( gcCommon ) 
+  	{
+  		return function(__CATEGORIES_DATA__, __RECIPIENTS_DATA__){
+  			return {
+  				config: {
+  					get options () {
+						return gcCommon.getOptionsForHighchartsNg.bind(this)();
+					},
+			        chart: {
+			        	// renderTo: 'demo-categorized-chart', // if New-ing.
+			            type: 'pie',
+						// backgroundColor: null,
+						backgroundColor: "rgba(255,255,255,0.0)",
+			        },
+			        title: {
+			            // text: 'Browser market share, January, 2015 to May, 2015'
+			            text: ''
+			        },
+			        subtitle: {
+			            // text: 'Source: <a href="http://netmarketshare.com/">netmarketshare.com</a>'
+			            text: ''
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Total percent market share'
+			            }
+			        },
+			        plotOptions: {
+			            pie: {
+			                shadow: false,
+			                center: ['50%', '50%']
+			            }
+			        },
+			        tooltip: {
+			            valueSuffix: '%'
+			        },
+					exporting: {
+						enabled: false
+					},
+					credits: {
+						enabled: false
+					},
+			        series: [{
+			            name: 'Categories',
+			            data: __CATEGORIES_DATA__,
+			            size: '60%',
+			            dataLabels: {
+			                formatter: function () {
+			                    return this.y > 5 ? 
+			                    	'<b style="font-size:15px;">'+this.point.name+'</b>' 
+			                    	: 
+			                    	null;
+			                },
+			                color: 'white',
+			                fontSize: '16px',
+			                distance: -60
+			            }
+			        }, {
+			            name: 'Recipient Organizations',
+			            data: __RECIPIENTS_DATA__,
+			            size: '90%',
+			            innerSize: '60%',
+			            dataLabels: {
+			                formatter: function () {
+			                    // display only if larger than 1
+			                    // return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+			                    return this.y > 2 ?
+			                    	'<b style="font-size:10px">'+this.point.name+'</b>' 
+			                    	:
+			                    	null;
+			                },
+			                color: 'white',
+			                fontSize: '14px',
+			                distance: -10
+			            }
+			            // whoah! I get it! It's 2 totally independent series!! a donut wrapping a pie!!
+			        }]
+			    },
+  			};
+  		};
+
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     // THE GOODS HERE WILL BE PULLED IN FROM GIVINGCHARTCATEGORIZED.JS(CONTROLLERS)!!!
