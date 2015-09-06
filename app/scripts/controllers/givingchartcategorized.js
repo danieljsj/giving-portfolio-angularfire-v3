@@ -26,7 +26,7 @@ angular.module('gpApp')
         var categoriesData = buildCategoriesSeries();
         var recipientsData = buildRecipientsSeries();
 
-        $scope.donutPie = new DonutPie(browserData, versionsData);
+        $scope.donutPie = new DonutPie(categoriesData, recipientsData);
 
     });
 
@@ -144,7 +144,7 @@ angular.module('gpApp')
 
     function buildCategoriesSeries(){
 
-        console.log("TEMPDEBUG: looks like this 'taxn' is turning out to be a promise I think....", taxn);
+        console.log("taxn in buildCategoriesSeries: ", taxn);
         for (var taxId in taxn.taxTree.taxonomies){
             var currentTaxId = taxId;
             break;
@@ -152,14 +152,30 @@ angular.module('gpApp')
 
         var currentTax = taxn.taxTree.taxonomies[currentTaxId];
 
+        var termsArray = [];
+
         for (var termId in currentTax.terms){
             var monthlySum = 0;
             $scope.orgs.forEach(function(org){
-                if (org.taxTerms[currentTaxId] = termId){
-                    monthlySum += currentTax.terms[termId].monthly;
+                if (org.taxTerms[currentTaxId] == termId){
+                    monthlySum += org.monthly;
                 }
-            })            
+            });
+            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
+
+            termsArray.push(currentTax.terms[termId]);
         }
+
+        console.log('currentTax.terms at end of buildCategoriesSeries: ', currentTax.terms);
+        console.log('termsArray at end of buildCategoriesSeries: ', termsArray);
+
+
+        termsArray.sort(function(termA,termB){termA.id - termB.id});
+
+
+
+
+        return termsArray;
 
         // WAIT A BLOOMING MINUTE; I'M NOT RETURNING ANYTHING... WHY IS THIS STILL WORKING!?!?!?!?!
     }
