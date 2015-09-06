@@ -9,11 +9,20 @@
  */
 angular.module('gpApp')
   .controller('GivingchartcategorizedCtrl', 
-  	         ['$scope', 'GivingChartCategorized',
-  	function ( $scope,  DonutPie ) 
+  	         ['$scope', 'GivingChartCategorized', 'recipientOrgs',
+  	function ( $scope,  DonutPie,                  recipientOrgs ) 
   {
 
+    recipientOrgs.getOrgs(function(orgs){
 
+        console.log("orgs received in gcCatChart from getOrgs: ", orgs);
+
+        var categoriesData = buildCategoriesSeries();
+        var recipientsData = buildRecipientsSeries();
+
+        $scope.donutPie = new DonutPie(browserData, versionsData);
+
+    })
 
 
 
@@ -114,7 +123,14 @@ angular.module('gpApp')
 
 
 
-    $scope.donutPie = new DonutPie(browserData, versionsData);
+    // $scope.donutPie = new DonutPie(browserData, versionsData);
+    // 
+    function buildRecipientsSeries(){
+        return browserData;
+    }
+    function buildCategoriesSeries(){
+        return versionsData;
+    }
 
 
 
