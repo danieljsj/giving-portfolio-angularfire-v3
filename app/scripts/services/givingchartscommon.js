@@ -39,7 +39,7 @@ angular.module('gpApp')
 	    	}
 	    },
 	    getOptionsForHighchartsNg: function(){
-	    	console.log('`this` inside gcCommon getOptions:',this);
+	    	// console.log('`this` inside gcCommon getOptions:',this);
 			return {
 				chart: this.chart,
 				plotOptions: this.plotOptions,
