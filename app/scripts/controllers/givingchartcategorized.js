@@ -139,7 +139,18 @@ angular.module('gpApp')
     // $scope.donutPie = new DonutPie(browserData, versionsData);
     // 
     function buildRecipientsSeries(){
-        return browserData;
+
+        // NOTE: THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
+        for (var taxId in taxn.taxTree.taxonomies){
+            var currentTaxId = taxId;
+            break;
+        }
+
+        return $scope.orgs.sort(function(orgA,orgB){
+            return orgA.taxTerms[currentTaxId]
+            -
+            orgB.taxTerms[currentTaxId]
+        });
     }
 
     function buildCategoriesSeries(){
