@@ -227,6 +227,7 @@ angular.module('gpApp')
 					orgs[funcName] = orgsFuncs[funcName].bind(orgs);
 				}				
 				// angular.extend(orgs,OrgsCollectionFuncs);   // decided not to go with angular.extend, I guess... // under angular.extend, the resulting `this` for the funcs, I believe, was pointing to the "var OrgsCollectionFuncs = {}" object; so not going to do the extending here.
+
 				ctrlSaveToScopeOrgsThenInit(orgs);
 			}
 		  })

@@ -141,13 +141,27 @@ angular.module('gpApp')
     function buildRecipientsSeries(){
         return browserData;
     }
+
     function buildCategoriesSeries(){
-        tan.taxonomies[0].terms.forEach(function(term){
+
+        console.log("TEMPDEBUG: looks like this 'taxn' is turning out to be a promise I think....", taxn);
+        for (var taxId in taxn.taxTree.taxonomies){
+            var currentTaxId = taxId;
+            break;
+        }
+
+        var currentTax = taxn.taxTree.taxonomies[currentTaxId];
+
+        for (var termId in currentTax.terms){
             var monthlySum = 0;
-            for (var i = $scope.orgs.length - 1; i >= 0; i--) {
-                // if ( $scope.orgs[i].
-            };
-        });
+            $scope.orgs.forEach(function(org){
+                if (org.taxTerms[currentTaxId] = termId){
+                    monthlySum += currentTax.terms[termId].monthly;
+                }
+            })            
+        }
+
+        // WAIT A BLOOMING MINUTE; I'M NOT RETURNING ANYTHING... WHY IS THIS STILL WORKING!?!?!?!?!
     }
 
 
