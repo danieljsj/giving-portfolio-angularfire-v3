@@ -9,20 +9,26 @@
  */
 angular.module('gpApp')
   .controller('GivingchartcategorizedCtrl', 
-  	         ['$scope', 'GivingChartCategorized', 'recipientOrgs',
-  	function ( $scope,  DonutPie,                  recipientOrgs ) 
+  	         ['$scope', 'GivingChartCategorized', 'recipientOrgs', 'taxonomization',
+  	function ( $scope,  DonutPie,                  recipientOrgs,   taxn ) 
   {
 
     recipientOrgs.getOrgs(function(orgs){
 
-        console.log("orgs received in gcCatChart from getOrgs: ", orgs);
+        $scope.orgs = orgs;
+
+        $scope.taxn = taxn;
+        taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
+
+
+        console.log("orgs received in gcCatChart from getOrgs, AND taxn at the same time: ", orgs, taxn);
 
         var categoriesData = buildCategoriesSeries();
         var recipientsData = buildRecipientsSeries();
 
         $scope.donutPie = new DonutPie(browserData, versionsData);
 
-    })
+    });
 
 
 
