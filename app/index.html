@@ -16,7 +16,9 @@
     <!-- endbuild -->
 
     <script>
-      function randId(){return Math.round((Math.random()*.9+0.1) * 10000000000000000)}
+      var latestId;
+      function randId(){lastId = Math.round((Math.random()*.9+0.1) * 10000000000000000);return latestId; }
+      function lastId(){return latestId;}
     </script>
   </head>
   <body ng-app="gpApp">
