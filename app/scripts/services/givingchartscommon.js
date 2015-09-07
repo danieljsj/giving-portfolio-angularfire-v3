@@ -36,6 +36,17 @@ angular.module('gpApp')
 					'<br/>% of budget: <b>{point.y:.1f} %</td></b>'+
 					'<br/>monthly giving: <b>$ {point.monthly:.2f}</td></b>'+
 					'<br/>yearly giving: <b>$ {point.yearly:.2f}</td</b>'
+	    	},
+	    	plotOptions: {
+	    		pie: {
+	    			dataLabels: {
+	    				style: {
+								// color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+								// textAlign: "center" // nope; looks like it only accepts a few different params, and this ain't one. i'll try actual css.
+								"textShadow": "0 0 6px #000, 0 0 3px #000"
+						}
+	    			}
+	    		}
 	    	}
 	    },
 	    getOptionsForHighchartsNg: function(){

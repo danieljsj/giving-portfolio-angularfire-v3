@@ -39,7 +39,10 @@ angular.module('gpApp')
 			        plotOptions: {
 			            pie: {
 			                shadow: false,
-			                center: ['50%', '50%']
+			                center: ['50%', '50%'],
+							dataLabels: {
+								style: gcCommon.config.plotOptions.pie.dataLabels.style
+							}
 			            }
 			        },
 			        tooltip: {

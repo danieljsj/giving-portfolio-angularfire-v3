@@ -49,10 +49,7 @@ angular.module('gpApp')
 							// 
 							// align: 'center', // nope; this is not text-align, it's alignment relative to the point.
 							format: '{point.name}',
-							style: {
-								// color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-								// textAlign: "center" // nope; looks like it only accepts a few different params, and this ain't one. i'll try actual css.
-							}
+							style: gcCommon.config.plotOptions.pie.dataLabels.style
 						},
 						center: ["50%","50%"],
 						
