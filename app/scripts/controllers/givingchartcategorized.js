@@ -23,8 +23,8 @@ angular.module('gpApp')
 
         console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
  
-        var categoriesData = buildCategoriesSeries();
-        var recipientsData = buildRecipientsSeries();
+        var categoriesData = buildOrgsCategoriesSeries();
+        var recipientsData = buildRecipientOrgsSeries();
 
         $scope.donutPie = new DonutPie(categoriesData, recipientsData);
 
@@ -33,7 +33,7 @@ angular.module('gpApp')
 
     // $scope.donutPie = new DonutPie(browserData, versionsData);
     // 
-    function buildRecipientsSeries(){
+    function buildRecipientOrgsSeries(orgs){
 
         // NOTE: THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
         for (var taxId in taxn.taxTree.taxonomies){
@@ -48,9 +48,9 @@ angular.module('gpApp')
         });
     }
 
-    function buildCategoriesSeries(){
+    function buildOrgsCategoriesSeries(orgs){
 
-        console.log("taxn in buildCategoriesSeries: ", taxn);
+        console.log("taxn in buildOrgsCategoriesSeries: ", taxn);
         for (var taxId in taxn.taxTree.taxonomies){
             var currentTaxId = taxId;
             break;
@@ -73,8 +73,8 @@ angular.module('gpApp')
             termsArray.push(currentTax.terms[termId]);
         }
 
-        console.log('currentTax.terms at end of buildCategoriesSeries: ', currentTax.terms);
-        console.log('termsArray at end of buildCategoriesSeries: ', termsArray);
+        console.log('currentTax.terms at end of buildOrgsCategoriesSeries: ', currentTax.terms);
+        console.log('termsArray at end of buildOrgsCategoriesSeries: ', termsArray);
 
 
         termsArray.sort(function(termA,termB){termA.id - termB.id});
