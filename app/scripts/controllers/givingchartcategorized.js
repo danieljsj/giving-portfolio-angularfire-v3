@@ -68,6 +68,7 @@ angular.module('gpApp')
                 }
             });
             currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
+            currentTax.terms[termId].color = "rgba(255,255,255,.3)";
 
             termsArray.push(currentTax.terms[termId]);
         }
