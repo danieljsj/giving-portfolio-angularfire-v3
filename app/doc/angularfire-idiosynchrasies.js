@@ -5,6 +5,7 @@
 	orgs.$loaded() 	//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded
 	  .then(function(loadedOrgs) {
 		if (loadedOrgs === orgs ){ // TRUE!
+				// related? https://github.com/firebase/angularfire/issues/608
 	...
 // in fbObj: ... same sort of thing was false.
 
