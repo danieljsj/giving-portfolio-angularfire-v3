@@ -25,16 +25,17 @@ angular.module('gpApp')
     
     orgs.scopeDigest = $scope.$digest;
     
+    function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
+      orgs.reapplyBudget();
+      var colorpicker = new Colorpicker(orgs.saveOrgs);
+      $scope.pie = new Pie(orgs, orgs.selectOrg);
+    }
 
-    // things that are troublesome when orgs hasn't $loaded yet.
-    orgs.reapplyBudget(); // THIS may cause trouble.
-    var colorpicker = new Colorpicker(orgs.saveOrgs); // THIS may cause trouble.
-    $scope.pie = new Pie(orgs, orgs.selectOrg); // THIS may cause trouble.
 
 
     // arrow keys to shift selection
     $scope.foci = {};
-    var arrowKeysShiftSelection = function(e){
+    function arrowKeysShiftSelection(e){
       var focus = false;
       for ( var key in $scope.foci ) { // 'delete' keyword (e.g. `delete foci.monthly`) doesn't work in angular parser, so we've got and ob full of all or mostly falses, need to see if any are true.
         if ( $scope.foci[key] ) {
