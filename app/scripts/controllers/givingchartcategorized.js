@@ -10,26 +10,21 @@
 angular.module('gpApp')
   .controller('GivingchartcategorizedCtrl', 
   	         ['$scope', 'GivingChartCategorized', 'recipientOrgs', 'taxonomization',
-  	function ( $scope,  DonutPie,                  recipientOrgs,   taxn          ) 
+  	function ( $scope,   DonutPie,                 orgs,            taxn          ) 
   {
 
-    recipientOrgs.getOrgs(function(orgs){
+    $scope.orgs = orgs;
 
-        $scope.orgs = orgs;
-
-        $scope.taxn = taxn;
-        taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
+    $scope.taxn = taxn;
+    taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
 
 
-        console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
- 
-        var categoriesData = buildOrgsCategoriesSeries();
-        var recipientsData = buildRecipientOrgsSeries();
+    console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
 
-        $scope.donutPie = new DonutPie(categoriesData, recipientsData);
+    var categoriesData = buildOrgsCategoriesSeries();
+    var recipientsData = buildRecipientOrgsSeries();
 
-    });
-
+    $scope.donutPie = new DonutPie(categoriesData, recipientsData);
 
     // $scope.donutPie = new DonutPie(browserData, versionsData);
     // 
@@ -62,7 +57,7 @@ angular.module('gpApp')
 
         for (var termId in currentTax.terms){
             var monthlySum = 0;
-            $scope.orgs.forEach(function(org){
+            $scope.orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
                 if (org.taxTerms[currentTaxId] == termId){
                     monthlySum += org.monthly;
                 }
