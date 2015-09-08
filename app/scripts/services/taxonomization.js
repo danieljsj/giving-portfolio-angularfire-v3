@@ -19,14 +19,14 @@ angular.module('gpApp')
     this.taxTree = $firebaseObject(query); // has browser-known things like User, but doesn't know any fb data yet.
 
     this.taxTree.$loaded(function(loadedTaxTree){
-        init(loadedTaxTree);
+        initialUpdate(loadedTaxTree);
     });
 
-    function init(loadedTaxTree){
+    function initialUpdate(loadedTaxTree){
 
-        console.log('this at init:',this); //undefined
-        console.log('loadedTaxTree at init: ',loadedTaxTree.taxonomies);
-        console.log('loadedTaxTree.taxonomies at init: ',loadedTaxTree.taxonomies);
+        // console.log('this at initialUpdate:',this);                                              // undefined
+        // console.log('loadedTaxTree at initialUpdate: ',loadedTaxTree);                           // FirebaseObject {$$conf: Object, $id: "simplelogin:1", $priority: null, taxonomies: Object}
+        // console.log('loadedTaxTree.taxonomies at initialUpdate: ',loadedTaxTree.taxonomies);     // Object {1206930495565757: Object, 5446529400534929: Object, 8019094473915175: Object, 9726771261310206: Object}
 
         var taxs = loadedTaxTree.taxonomies;
 
