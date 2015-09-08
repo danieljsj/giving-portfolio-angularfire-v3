@@ -17,11 +17,6 @@ angular.module('gpApp')
 
 	this.fbObj = new $firebaseObject(Ref.child('userBudgets/'+uid));
 
-	this.loaded = false;
-	this.fbObj.$loaded().then(function(thisLoadedBudget){
-		thisLoadedBudget.loaded = true; // not sure why, but `this` is undefined. so we use thisLoadedBudget instead.
-	});
-
 	var o = this.fbObj;
 
 	angular.extend(o,{

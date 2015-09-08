@@ -27,29 +27,17 @@ angular.module('gpApp')
 
     if ( !funcsRan ) {
 
-      orgs.$loaded().then(function(result){
-                                                                                                                    console.log('orgs.$loaded()... result: ',result); console.log('loaded orgsThing same as orgsThing?: ', orgs === result ); // true
-        // orgs.loaded = true;
-        maybeRunFuncs();
-      });
-      budget.fbObj.$loaded().then(function(result){
-                                                                                                                    console.log('budget.$loaded()... result: ',result); console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result ); // true
-        // budget.loaded = true;
-        maybeRunFuncs();
-      });
-      taxn.taxTree.$loaded().then(function(result){
-                                                                                                                    console.log('taxn.$loaded()... result: ',result); console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result ); // true
-        // taxn.loaded = true;
-        maybeRunFuncs();
-      });
+      orgs          .$loaded().then(function(result){ console.log("result: ",result); console.log("result is same as orgs        :",result === orgs         ); maybeRunFuncs(); });
+      budget.fbObj  .$loaded().then(function(result){ console.log("result: ",result); console.log("result is same as budget.fbObj:",result === budget.fbObj ); maybeRunFuncs(); });
+      taxn.taxTree  .$loaded().then(function(result){ console.log("result: ",result); console.log("result is same as taxn.taxTree:",result === taxn.taxTree ); maybeRunFuncs(); });
     }
 
 
     function maybeRunFuncs(){
       console.log('orgs.loaded? :',orgs.loaded);
-      console.log('budget.loaded? :',budget.loaded);
-      console.log('taxn.loaded? :',taxn.loaded);
-      if (orgs.loaded && budget.loaded && taxn.loaded) {
+      console.log('budget.fbObj.loaded? :',budget.fbObj.loaded);
+      console.log('taxn.taxTree.loaded? :',taxn.taxTree.loaded);
+      if (orgs.loaded && budget.fbObj.loaded && taxn.taxTree.loaded) {
         runFuncsThatNeedToWaitTillFbStuffIsLoaded();
         return true;
       } else {
