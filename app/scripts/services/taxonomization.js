@@ -20,7 +20,9 @@ angular.module('gpApp')
         // taxTree is the fbOb, taxn has methods and taxTree.
         // at this time, taxTree has browser/fb-knownthings like User, but doesn't know any fb data yet.
 
+    this.loaded = false;
     this.taxTree.$loaded(function(loadedTaxTree){
+        loadedTaxTree.loaded = true;
         initialUpdate(loadedTaxTree);
     });
 

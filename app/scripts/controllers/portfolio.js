@@ -15,13 +15,43 @@ angular.module('gpApp')
     
     $scope.budget = budget;
 
-    $scope.orgs = orgs;                                                                                             console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs, 'orgs.length: ', orgs.length); // []; 0; (but in the dropdown, shows it with lots of orgs.);
-
+    $scope.orgs = orgs;
+                                                                                                                 console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs, 'orgs.length: ', orgs.length); // []; 0; (but in the dropdown, shows it with lots of orgs.);
     $scope.taxn = taxn;
     taxn.taxTree.$bindTo($scope, 'taxTree', true );
 
     orgs.scopeDigest = $scope.$digest;
+
+
     
+    
+
+
+    orgs.$loaded().then(function(result){
+                                                                                                                  console.log('orgs.$loaded()... result: ',result);
+                                                                                                                  console.log('loaded orgsThing same as orgsThing?: ', orgs === result );
+      maybeRunFuncs();
+    });
+    budget.fbObj.$loaded().then(function(result){
+                                                                                                                  console.log('budget.$loaded()... result: ',result);
+                                                                                                                  console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result );
+      maybeRunFuncs();
+    });
+    taxn.taxTree.$loaded().then(function(result){
+                                                                                                                  console.log('taxn.$loaded()... result: ',result);
+                                                                                                                  console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result );
+      maybeRunFuncs();
+    });
+
+    maybeRunFuncs();
+
+    function maybeRunFuncs(){
+      console.log('orgs.loaded? :',orgs.loaded);
+      console.log('budget.loaded? :',budget.loaded);
+      console.log('taxn.loaded? :',taxn.loaded);
+      if (orgs.loaded && budget.loaded && taxn.loaded) runFuncsThatNeedToWaitTillFbStuffIsLoaded();
+    }
+
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
@@ -29,13 +59,6 @@ angular.module('gpApp')
       var colorpicker = new Colorpicker(orgs.saveOrgs); // we might be able to pull this out into the top; might be able to add the funcs before the stuff loads in, cuz I don't think it's a promise, I think it's a real object.
       $scope.colorPickerOptions = colorpicker.options;
     }
-    setTimeout(runFuncsThatNeedToWaitTillFbStuffIsLoaded,1000);
-
-
-
-
-
-
 
 
 
