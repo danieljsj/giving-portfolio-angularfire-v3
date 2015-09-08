@@ -26,30 +26,39 @@ angular.module('gpApp')
     
     
 
+    if ( !maybeRunFuncs() ) {
 
-    orgs.$loaded().then(function(result){
-                                                                                                                  console.log('orgs.$loaded()... result: ',result);
-                                                                                                                  console.log('loaded orgsThing same as orgsThing?: ', orgs === result );
-      maybeRunFuncs();
-    });
-    budget.fbObj.$loaded().then(function(result){
-                                                                                                                  console.log('budget.$loaded()... result: ',result);
-                                                                                                                  console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result );
-      maybeRunFuncs();
-    });
-    taxn.taxTree.$loaded().then(function(result){
-                                                                                                                  console.log('taxn.$loaded()... result: ',result);
-                                                                                                                  console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result );
-      maybeRunFuncs();
-    });
+      orgs.$loaded().then(function(result){
+        orgs.loaded = true;
+                                                                                                                    console.log('orgs.$loaded()... result: ',result);
+                                                                                                                    console.log('loaded orgsThing same as orgsThing?: ', orgs === result ); // true
+        maybeRunFuncs();
+      });
+      budget.fbObj.$loaded().then(function(result){
+        budget.loaded = true;
+                                                                                                                    console.log('budget.$loaded()... result: ',result);
+                                                                                                                    console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result ); // true
+        maybeRunFuncs();
+      });
+      taxn.taxTree.$loaded().then(function(result){
+        taxn.loaded = true;
+                                                                                                                    console.log('taxn.$loaded()... result: ',result);
+                                                                                                                    console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result ); // true
+        maybeRunFuncs();
+      });
+    }
 
-    maybeRunFuncs();
 
     function maybeRunFuncs(){
       console.log('orgs.loaded? :',orgs.loaded);
       console.log('budget.loaded? :',budget.loaded);
       console.log('taxn.loaded? :',taxn.loaded);
-      if (orgs.loaded && budget.loaded && taxn.loaded) runFuncsThatNeedToWaitTillFbStuffIsLoaded();
+      if (orgs.loaded && budget.loaded && taxn.loaded) {
+        runFuncsThatNeedToWaitTillFbStuffIsLoaded();
+        return true;
+      } else {
+        return false;
+      }
     }
 
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
