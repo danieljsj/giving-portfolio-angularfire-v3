@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
-                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    colorpicker ) {
+                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    Colorpicker ) {
 
     window.$scope = $scope; //debug
     
@@ -21,15 +21,17 @@ angular.module('gpApp')
     $scope.taxn = taxn;
     taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
 
-    $scope.colorPickerOptions = colorpicker.options;
     
     orgs.scopeDigest = $scope.$digest;
     
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
       orgs.reapplyBudget();
-      var colorpicker = new Colorpicker(orgs.saveOrgs);
       $scope.pie = new Pie(orgs, orgs.selectOrg);
+
+      var colorpicker = new Colorpicker(orgs.saveOrgs); // we might be able to pull this out into the top; might be able to add the funcs before the stuff loads in, cuz I don't think it's a promise, I think it's a real object.
+      $scope.colorPickerOptions = colorpicker.options;
     }
+    setTimeout(runFuncsThatNeedToWaitTillFbStuffIsLoaded,1000);
 
 
 
