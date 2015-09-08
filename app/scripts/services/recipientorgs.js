@@ -20,7 +20,7 @@ angular.module('gpApp')
 
 	orgs.$loaded() 	//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded
 	  .then(function(loadedOrgs) {
-		if (loadedOrgs === orgs ){
+		if (loadedOrgs === orgs ){ // weird that this was equal in fbArr but not fbObj
 			for (var methodName in orgsMethods){
 				orgs[methodName] = orgsMethods[methodName].bind(orgs);
 			}				
