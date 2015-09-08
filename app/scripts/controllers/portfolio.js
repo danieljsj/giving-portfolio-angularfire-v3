@@ -9,65 +9,54 @@
  */
 angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
-                    function   ( $scope ,  recipientOrgs ,  budget ,  taxn,             Pie,               Donut,                    Colorpicker ) {
+                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    Colorpicker ) {
 
     window.$scope = $scope; //debug
     
     $scope.budget = budget;
 
-    $scope.orgs = [];
+    $scope.orgs = orgs;
+    console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs);
 
     $scope.taxn = taxn;
     taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
 
-    console.log(recipientOrgs);
-    recipientOrgs.getOrgs(function(orgs){
+    $scope.colorPickerOptions = colorpicker.options;
+    
+    orgs.scopeDigest = $scope.$digest;
+    
 
-      orgs.reapplyBudget();
-
-      $scope.orgs = orgs;
-      
-      var colorpicker = new Colorpicker(orgs.saveOrgs);
-
-      $scope.colorPickerOptions = colorpicker.options; // $scope.palette = $scope.colorPickerOptions.palette; // redundant
-
-   		orgs.scopeDigest = $scope.$digest;
-
-   		console.log('orgs inside getOrgs, after saving to $scope: ', orgs);
-		  
-      $scope.pie = new Pie(orgs, orgs.selectOrg);
-
-      // if (0 < orgs.length) orgs.selectNext(); // is nice for dev, but as of Sep1'15 this loads too fast and is in before the cats come in.
+    // things that are troublesome when orgs hasn't $loaded yet.
+    orgs.reapplyBudget(); // THIS may cause trouble.
+    var colorpicker = new Colorpicker(orgs.saveOrgs); // THIS may cause trouble.
+    $scope.pie = new Pie(orgs, orgs.selectOrg); // THIS may cause trouble.
 
 
-      // arrow keys to shift selection
-      $scope.foci = {};
-      var arrowKeysShiftSelection = function(e){
-        var focus = false;
-        for ( var key in $scope.foci ) { // 'delete' keyword (e.g. `delete foci.monthly`) doesn't work in angular parser, so we've got and ob full of all or mostly falses, need to see if any are true.
-          if ( $scope.foci[key] ) {
-            focus = true;
-            break;  
-          }
+    // arrow keys to shift selection
+    $scope.foci = {};
+    var arrowKeysShiftSelection = function(e){
+      var focus = false;
+      for ( var key in $scope.foci ) { // 'delete' keyword (e.g. `delete foci.monthly`) doesn't work in angular parser, so we've got and ob full of all or mostly falses, need to see if any are true.
+        if ( $scope.foci[key] ) {
+          focus = true;
+          break;  
         }
-        if (!focus){
-          if(e.keyCode === 39) {
-            console.log('right arrow');
-            orgs.selectNext();
-          }    
-          if(e.keyCode === 37) {
-            console.log('left arrow');
-            orgs.selectPrev();
-          }
+      }
+      if (!focus){
+        if(e.keyCode === 39) {
+          console.log('right arrow');
+          orgs.selectNext();
+        }    
+        if(e.keyCode === 37) {
+          console.log('left arrow');
+          orgs.selectPrev();
         }
-      };
-      var $doc = angular.element(document);
-      $doc.on('keydown', arrowKeysShiftSelection);
-      $scope.$on('$destroy',function(){
-        $doc.off('keydown', arrowKeysShiftSelection);
-      })
-
-
-   	});
+      }
+    };
+    var $doc = angular.element(document);
+    $doc.on('keydown', arrowKeysShiftSelection);
+    $scope.$on('$destroy',function(){
+      $doc.off('keydown', arrowKeysShiftSelection);
+    })
 
   }]);
