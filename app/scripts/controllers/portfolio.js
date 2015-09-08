@@ -11,17 +11,15 @@ angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
                     function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    Colorpicker ) {
 
-    window.$scope = $scope; //debug
+    window.$scope = $scope; // for debugging
     
     $scope.budget = budget;
 
-    $scope.orgs = orgs;
-    console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs, 'orgs.length: ', orgs.length); // []; 0; (but in the dropdown, shows it with lots of orgs.);
+    $scope.orgs = orgs;                                                                                             console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs, 'orgs.length: ', orgs.length); // []; 0; (but in the dropdown, shows it with lots of orgs.);
 
     $scope.taxn = taxn;
-    taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
+    taxn.taxTree.$bindTo($scope, 'taxTree', true );
 
-    
     orgs.scopeDigest = $scope.$digest;
     
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
@@ -32,6 +30,18 @@ angular.module('gpApp')
       $scope.colorPickerOptions = colorpicker.options;
     }
     setTimeout(runFuncsThatNeedToWaitTillFbStuffIsLoaded,1000);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,7 +16,9 @@ angular.module('gpApp')
 
     var query = Ref.child('userTaxonomizationTrees/'+uid);
 
-    this.taxTree = $firebaseObject(query); // has browser-known things like User, but doesn't know any fb data yet.
+    this.taxTree = $firebaseObject(query); 
+        // taxTree is the fbOb, taxn has methods and taxTree.
+        // at this time, taxTree has browser/fb-knownthings like User, but doesn't know any fb data yet.
 
     this.taxTree.$loaded(function(loadedTaxTree){
         initialUpdate(loadedTaxTree);
