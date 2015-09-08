@@ -23,27 +23,23 @@ angular.module('gpApp')
     orgs.scopeDigest = $scope.$digest;
 
 
-    
-    
+    var funcsRan = maybeRunFuncs();
 
-    if ( !maybeRunFuncs() ) {
+    if ( !funcsRan ) {
 
       orgs.$loaded().then(function(result){
-        orgs.loaded = true;
-                                                                                                                    console.log('orgs.$loaded()... result: ',result);
-                                                                                                                    console.log('loaded orgsThing same as orgsThing?: ', orgs === result ); // true
+                                                                                                                    console.log('orgs.$loaded()... result: ',result); console.log('loaded orgsThing same as orgsThing?: ', orgs === result ); // true
+        // orgs.loaded = true;
         maybeRunFuncs();
       });
       budget.fbObj.$loaded().then(function(result){
-        budget.loaded = true;
-                                                                                                                    console.log('budget.$loaded()... result: ',result);
-                                                                                                                    console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result ); // true
+                                                                                                                    console.log('budget.$loaded()... result: ',result); console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result ); // true
+        // budget.loaded = true;
         maybeRunFuncs();
       });
       taxn.taxTree.$loaded().then(function(result){
-        taxn.loaded = true;
-                                                                                                                    console.log('taxn.$loaded()... result: ',result);
-                                                                                                                    console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result ); // true
+                                                                                                                    console.log('taxn.$loaded()... result: ',result); console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result ); // true
+        // taxn.loaded = true;
         maybeRunFuncs();
       });
     }
