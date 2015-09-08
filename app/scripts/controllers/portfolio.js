@@ -16,7 +16,7 @@ angular.module('gpApp')
     $scope.budget = budget;
 
     $scope.orgs = orgs;
-    console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs);
+    console.log('orgs in top of PortfolioCtrl, after saving to $scope: ', orgs, 'orgs.length: ', orgs.length); // []; 0; (but in the dropdown, shows it with lots of orgs.);
 
     $scope.taxn = taxn;
     taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
