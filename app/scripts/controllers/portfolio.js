@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
-                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    Colorpicker ) {
+                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    colorpicker ) {
 
     window.$scope = $scope; //debug
     
