@@ -21,8 +21,11 @@ angular.module('gpApp')
 
 	return {
 
-		// CREATION, SAVING, DELETING:
-		
+		// ░█▀▀█         ░█─░█   ░█▀▀▄   
+		// ░█───         ░█─░█   ░█─░█  
+		// ░█▄▄█ █ █ █ █ ─▀▄▄▀ █ ░█▄▄▀ █ 
+		// CREATING, ... UPDATING,DELETING:
+
 		addOrg: function(){
 
 			var orgAtts = {
@@ -64,6 +67,9 @@ angular.module('gpApp')
 
 
 
+		// ░█▀▀▀█ █▀▀ █── █▀▀ █▀▀ ▀▀█▀▀ ─▀─ █▀▀█ █▀▀▄ 
+		// ─▀▀▀▄▄ █▀▀ █── █▀▀ █── ──█── ▀█▀ █──█ █──█ 
+		// ░█▄▄▄█ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ──▀── ▀▀▀ ▀▀▀▀ ▀──▀ 
 		// SELECTION:
 
 		selectOrg: function(orgRep){
@@ -152,7 +158,9 @@ angular.module('gpApp')
 
 
 
-
+		// ░█▀▀█ ─▀─ ▀█─█▀ ─▀─ █▀▀▄ █▀▀▀ 
+		// ░█─▄▄ ▀█▀ ─█▄█─ ▀█▀ █──█ █─▀█ 
+		// ░█▄▄█ ▀▀▀ ──▀── ▀▀▀ ▀──▀ ▀▀▀▀ 
 		// GIVING: 
 																				// ( we are using "FIXED GIVING", based on '.yearly', '.monthly', 'percentage' giving (used to be "FIXED BUDGET", based on budget and org.portions) );		
 		pushOrgState: function(org){ // should be: pushOrgPortion()
