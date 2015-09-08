@@ -57,7 +57,7 @@ angular.module('gpApp')
 			        series: [{
 			            name: 'Categories',
 			            data: __CATEGORIES_DATA__,
-			            size: '60%',
+			            size: '55%',
 			            dataLabels: {
 			                formatter: function () {
 			                    return this.y > 5 ? 
@@ -73,7 +73,7 @@ angular.module('gpApp')
 			            name: 'Recipient Organizations',
 			            data: __RECIPIENTS_DATA__,
 			            size: '90%',
-			            innerSize: '60%',
+			            innerSize: '55%',
 			            dataLabels: {
 			                formatter: function () {
 			                    // display only if larger than 1
