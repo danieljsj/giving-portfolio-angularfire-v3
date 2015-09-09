@@ -21,7 +21,10 @@ angular.module('gpApp')
     console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
 
     function onceStuffIsLoaded(){
-        $scope.donutPie = new DonutPie(/* i'm sure something will need to go here */);
+        $scope.donutPie = new DonutPie();
+
+        console.log($scope.donutPie);
+        $scope.$digest();
     }
     setTimeout(onceStuffIsLoaded,1000);
 

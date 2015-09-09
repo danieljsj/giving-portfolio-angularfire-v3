@@ -21,22 +21,28 @@ angular.module('gpApp')
 		            break;
 		        }
 
-		        return orgs.sort(function(orgA,orgB){
-		            return orgA.taxTerms[currentTaxId]
-		            -
-		            orgB.taxTerms[currentTaxId]
-		        });
+		        orgs.sort(function(orgA,orgB){ return orgA.taxTerms[currentTaxId] - orgB.taxTerms[currentTaxId]; }); // maybe i need to build rather than sort???
+
+		        console.log('orgs at end of buildOrgsData: ',orgs);
+
+		        return orgs;
 		    };
 
 		    this.buildCatsData = function(){
 
-		        console.log("taxn in buildOrgsCategoriesSeries: ", taxn);
+		        console.log("taxn in buildCatsData: ", taxn);
+		        console.log("taxn.taxTree in buildCatsData: ", taxn.taxTree);
 		        for (var taxId in taxn.taxTree.taxonomies){
 		            var currentTaxId = taxId;
 		            break;
 		        }
 
-		        var currentTax = taxn.taxTree.taxonomies[currentTaxId];
+		        var currentTax = 
+		        	taxn
+		        		.taxTree // sometimes it's undefined. at random. cuz (TODO) we don't have dependency managing happening! (it really should be a service);
+		        		.taxonomies[
+		        			currentTaxId
+		        		];
 
 		        var termsArray = [];
 
@@ -53,8 +59,8 @@ angular.module('gpApp')
 		            termsArray.push(currentTax.terms[termId]);
 		        }
 
-		        console.log('currentTax.terms at end of buildOrgsCategoriesSeries: ', currentTax.terms);
-		        console.log('termsArray at end of buildOrgsCategoriesSeries: ', termsArray);
+		        console.log('currentTax.terms at end of buildCatsData: ', currentTax.terms);
+		        console.log('termsArray at end of buildCatsData: ', termsArray);
 
 
 		        termsArray.sort(function(termA,termB){termA.id - termB.id});
