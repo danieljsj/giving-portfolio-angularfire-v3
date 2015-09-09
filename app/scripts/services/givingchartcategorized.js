@@ -8,8 +8,8 @@
  * Service in the gpApp.
  */
 angular.module('gpApp')
-  .service('GivingChartCategorized', ['givingChartsCommon',
-  	                        function ( gcCommon ) 
+  .service('GivingChartCategorized', ['givingChartsCommon', 'recipientOrgs', 'taxonomization',
+  	                        function ( gcCommon,             orgs,            taxn          ) 
   	{
   		return function(__CATEGORIES_DATA__, __RECIPIENTS_DATA__){
   			return {

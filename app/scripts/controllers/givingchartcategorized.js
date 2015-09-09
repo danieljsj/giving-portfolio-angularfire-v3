@@ -21,14 +21,14 @@ angular.module('gpApp')
 
     console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
 
-    var categoriesData = buildOrgsCategoriesSeries();
-    var recipientsData = buildRecipientOrgsSeries();
+    var categoriesData = buildOrgsCategoriesSeries(orgs);
+    var recipientsData = buildRecipientOrgsSeries(orgs);
 
     $scope.donutPie = new DonutPie(categoriesData, recipientsData);
 
     // $scope.donutPie = new DonutPie(browserData, versionsData);
     // 
-    function buildRecipientOrgsSeries(orgs){
+    function buildRecipientOrgsSeries(){
 
         // NOTE: THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
         for (var taxId in taxn.taxTree.taxonomies){
@@ -43,7 +43,7 @@ angular.module('gpApp')
         });
     }
 
-    function buildOrgsCategoriesSeries(orgs){
+    function buildOrgsCategoriesSeries(){
 
         console.log("taxn in buildOrgsCategoriesSeries: ", taxn);
         for (var taxId in taxn.taxTree.taxonomies){
