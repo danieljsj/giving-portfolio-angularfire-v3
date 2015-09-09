@@ -38,11 +38,10 @@ angular.module('gpApp')
         return true;
       }
     }
-    
+
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){ 
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
-
     }
 
 
