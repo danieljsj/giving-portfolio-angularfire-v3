@@ -25,44 +25,41 @@ angular.module('gpApp')
     var colorpicker = new Colorpicker(orgs.saveOrgs); // we might be able to pull this out into the top; might be able to add the funcs before the stuff loads in, cuz I don't think it's a promise, I think it's a real object.
     $scope.colorPickerOptions = colorpicker.options;
 
-    var funcsRan = maybeRunFuncs();
 
+    var funcsRan = maybeRunFuncs();
     if ( !funcsRan ) {
 
       orgs.$loaded().then(function(result){
         orgs.loaded = true;
                                                                                                                     console.log('orgs.$loaded()... result: ',result); console.log('loaded orgsThing same as orgsThing?: ', orgs === result ); // true
-        // orgs.loaded = true;
         maybeRunFuncs();
       });
       budget.fbObj.$loaded().then(function(result){
         budget.loaded = true;
                                                                                                                     console.log('budget.$loaded()... result: ',result); console.log('loaded budgetThing same as budgetThing?: ', budget.fbObj === result ); // true
-        // budget.loaded = true;
         maybeRunFuncs();
       });
       taxn.taxTree.$loaded().then(function(result){
         taxn.loaded = true;
                                                                                                                     console.log('taxn.$loaded()... result: ',result); console.log('loaded taxnThing same as taxnThing?: ', taxn.taxTree === result ); // true
-        // taxn.loaded = true;
         maybeRunFuncs();
       });
+
     }
 
-
     function maybeRunFuncs(){
-      console.log('orgs.loaded? :',orgs.loaded);
-      console.log('budget.loaded? :',budget.loaded);
-      console.log('taxn.loaded? :',taxn.loaded);
+                                                                                                                    console.log('orgs.loaded? :',orgs.loaded); console.log('budget.loaded? :',budget.loaded); console.log('taxn.loaded? :',taxn.loaded);
       if (orgs.loaded && budget.loaded && taxn.loaded) {
         runFuncsThatNeedToWaitTillFbStuffIsLoaded();
         return true;
       } else {
         return false;
       }
+
     }
 
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){
+      
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
 
