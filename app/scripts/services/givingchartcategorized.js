@@ -13,6 +13,58 @@ angular.module('gpApp')
   	{
   		return function(__CATEGORIES_DATA__, __RECIPIENTS_DATA__){
   			return {
+
+				buildRecipientOrgsSeriesData: function buildOrgsData(){
+
+			        // NOTE: THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
+			        for (var taxId in taxn.taxTree.taxonomies){
+			            var currentTaxId = taxId;
+			            break;
+			        }
+
+			        return $scope.orgs.sort(function(orgA,orgB){
+			            return orgA.taxTerms[currentTaxId]
+			            -
+			            orgB.taxTerms[currentTaxId]
+			        });
+			    },
+
+			    buildOrgsCategoriesSeriesData: function buildCatsData(){
+
+			        console.log("taxn in buildOrgsCategoriesSeries: ", taxn);
+			        for (var taxId in taxn.taxTree.taxonomies){
+			            var currentTaxId = taxId;
+			            break;
+			        }
+
+			        var currentTax = taxn.taxTree.taxonomies[currentTaxId];
+
+			        var termsArray = [];
+
+			        for (var termId in currentTax.terms){
+			            var monthlySum = 0;
+			            orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
+			                if (org.taxTerms[currentTaxId] == termId){
+			                    monthlySum += org.monthly;
+			                }
+			            });
+			            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
+			            currentTax.terms[termId].color = "rgba(255,255,255,.3)";
+
+			            termsArray.push(currentTax.terms[termId]);
+			        }
+
+			        console.log('currentTax.terms at end of buildOrgsCategoriesSeries: ', currentTax.terms);
+			        console.log('termsArray at end of buildOrgsCategoriesSeries: ', termsArray);
+
+
+			        termsArray.sort(function(termA,termB){termA.id - termB.id});
+
+
+			        return termsArray;
+
+			    },
+
   				config: {
   					get options () {
 						return gcCommon.getOptionsForHighchartsNg.bind(this)();
@@ -56,7 +108,7 @@ angular.module('gpApp')
 					},
 			        series: [{
 			            name: 'Categories',
-			            data: __CATEGORIES_DATA__,
+			            get data () { return buildCatsData(); },
 			            size: '55%',
 			            dataLabels: {
 			                formatter: function () {
@@ -71,7 +123,7 @@ angular.module('gpApp')
 			            }
 			        }, {
 			            name: 'Recipient Organizations',
-			            data: __RECIPIENTS_DATA__,
+			            get data () { return buildOrgsData(); },
 			            size: '90%',
 			            innerSize: '55%',
 			            dataLabels: {
