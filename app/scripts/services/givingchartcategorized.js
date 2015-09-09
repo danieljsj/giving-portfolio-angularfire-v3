@@ -26,6 +26,7 @@ angular.module('gpApp')
 		        console.log('orgs at end of buildOrgsData: ',orgs);
 
 		        return orgs;
+
 		    };
 
 		    this.buildCatsData = function(){
@@ -64,7 +65,6 @@ angular.module('gpApp')
 
 
 		        termsArray.sort(function(termA,termB){termA.id - termB.id});
-
 
 		        return termsArray;
 
@@ -114,7 +114,8 @@ angular.module('gpApp')
 		        // 2 totally independent series; a donut wrapping a pie:
 		        series: [{
 		            name: 'Categories',
-		            data: this.buildCatsData(),
+		            // data: this.buildCatsData(),
+		            data: [{name:"foo",y:"bar"},{name:"foo",y:"bar"},{name:"foo",y:"bar"}],
 		            size: '55%',
 		            dataLabels: {
 		                formatter: function () {
@@ -129,7 +130,8 @@ angular.module('gpApp')
 		            }
 		        }, {
 		            name: 'Recipient Organizations',
-		            data: this.buildOrgsData(),
+		            // data: this.buildOrgsData(),
+		            data: [{name:"foo",y:"bar"},{name:"foo",y:"bar"},{name:"foo",y:"bar"}],
 		            size: '90%',
 		            innerSize: '55%',
 		            dataLabels: {
