@@ -17,15 +17,16 @@ angular.module('gpApp')
 	var query = Ref.child('userRecipientOrgSets/'+uid).limitToLast(100);
 	
 	var orgs = $firebaseArray(query);
+	
+	for (var methodName in orgsMethods){
+		orgs[methodName] = orgsMethods[methodName].bind(orgs);
+	}				
 
 	orgs.loaded = false;
 	orgs.$loaded() 	//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded
 	  .then(function(loadedOrgs) {
 		if (loadedOrgs === orgs ){ // weird that this was equal in fbArr but not fbObj
 			orgs.loaded = true;
-			for (var methodName in orgsMethods){
-				orgs[methodName] = orgsMethods[methodName].bind(orgs);
-			}				
 			// angular.extend(orgs,OrgsCollectionFuncs);   // decided not to go with angular.extend, I guess... // under angular.extend, the resulting `this` for the funcs, I believe, was pointing to the "var OrgsCollectionFuncs = {}" object; so not going to do the extending here.
 
 			// ctrlSaveToScopeOrgsThenInit(orgs); // this was for when I was pulling them in weird-wise into the controller"
