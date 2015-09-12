@@ -152,7 +152,21 @@ angular.module('gpApp')
 		                color: 'white',
 		                fontSize: '14px',
 		                distance: -10
-		            }
+		            },
+	            	point: {
+						events: {
+							// select: function(){     // was causing infinite loop, since the external selector func programmatically selects a piechart item
+							click: function(){
+								console.log("point on click", this);
+								orgs.selectOrg(this.$id);
+								this.selected = true;    // needed, though counterintuitive. this actually BREAKS the normal pie-chart behavior of slicing out the pie chart. (explanation-guess: it probably has a check for "if this is not selected, then select and slice", or something.)
+								
+							},
+							unselect: function(){
+								console.log("point on unselect", this);
+							}
+						}
+					}
 		        }]
   			};
 

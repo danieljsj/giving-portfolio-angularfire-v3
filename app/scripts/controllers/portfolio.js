@@ -42,7 +42,7 @@ angular.module('gpApp')
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){ 
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
-      $scope.donutPie = new DonutPie(); // might need to inject some stuff
+      $scope.donutPie = new DonutPie(); // for this one, orgs is a module dependency, rather than ctrl-injected dependency
 
       $scope.orgs.pushOrgStateActions.push(
         $scope.donutPie.updateData.bind($scope.donutPie)  // why the poo am I having to bind this to itself to be a 'this' !?
