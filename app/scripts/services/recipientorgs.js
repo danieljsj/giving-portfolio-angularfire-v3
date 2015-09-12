@@ -20,7 +20,9 @@ angular.module('gpApp')
 	
 	for (var methodName in orgsMethods){
 		orgs[methodName] = orgsMethods[methodName].bind(orgs);
-	}				
+	}
+
+	orgs.pushOrgStateActions = [];			
 
 	orgs.loaded = false;
 	orgs.$loaded() 	//https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebasearray-loaded

@@ -43,6 +43,8 @@ angular.module('gpApp')
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
       $scope.donutPie = new DonutPie(); // might need to inject some stuff
+
+      $scope.orgs.pushOrgStateActions.push($scope.donutPie.updateData);
     }
 
 
