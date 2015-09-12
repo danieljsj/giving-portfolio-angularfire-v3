@@ -26,6 +26,16 @@ angular.module('gpApp')
 		// ░█▄▄█ █ █ █ █ ─▀▄▄▀ █ ░█▄▄▀ █ 
 		// CREATING, ... UPDATING,DELETING:
 
+		pushOrgState: function(org){ // should be: pushOrgPortion()
+			org.y = org.percentage;
+			if (org.hasOwnProperty("$id")){
+				this.$save(org);
+			}
+			this.pushOrgStateActions.forEach(function(action){
+				action(org);
+			});
+
+		},
 		addOrg: function(){
 
 			var orgAtts = {
@@ -162,12 +172,6 @@ angular.module('gpApp')
 		// ░█▄▄█ ▀▀▀ ──▀── ▀▀▀ ▀──▀ ▀▀▀▀ 
 		// GIVING: 
 																				// ( we are using "FIXED GIVING", based on '.yearly', '.monthly', 'percentage' giving (used to be "FIXED BUDGET", based on budget and org.portions) );		
-		pushOrgState: function(org){ // should be: pushOrgPortion()
-			org.y = org.percentage;
-			if (org.hasOwnProperty("$id")){
-				this.$save(org);
-			}
-		},
 		applyOrgPortion: function(org, portion){
 			org.yearly = Math.round( portion * budget.yearly() *100)/100;
 			org.monthly = Math.round( portion * budget.monthly() *100)/100;
