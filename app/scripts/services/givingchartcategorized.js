@@ -115,7 +115,7 @@ angular.module('gpApp')
 		        series: [{
 		            name: 'Categories',
 		            // data: this.buildCatsData(),
-		            data: [{name:"foo",y:"bar"},{name:"foo",y:"bar"},{name:"foo",y:"bar"}],
+		            data: [{name:"foo",y:1},{name:"foo",y:1},{name:"foo",y:1}],
 		            size: '55%',
 		            dataLabels: {
 		                formatter: function () {
@@ -131,7 +131,7 @@ angular.module('gpApp')
 		        }, {
 		            name: 'Recipient Organizations',
 		            // data: this.buildOrgsData(),
-		            data: [{name:"foo",y:"bar"},{name:"foo",y:"bar"},{name:"foo",y:"bar"}],
+		            data: [{name:"foo",y:1},{name:"foo",y:1},{name:"foo",y:1}],
 		            size: '90%',
 		            innerSize: '55%',
 		            dataLabels: {

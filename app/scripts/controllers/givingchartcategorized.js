@@ -18,7 +18,9 @@ angular.module('gpApp')
     $scope.taxn = taxn;
     taxn.taxTree.$bindTo($scope, 'taxTree', true ); // why do I have taxonomies within taxTree again?
 
-    console.log("orgs, taxn, after getOrgs: ", orgs, taxn);
+    console.log("orgs after bare-bones initialization: ", orgs);
+    console.log("taxn after bare-bones initialization: ", taxn);
+
 
     function onceStuffIsLoaded(){
         $scope.donutPie = new DonutPie();
