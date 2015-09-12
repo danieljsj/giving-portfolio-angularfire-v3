@@ -17,7 +17,7 @@ angular.module('gpApp')
 
 		        // NOTE - THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
 		        for (var taxId in taxn.taxTree.taxonomies){
-		            var currentTaxId = taxId;
+		            var currentTaxId = taxId; // FIX THIS! NEED TO USE ACTUAL CURRENT TAXn
 		            break;
 		        }
 

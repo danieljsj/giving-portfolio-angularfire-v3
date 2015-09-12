@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .controller('PortfolioCtrl', ['$scope', 'recipientOrgs', 'budget', 'taxonomization', 'GivingChartFlat', 'GivingChartCategorized', 'Colorpicker',
-                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               Donut,                    Colorpicker ) {
+                    function   ( $scope,   orgs,            budget,   taxn,             Pie,               DonutPie,                    Colorpicker ) {
 
     window.$scope = $scope; // for debugging
     
@@ -42,6 +42,7 @@ angular.module('gpApp')
     function runFuncsThatNeedToWaitTillFbStuffIsLoaded(){ 
       orgs.reapplyBudget();
       $scope.pie = new Pie(orgs, orgs.selectOrg);
+      $scope.donutPie = new DonutPie(); // might need to inject some stuff
     }
 
 
