@@ -193,20 +193,25 @@
 					<sp/>
 					<div class="row"><!-- one 'row', possibility of much repeating -->
 						<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
-							<div class="col-xs-2">{{ tax.name }}:</div>
-							<div class="col-xs-4"> 
-								<select 
-									ng-model="orgs.selectedOrg.taxTerms[taxId]"
-									ng-change="orgs.pushOrgState(orgs.selectedOrg);"
-									class="form-control"
-								>
-									<!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
-									<!-- TODO! need to $digest the scope or something when the orgs load in! -->
-									<option value=""><!-- uncategorized --></option>
-									<option ng-repeat="(termId,term) in tax.terms" value="{{termId}}">
-										{{ term.name }}
-									</option>
-								</select>
+							<div class="col-xs-12">
+								<div class="input-group">
+									<div class="input-group-btn" style="font-size:12px">
+										<!-- <input type="checkbox"/> -->
+										<button class="btn btn-default btn-sm" type="submit">{{ tax.name }}</button>
+									</div>
+									<select 
+										ng-model="orgs.selectedOrg.taxTerms[taxId]"
+										ng-change="orgs.pushOrgState(orgs.selectedOrg);"
+										class="form-control input-sm"
+									>
+										<!-- todo... let it be just `org` rather than `orgs.selectedOrg`.... -->
+										<!-- TODO! need to $digest the scope or something when the orgs load in! -->
+										<option value=""><!-- uncategorized --></option>
+										<option ng-repeat="(termId,term) in tax.terms" value="{{termId}}">
+											{{ term.name }}
+										</option>
+									</select>
+								</div>
 								<sp/>
 							</div>
 						</div><!-- ng-repeat in taxs -->
