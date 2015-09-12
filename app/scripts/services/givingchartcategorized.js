@@ -114,7 +114,7 @@ angular.module('gpApp')
 		        // 2 totally independent series; a donut wrapping a pie:
 		        series: [{
 		            name: 'Categories',
-		            // data: this.buildCatsData(),
+		            data: this.buildCatsData(),
 		            // data: [{name:"foo",y:1},{name:"foo",y:1},{name:"foo",y:1}],
 		            size: '55%',
 		            dataLabels: {
