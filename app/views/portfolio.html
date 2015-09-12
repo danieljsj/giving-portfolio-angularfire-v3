@@ -197,7 +197,7 @@
 								<div class="input-group">
 									<div class="input-group-btn" style="font-size:12px">
 										<!-- <input type="checkbox"/> -->
-										<button class="btn btn-default btn-sm" type="submit">{{ tax.name }}</button>
+										<button class="btn btn-default btn-sm" ng-model="selTax" btn-radio="taxId" type="submit">{{ tax.name }}</button>
 									</div>
 									<select 
 										ng-model="orgs.selectedOrg.taxTerms[taxId]"
