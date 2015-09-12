@@ -54,11 +54,10 @@ angular.module('gpApp')
 		saveOrgsChanges: function(newOrgs, oldOrgs){ // this really needs to be in orgsmanager!
 			for (var i = newOrgs.length - 1; i >= 0; i--) {
 				// if (! angular.equals( newOrgs[i], oldOrgs.getOrg( newOrgs[i].id ) ) ){
-					newOrgs.$save(newOrgs[i]);
+					this.pushOrgState(newOrgs[i]);
 				// }
 			}
 		},
-
 		removeSelectedOrg: function(){
 			// var index = this.indexOf(this.selectedOrg); // in case we wanted to select the next org afterward
 			this.$remove(this.selectedOrg);
