@@ -44,7 +44,9 @@ angular.module('gpApp')
       $scope.pie = new Pie(orgs, orgs.selectOrg);
       $scope.donutPie = new DonutPie(); // might need to inject some stuff
 
-      $scope.orgs.pushOrgStateActions.push($scope.donutPie.updateData);
+      $scope.orgs.pushOrgStateActions.push(
+        $scope.donutPie.updateData.bind($scope.donutPie)  // why the poo am I having to bind this to itself to be a 'this' !?
+      );
     }
 
 

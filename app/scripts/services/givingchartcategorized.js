@@ -72,8 +72,8 @@ angular.module('gpApp')
 
 		    this.updateData = function(){
 		    	console.log('this in updateData (looking for this.config.series[...])', this); // undefined!!
-		    	this.config.series[0].data = buildCatsData();
-		    	this.config.series[1].data = buildOrgsData();
+		    	this.config.series[0].data = this.buildCatsData();
+		    	this.config.series[1].data = this.buildOrgsData();
 		    }
 
 			this.config = {
