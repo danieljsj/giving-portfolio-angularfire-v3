@@ -102,36 +102,6 @@
 					<label>Giving:</label>
 					<!-- <hr/> -->
 					<sp/>
-					<!--
-					░█▀▀█ █▀▀ █▀▀█ █▀▀ █▀▀ █▀▀▄ ▀▀█▀▀ 
-					░█▄▄█ █▀▀ █▄▄▀ █── █▀▀ █──█ ──█── 
-					░█─── ▀▀▀ ▀─▀▀ ▀▀▀ ▀▀▀ ▀──▀ ──▀── 
-					 -->
-					<div id="percentageControl" class="row">
-						<div class="col-xs-4">% of <a href="#/budget">Budget</a>:</div>
-						<div class="col-xs-5" ng-if="budget.monthly()">
-							<div class="input-group">
-								<input
-									ng-model="orgs.selectedOrg.percentage"
-									ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
-									ng-focus="foci.percentage = true;"
-									ng-blur="foci.percentage = false;"
-									type="number"
-									step="{{ orgs.selectedOrg.percentage / 5 }}"
-									class="form-control"
-								/>
-								<div class="input-group-addon">%</div>
-							</div>
-						</div>
-						<div class="col-xs-3" ng-if="budget.monthly()">
-					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'percentage'">{{ 'percentage' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
-					    </div>
-					    <div class="col-xs-8" ng-if="!budget.monthly()" style="opacity:.6;">
-					    	(requires a <a href="/#budget">Giving Budget</a>)
-					    </div>
-					</div>
-					<!-- <hr/> -->
-					<sp/>
 					<!-- 
 					░█▀▄▀█ █▀▀█ █▀▀▄ ▀▀█▀▀ █──█ █── █──█ 
 					░█░█░█ █──█ █──█ ──█── █▀▀█ █── █▄▄█ 
@@ -185,6 +155,36 @@
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'amount'">{{ 'amount' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
 					    </div>
 					</div>
+					<sp/>
+					<!--
+					░█▀▀█ █▀▀ █▀▀█ █▀▀ █▀▀ █▀▀▄ ▀▀█▀▀ 
+					░█▄▄█ █▀▀ █▄▄▀ █── █▀▀ █──█ ──█── 
+					░█─── ▀▀▀ ▀─▀▀ ▀▀▀ ▀▀▀ ▀──▀ ──▀── 
+					 -->
+					<div id="percentageControl" class="row">
+						<div class="col-xs-4">% of <a href="#/budget">Budget</a>:</div>
+						<div class="col-xs-5" ng-if="budget.monthly()">
+							<div class="input-group">
+								<input
+									ng-model="orgs.selectedOrg.percentage"
+									ng-change="orgs.applyChangedPercentage(orgs.selectedOrg)"
+									ng-focus="foci.percentage = true;"
+									ng-blur="foci.percentage = false;"
+									type="number"
+									step="{{ orgs.selectedOrg.percentage / 5 }}"
+									class="form-control"
+								/>
+								<div class="input-group-addon">%</div>
+							</div>
+						</div>
+						<div class="col-xs-3" ng-if="budget.monthly()">
+					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'percentage'">{{ 'percentage' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
+					    </div>
+					    <div class="col-xs-8" ng-if="!budget.monthly()" style="opacity:.6;">
+					    	(requires a <a href="/#budget">Giving Budget</a>)
+					    </div>
+					</div>
+					<!-- <hr/> -->
 				</div><!-- ng-if=" 'orgGiving' == orgs.givingBasis " -->			
 				
 
