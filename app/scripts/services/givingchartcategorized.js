@@ -53,8 +53,6 @@ angular.module('gpApp')
 
 		        var termsArray = [];
 
-		        var centerPieColor = "rgba(255,255,255,.3)";
-
 		        var categorizedOrgsMonthlySum = 0;
 		        for (var termId in currentTax.terms){
 		            var monthlySum = 0;
@@ -66,17 +64,17 @@ angular.module('gpApp')
 		                }
 		            });
 		            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
-		            currentTax.terms[termId].color = centerPieColor;
+		            currentTax.terms[termId].color = "rgba(255,255,255,0.3)";
 
 		            termsArray.push(currentTax.terms[termId]);
 		        }
-	        	var uncategorizedTerm = {
-		        	name: "uncategorized", 
-		        	color: centerPieColor,
+	        	var uncategorizedPseudoterm = {
+		        	name: "", 
+		        	color: "rgba(255,255,255,0.0)",
 		        	y: orgs.totalMonthly() - categorizedOrgsMonthlySum
 	        	};
-	        	console.log('uncategorizedTerm in buildCatsData:',uncategorizedTerm);
-		        termsArray.push(uncategorizedTerm);
+	        	console.log('uncategorizedPseudoterm in buildCatsData:',uncategorizedPseudoterm);
+		        termsArray.push(uncategorizedPseudoterm);
 
 		        console.log('currentTax.terms at end of buildCatsData: ', currentTax.terms);
 		        console.log('termsArray at end of buildCatsData: ', termsArray);
