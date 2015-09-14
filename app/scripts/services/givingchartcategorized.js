@@ -148,7 +148,7 @@ angular.module('gpApp')
 		                },
 		                color: 'white',
 		                fontSize: '16px',
-		                distance: -60
+		                distance: -40
 		            }
 		        }, {
 		            name: 'Recipient Organizations',
