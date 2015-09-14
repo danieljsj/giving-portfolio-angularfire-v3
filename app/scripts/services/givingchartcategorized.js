@@ -37,10 +37,10 @@ angular.module('gpApp')
 		            var currentTaxId = taxId;
 		            break;
 		        }
-
+		        if ( (!taxn.taxTree) || (!taxn.taxTree.taxonomies) ) return []; 
 		        var currentTax = 
 		        	taxn
-		        		.taxTree // sometimes it's undefined. at random. cuz (TODO) we don't have dependency managing happening! (it really should be a service);
+		        		.taxTree
 		        		.taxonomies[
 		        			currentTaxId
 		        		];
