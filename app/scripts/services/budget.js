@@ -60,14 +60,17 @@ angular.module('gpApp')
 					throw 'error: before or after taxes must be specified';
 				}
 				return yearlyGiveableIncome * o.incomeGivingPercentage/100;
-			
-			throw 'error: giving basis not specified';
   		}
+		
+		return null;
+
   	};
 
 
   	this.monthly = function(){
-  		return this.yearly() / 12;
+  		var yearly = this.yearly();
+  		if (null === yearly) return null;
+  		return yearly / 12;
   	};
 
 
