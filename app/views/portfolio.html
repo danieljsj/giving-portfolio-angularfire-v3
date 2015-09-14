@@ -18,7 +18,12 @@
 	<!-- ng-if-NOT="{ chart~category }" -->
 	<div class="panel text-center">
 		<sp/>
-		<a href="#/budget">Budget</a> Usage: <b>{{ orgs.percentBudgetUsed() | number:0 }}%</b>
+		<div ng-if="budget.monthly()">
+			<a href="#/budget">Budget</a> Usage: <b>{{ orgs.percentBudgetUsed() | number:0 }}%</b>
+		</div>
+		<div ng-if="!budget.monthly()" style="opacity:.6;">
+			To see % budget usage, input your <a href="#/budget">Giving Budget</a>. 
+		</div>
 		<sp/>
 	</div>
 </div>
@@ -104,7 +109,7 @@
 					 -->
 					<div id="percentageControl" class="row">
 						<div class="col-xs-4">% of <a href="#/budget">Budget</a>:</div>
-						<div class="col-xs-5">
+						<div class="col-xs-5" ng-if="budget.monthly()">
 							<div class="input-group">
 								<input
 									ng-model="orgs.selectedOrg.percentage"
@@ -118,8 +123,11 @@
 								<div class="input-group-addon">%</div>
 							</div>
 						</div>
-						<div class="col-xs-3">
+						<div class="col-xs-3" ng-if="budget.monthly()">
 					        <label class="btn btn-sm btn-default" ng-model="orgs.selectedOrg.basis" btn-radio="'percentage'">{{ 'percentage' == orgs.selectedOrg.basis ? "fixed" : "fix" }}</label>
+					    </div>
+					    <div class="col-xs-8" ng-if="!budget.monthly()" style="opacity:.6;">
+					    	(requires a <a href="/#budget">Giving Budget</a>)
 					    </div>
 					</div>
 					<!-- <hr/> -->
