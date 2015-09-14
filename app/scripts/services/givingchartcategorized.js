@@ -24,8 +24,8 @@ angular.module('gpApp')
 		        orgs.sort(function(orgA,orgB){
 		        	var a = orgA.taxTerms[currentTaxId];
 		        	var b = orgB.taxTerms[currentTaxId];
-		        	if ( undefined == a ) { a = Infinity; }
-		        	if ( undefined == b ) { b = Infinity; }
+		        	if (!a) {a = Infinity;}
+		        	if (!b) {b = Infinity;}
 		        	return a - b; 
 		    	}); // maybe i need to build rather than sort???
 
