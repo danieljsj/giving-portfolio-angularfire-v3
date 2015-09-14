@@ -27,7 +27,8 @@ angular.module('gpApp')
 		// CREATING, ... UPDATING,DELETING:
 
 		pushOrgState: function(org){ // should be: pushOrgPortion()
-			org.y = org.percentage;
+			org.percentageCopy = org.percentage;
+			org.y = org.monthly;
 			if (org.hasOwnProperty("$id")){
 				this.$save(org);
 			}
@@ -40,11 +41,14 @@ angular.module('gpApp')
 
 			var orgAtts = {
 				portion: 1, 
-				percentage: 10,
+				monthly: 100,
 				name: "Org #" + orgCounter++,
 				color: '#'+Math.floor(Math.random()*16777215).toString(16)
 			}
-			this.applyChangedPercentage(orgAtts);
+
+			console.log('orgAtts in addOrg before applyChangedMonthly:',orgAtts);
+			this.applyChangedMonthly(orgAtts);
+			console.log('orgAtts in addOrg before $add:',orgAtts);
 			
 			this.$add(orgAtts).then(function(ref) {
 
@@ -172,23 +176,30 @@ angular.module('gpApp')
 		// ░█▄▄█ ▀▀▀ ──▀── ▀▀▀ ▀──▀ ▀▀▀▀ 
 		// GIVING: 
 																				// ( we are using "FIXED GIVING", based on '.yearly', '.monthly', 'percentage' giving (used to be "FIXED BUDGET", based on budget and org.portions) );		
-		applyOrgPortion: function(org, portion){
-			org.yearly = Math.round( portion * budget.yearly() *100)/100;
-			org.monthly = Math.round( portion * budget.monthly() *100)/100;
-			org.percentage = Math.round( portion * 100 *10)/10;
+		applyOrgMonthly: function(org, monthly){
+			var PENNIES_IN_DOLLAR = 100;
+			var PERCENTAGE_POINTS_IN_UNITY = 100;
+			var percentageIncrement = .1;
+			org.yearly = Math.round( monthly*12 * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
+			org.monthly = Math.round( monthly * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
+			if ( null !== budget.yearly() ){
+				org.percentage = Math.round( monthly / budget.monthly() * PERCENTAGE_POINTS_IN_UNITY / percentageIncrement ) * percentageIncrement;
+			} else {
+				org.percentage = null;
+			}
 			this.pushOrgState(org);
 		},
 		applyChangedYearly: function(org){
 			org.basis = 'amount';
-			this.applyOrgPortion( org, org.yearly / budget.yearly() );
+			this.applyOrgMonthly( org, org.yearly/12 );
 		},
 		applyChangedMonthly: function(org){
 			org.basis = 'amount';
-			this.applyOrgPortion( org, org.monthly / budget.monthly() );
+			this.applyOrgMonthly( org, org.monthly );
 		},
 		applyChangedPercentage: function(org){
 			org.basis = 'percentage';
-			this.applyOrgPortion( org, org.percentage / 100 );
+			this.applyOrgMonthly( org, org.percentage/100 * budget.monthly() );
 		},
 		reapplyBudget: function(){
 			for (var i = this.length - 1; i >= 0; i--) {
