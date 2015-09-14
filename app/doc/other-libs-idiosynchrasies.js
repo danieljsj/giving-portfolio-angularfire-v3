@@ -9,3 +9,9 @@
 //////// console.log
 
 console log gives, I think, instantaneous static text in the main line of the log, but the dropdown, I think, lags a little.
+
+
+
+//////// bootstrap
+
+couldnt use negative margin within an input-group where one was a select. couldnt remove border radius. 
