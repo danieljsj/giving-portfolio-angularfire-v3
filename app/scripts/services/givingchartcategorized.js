@@ -50,6 +50,7 @@ angular.module('gpApp')
 		        for (var termId in currentTax.terms){
 		            var monthlySum = 0;
 		            orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
+		                if ('object' != typeof org.taxTerms){org.taxTerms = {}}
 		                if (org.taxTerms[currentTaxId] == termId){
 		                    monthlySum += org.monthly;
 		                }
