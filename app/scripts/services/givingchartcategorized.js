@@ -21,7 +21,13 @@ angular.module('gpApp')
 		            break;
 		        }
 
-		        orgs.sort(function(orgA,orgB){ return orgA.taxTerms[currentTaxId] - orgB.taxTerms[currentTaxId]; }); // maybe i need to build rather than sort???
+		        orgs.sort(function(orgA,orgB){
+		        	var a = orgA.taxTerms[currentTaxId];
+		        	var b = orgB.taxTerms[currentTaxId];
+		        	if ( undefined == a ) { a = Infinity; }
+		        	if ( undefined == b ) { b = Infinity; }
+		        	return a - b; 
+		    	}); // maybe i need to build rather than sort???
 
 		        console.log('orgs at end of buildOrgsData: ',orgs);
 
