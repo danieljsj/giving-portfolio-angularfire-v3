@@ -26,9 +26,11 @@ angular.module('gpApp')
 		// ░█▄▄█ █ █ █ █ ─▀▄▄▀ █ ░█▄▄▀ █ 
 		// CREATING, ... UPDATING,DELETING:
 
-		pushOrgState: function(org){ // should be: pushOrgPortion()
+		pushOrgState: function(org){
+			if (undefined === org.percentage) org.percentage = null; // THIS SEEMS FUNNY. WHY/WHERE WOULD IT BE GOING FROM NULL TO UNDEFINED?
 			org.percentageCopy = org.percentage;
 			org.y = org.monthly;
+			console.log('org in pushOrgState:',org);
 			if (org.hasOwnProperty("$id")){
 				this.$save(org);
 			}
@@ -182,11 +184,15 @@ angular.module('gpApp')
 			var percentageIncrement = .1;
 			org.yearly = Math.round( monthly*12 * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
 			org.monthly = Math.round( monthly * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
-			if ( null !== budget.yearly() ){
-				org.percentage = Math.round( monthly / budget.monthly() * PERCENTAGE_POINTS_IN_UNITY / percentageIncrement ) * percentageIncrement;
+			var budgetMonthly = budget.monthly();
+			console.log('budgetMonthly in applyOrgMonthly:',budgetMonthly);
+			if ( budgetMonthly || 0 === budgetMonthly ){
+				org.percentage = Math.round( monthly / budgetMonthly * PERCENTAGE_POINTS_IN_UNITY / percentageIncrement ) * percentageIncrement;
 			} else {
 				org.percentage = null;
 			}
+			console.log('org.percentage at end of applyOrgMonthly:',budgetMonthly);
+
 			this.pushOrgState(org);
 		},
 		applyChangedYearly: function(org){
