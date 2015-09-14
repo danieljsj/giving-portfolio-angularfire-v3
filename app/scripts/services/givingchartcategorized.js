@@ -9,7 +9,7 @@
  */
 angular.module('gpApp')
   .service('GivingChartCategorized', ['givingChartsCommon', 'recipientOrgs', 'taxonomization',
-  	                        function ( gcCommon,             orgs,            taxn          ) 
+  	                        function ( gcCommon,             orgs,            taxn           ) 
   	{
   		return function(){
   			
@@ -47,19 +47,30 @@ angular.module('gpApp')
 
 		        var termsArray = [];
 
+		        var centerPieColor = "rgba(255,255,255,.3)";
+
+		        var categorizedOrgsMonthlySum = 0;
 		        for (var termId in currentTax.terms){
 		            var monthlySum = 0;
 		            orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
 		                if ('object' != typeof org.taxTerms){org.taxTerms = {}}
 		                if (org.taxTerms[currentTaxId] == termId){
 		                    monthlySum += org.monthly;
+		                    categorizedOrgsMonthlySum += org.monthly;
 		                }
 		            });
 		            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
-		            currentTax.terms[termId].color = "rgba(255,255,255,.3)";
+		            currentTax.terms[termId].color = centerPieColor;
 
 		            termsArray.push(currentTax.terms[termId]);
 		        }
+	        	var uncategorizedTerm = {
+		        	name: "uncategorized", 
+		        	color: centerPieColor,
+		        	y: orgs.totalMonthly() - categorizedOrgsMonthlySum
+	        	};
+	        	console.log('uncategorizedTerm in buildCatsData:',uncategorizedTerm);
+		        termsArray.push(uncategorizedTerm);
 
 		        console.log('currentTax.terms at end of buildCatsData: ', currentTax.terms);
 		        console.log('termsArray at end of buildCatsData: ', termsArray);
