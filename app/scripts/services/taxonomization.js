@@ -70,6 +70,7 @@ angular.module('gpApp')
         // lets see if it works from in here...
         loadedTaxTree.$save(); // WHOAH! this was being necessary to load stuff into page... and $scope.$apply() wasn't cutting it!
 
+        this.selectedTax = false;
     }
 
     this.addNewTax = function(){
