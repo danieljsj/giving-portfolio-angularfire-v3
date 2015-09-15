@@ -23,8 +23,9 @@ angular.module('gpApp')
     this.loaded = false;
     this.taxTree.$loaded(function(loadedTaxTree){
         loadedTaxTree.loaded = true;
-        initialUpdate(loadedTaxTree);
-    });
+        console.log('this in the taxn loaded func:',this);
+        initialUpdate.bind(this)(loadedTaxTree);
+    }.bind(this));
 
     function initialUpdate(loadedTaxTree){
 
@@ -67,10 +68,12 @@ angular.module('gpApp')
             }
         }
 
+        console.log('this in taxn initialUpdate:',this);
+        this.selectedTax = false;
+        this.selectedTax = taxs[0];
         // lets see if it works from in here...
         loadedTaxTree.$save(); // WHOAH! this was being necessary to load stuff into page... and $scope.$apply() wasn't cutting it!
 
-        this.selectedTax = false;
     }
 
     this.addNewTax = function(){

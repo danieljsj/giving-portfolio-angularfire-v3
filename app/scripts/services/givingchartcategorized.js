@@ -19,18 +19,12 @@ angular.module('gpApp')
 
 			this.buildOrgsData = function(){
 
-		        // NOTE - THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
-		        for (var taxId in taxn.taxTree.taxonomies){
-		            var currentTaxId = taxId; // FIX THIS! NEED TO USE ACTUAL CURRENT TAXN
-		            break;
-		        }
-
 		        orgs.sort(function(orgA,orgB){
-		        	var a = orgA.taxTerms[currentTaxId];
-		        	var b = orgB.taxTerms[currentTaxId];
+		        	var a = orgA.taxTerms[taxn.selectedTax.id];
+		        	var b = orgB.taxTerms[taxn.selectedTax.id];
 		        	if (!a) {a = Infinity;}
 		        	if (!b) {b = Infinity;}
-		        	return a - b; 
+		        	return a - b;
 		    	}); // maybe i need to build rather than sort???
 
 		        console.log('orgs at end of buildOrgsData: ',orgs);
@@ -47,35 +41,24 @@ angular.module('gpApp')
 
 		        console.log("taxn in buildCatsData: ", taxn);
 		        console.log("taxn.taxTree in buildCatsData: ", taxn.taxTree);
-		        for (var taxId in taxn.taxTree.taxonomies){
-		            var currentTaxId = taxId; // FIX THIS! NEED TO USE ACTUAL CURRENT TAXN
-		            break;
-		        }
-		        if ( (!taxn.taxTree) || (!taxn.taxTree.taxonomies) ) return []; 
-		        var currentTax = 
-		        	taxn
-		        		.taxTree
-		        		.taxonomies[
-		        			currentTaxId
-		        		];
 
 		        var termsArray = [];
 
 		        var categorizedOrgsMonthlySum = 0;
-		        for (var termId in currentTax.terms){
+		        for (var termId in taxn.selectedTax.terms){
 		            var monthlySum = 0;
 		            orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
 		                if ('object' != typeof org.taxTerms){org.taxTerms = {}}
-		                if (org.taxTerms[currentTaxId] == termId){
+		                if (org.taxTerms[taxn.selectedTax.id] == termId){
 		                    monthlySum += org.monthly;
 		                    categorizedOrgsMonthlySum += org.monthly;
 		                }
 		            });
-		            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
-		            currentTax.terms[termId].color = "rgba(255,255,255,0.3)";
-		            // currentTax.terms[termId].color = "rgba(0,0,0,0.3)"; // looks better light.
+		            taxn.selectedTax.terms[termId].y = taxn.selectedTax.terms[termId].totalMonthly = monthlySum;
+		            taxn.selectedTax.terms[termId].color = "rgba(255,255,255,0.3)";
+		            // taxn.selectedTax.terms[termId].color = "rgba(0,0,0,0.3)"; // looks better light.
 
-		            termsArray.push(currentTax.terms[termId]);
+		            termsArray.push(taxn.selectedTax.terms[termId]);
 		        }
 	        	var uncategorizedPseudoterm = {
 		        	name: "", 
@@ -85,7 +68,7 @@ angular.module('gpApp')
 	        	console.log('uncategorizedPseudoterm in buildCatsData:',uncategorizedPseudoterm);
 		        termsArray.push(uncategorizedPseudoterm);
 
-		        console.log('currentTax.terms at end of buildCatsData: ', currentTax.terms);
+		        console.log('taxn.selectedTax.terms at end of buildCatsData: ', taxn.selectedTax.terms);
 		        console.log('termsArray at end of buildCatsData: ', termsArray);
 
 
