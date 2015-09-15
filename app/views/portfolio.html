@@ -200,7 +200,7 @@
 					<label>Categorizations:</label> <a style="float:right;" href="#/categories"><sup>[manage]</sup></a>
 					<sp/>
 					<div class="row"><!-- one 'row', possibility of much repeating -->
-						<div ng-repeat="(taxId,tax) in taxTree.taxonomies">
+						<div class="tax-{{taxId}}" ng-repeat="(taxId,tax) in taxTree.taxonomies">
 							<div class="col-xs-12">
 								<div class="input-group">
 									<div class="input-group-btn" style="font-size:12px">

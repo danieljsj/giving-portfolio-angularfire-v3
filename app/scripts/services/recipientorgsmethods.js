@@ -97,10 +97,20 @@ angular.module('gpApp')
 			if (org){
 				this.selectedOrg = org;
 				this.saveOrgsChanges(this); // todo: save only the one org.
+				setTimeout(function(){this.applyOrgTermsToTermSelects(org);}.bind(this),250); // I think it needs this because when the first org (or two???) is clicked, the <option>s aren't ready/in yet, so when angular puts the form into the html, the terms aren't there, so in the HTML, the val doesn't think it's an option.
 			} else {
 				setTimeout(function(){this.selectOrg(orgRep);}.bind(this),0);
 			}
 
+		},
+		applyOrgTermsToTermSelects: function(org){
+			for (var taxId in org.taxTerms ){
+				var termId = org.taxTerms[taxId];
+				var taxTermSelectsQuery = '.tax-'+taxId+' select';
+				var taxTermSelects = $(taxTermSelectsQuery);
+				console.log('applyOrgTermsToTermSelects... taxId: '+taxId+', taxTermSelectsQuery: '+taxTermSelectsQuery+'termId: '+termId+'taxTerm')
+				taxTermSelects.val(termId);
+			}
 		},
 		selectNext: function(){
 			if ( ! this.selectedOrg ){
