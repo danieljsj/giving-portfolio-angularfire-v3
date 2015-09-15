@@ -41,3 +41,8 @@ when it's not in place, just get messages to enter a budget, but not errors!
 ### account creation process bug
 if you hit enter, it uses the login form, rather than the creation form. 
 then the JS is broken/exited/aborted, so you can't click Create Account
+
+
+### thorough null-budget checking, etc. 
+
+so... it looks like if people enter a percentage

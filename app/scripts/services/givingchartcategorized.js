@@ -13,6 +13,10 @@ angular.module('gpApp')
   	{
   		return function(){
   			
+
+
+
+
 			this.buildOrgsData = function(){
 
 		        // NOTE - THIS IS REDUNDANT. will fix in portfolio.js by allowing an activeTaxonomy var.
@@ -34,6 +38,10 @@ angular.module('gpApp')
 		        return orgs;
 
 		    };
+
+
+
+
 
 		    this.buildCatsData = function(){
 
@@ -65,6 +73,7 @@ angular.module('gpApp')
 		            });
 		            currentTax.terms[termId].y = currentTax.terms[termId].totalMonthly = monthlySum;
 		            currentTax.terms[termId].color = "rgba(255,255,255,0.3)";
+		            // currentTax.terms[termId].color = "rgba(0,0,0,0.3)"; // looks better light.
 
 		            termsArray.push(currentTax.terms[termId]);
 		        }
@@ -85,6 +94,16 @@ angular.module('gpApp')
 		        return termsArray;
 
 		    };
+
+
+
+
+
+
+
+
+
+
 
 		    this.updateData = function(){
 		    	console.log('this in updateData (looking for this.config.series[...])', this); // undefined!!
