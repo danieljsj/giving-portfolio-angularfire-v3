@@ -70,7 +70,11 @@ angular.module('gpApp')
 
         console.log('this in taxn initialUpdate:',this);
         this.selectedTax = false;
-        this.selectedTax = taxs[0];
+
+        for (taxId in taxs){
+            this.selectedTax = taxs[taxId];
+            break;
+        }
         // lets see if it works from in here...
         loadedTaxTree.$save(); // WHOAH! this was being necessary to load stuff into page... and $scope.$apply() wasn't cutting it!
 
