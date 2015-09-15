@@ -207,7 +207,7 @@
 										<!-- <input type="checkbox"/> -->
 										<button class="btn btn-default btn-sm" ng-model="selTax" btn-radio="tax" type="submit">{{ tax.name }}</button>
 									</div>
-									<span>currently: {{ orgs.selectedOrg.taxTerms[taxId] }}</span>
+									<span style="display:none;">currently: {{ orgs.selectedOrg.taxTerms[taxId] }}</span>
 									<select 
 										ng-model="orgs.selectedOrg.taxTerms[taxId]"
 										ng-change="orgs.pushOrgState(orgs.selectedOrg);"
