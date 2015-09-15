@@ -45,4 +45,9 @@ then the JS is broken/exited/aborted, so you can't click Create Account
 
 ### thorough null-budget checking, etc. 
 
-so... it looks like if people enter a percentage
+so... it looks like if people enter a percentage, then part of a budget... blah blah blah basiccally QA it.
+
+### terms loading
+
+on back button, terms don't show in <select> elements.
+
