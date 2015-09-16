@@ -25,6 +25,13 @@ angular.module('gpApp')
     var colorpicker = new Colorpicker(orgs.saveOrgs); // we might be able to pull this out into the top; might be able to add the funcs before the stuff loads in, cuz I don't think it's a promise, I think it's a real object.
     $scope.colorPickerOptions = colorpicker.options;
 
+    $scope.now = function(){return new Date().getTime();}
+
+    $scope.$watch(function(scope) { return scope.taxn.selectedTax },function(oldSelectedTax,newSelectedTax){
+      if (newSelectedTax) newSelectedTax.lastSelected = $scope.now();
+
+    });
+
 
     var funcsRan = maybeRunFuncs();
     if ( !funcsRan ) {

@@ -108,7 +108,7 @@ angular.module('gpApp')
 				var termId = org.taxTerms[taxId];
 				var taxTermSelectsQuery = '.tax-'+taxId+' select';
 				var taxTermSelects = $(taxTermSelectsQuery);
-				console.log('applyOrgTermsToTermSelects... taxId: '+taxId+', taxTermSelectsQuery: '+taxTermSelectsQuery+'termId: '+termId+'taxTerm')
+				// console.log('applyOrgTermsToTermSelects... taxId: '+taxId+', taxTermSelectsQuery: '+taxTermSelectsQuery+'termId: '+termId+'taxTerm')
 				taxTermSelects.val(termId);
 			}
 		},
