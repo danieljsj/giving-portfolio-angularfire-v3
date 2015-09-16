@@ -73,7 +73,7 @@ angular.module('gpApp')
   
 
     function redirect() {
-      $location.path('/account');
+      $location.path('/portfolio');
     }
 
     function showError(err) {
