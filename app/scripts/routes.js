@@ -98,6 +98,10 @@ angular.module('gpApp')
         templateUrl: 'views/givingchartcategorized.html',
         controller: 'GivingchartcategorizedCtrl'
       })
+      .when('/donate', {
+        templateUrl: 'views/donate.html',
+        controller: 'DonateCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
