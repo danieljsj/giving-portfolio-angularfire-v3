@@ -33,7 +33,7 @@ angular.module('gpApp')
 	    		pointFormat:
 					'<b>{point.name}</b>'+
 					'<br/>% of giving: <b>{point.percentage:.1f} %</td></b>'+
-					'<br/>% of budget: <b>{point.y:.1f} %</td></b>'+
+					'<br/>% of budget: <b>{point.percentageCopy:.1f} %</td></b>'+
 					'<br/>monthly giving: <b>$ {point.monthly:.2f}</td></b>'+
 					'<br/>yearly giving: <b>$ {point.yearly:.2f}</td</b>'
 	    	},

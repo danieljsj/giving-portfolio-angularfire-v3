@@ -46,15 +46,24 @@ angular.module('gpApp')
 
 		        var categorizedOrgsMonthlySum = 0;
 		        for (var termId in taxn.selectedTax.terms){
-		            var monthlySum = 0;
+		            var monthlySum = 0, yearlySum = 0, percentageCopySum = 0;
 		            orgs.forEach(function(org){  /// THIS! This is what's killing me so I can't abstract this anyhere.
 		                if ('object' != typeof org.taxTerms){org.taxTerms = {}}
 		                if (org.taxTerms[taxn.selectedTax.id] == termId){
+		                    
 		                    monthlySum += org.monthly;
+		                    yearlySum += org.yearly;
+		                    percentageCopySum += org.percentageCopy;
+
 		                    categorizedOrgsMonthlySum += org.monthly;
 		                }
 		            });
-		            taxn.selectedTax.terms[termId].y = taxn.selectedTax.terms[termId].totalMonthly = monthlySum;
+		            taxn.selectedTax.terms[termId].monthly = monthlySum;
+		            taxn.selectedTax.terms[termId].yearly = yearlySum;
+		            taxn.selectedTax.terms[termId].percentageCopy = percentageCopySum;
+		            
+		            taxn.selectedTax.terms[termId].y = taxn.selectedTax.terms[termId].monthly
+
 		            taxn.selectedTax.terms[termId].color = "rgba(255,255,255,0.3)";
 		            // taxn.selectedTax.terms[termId].color = "rgba(0,0,0,0.3)"; // looks better light.
 
