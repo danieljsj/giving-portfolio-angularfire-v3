@@ -191,13 +191,13 @@ angular.module('gpApp')
 		applyOrgMonthly: function(org, monthly){
 			var PENNIES_IN_DOLLAR = 100;
 			var PERCENTAGE_POINTS_IN_UNITY = 100;
-			var percentageIncrement = .1;
+			var percentageIncrementInverse = 10;
 			org.yearly = Math.round( monthly*12 * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
 			org.monthly = Math.round( monthly * PENNIES_IN_DOLLAR ) / PENNIES_IN_DOLLAR;
 			var budgetMonthly = budget.monthly();
 			console.log('budgetMonthly in applyOrgMonthly:',budgetMonthly);
 			if ( budgetMonthly || 0 === budgetMonthly ){
-				org.percentage = Math.round( monthly / budgetMonthly * PERCENTAGE_POINTS_IN_UNITY / percentageIncrement ) * percentageIncrement;
+				org.percentage = Math.round( monthly / budgetMonthly * PERCENTAGE_POINTS_IN_UNITY * percentageIncrementInverse ) / percentageIncrementInverse;
 			} else {
 				org.percentage = null;
 			}
