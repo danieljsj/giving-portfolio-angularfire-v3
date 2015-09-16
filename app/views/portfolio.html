@@ -267,12 +267,26 @@
 				██║ ╚═╝ ██║███████╗   ██║   ██║  ██║
 				╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ -->
 
-		    	<div class="dropdown">
-				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+		    	<div class="btn-group dropdown">
+				  <button class="btn btn-default btm-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size:11px; padding:4px 8px;">
+				    Save
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				    <li><a>All data is saved continually.</li>
+				    <li style="font-size:.7em;">(except, currently, if you change a color and then don't make any other changes.)</span></a></li>
+				    <li class="divider"></li>
+				    <li><a style="cursor:pointer;" onclick="orgs.pushOrgsChanges();"><b>Re-Save Data</b></a></li>
+				    <li class="divider"></li>
+				  </ul>
+				</div>
+
+		    	<div class="btn-group dropdown">
+				  <button class="btn btn-default btm-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size:11px; padding:4px 8px;">
 				    Remove
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a ng-click='orgs.removeSelectedOrg()'>Remove this Organization Permanently</a></li>
+				    <li><a class="btn btn-danger" ng-click='orgs.removeSelectedOrg()'>Remove this Organization Permanently</a></li>
 				  </ul>
 				</div>
 
