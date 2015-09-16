@@ -126,9 +126,11 @@ angular.module('gpApp')
 						}
 		            }
 		        },
-		        tooltip: {
-		            valueSuffix: '%'
-		        },
+				tooltip: {
+					headerFormat: '',
+					pointFormat: gcCommon.config.tooltip.pointFormat,
+					footerformat: ''
+				},
 				exporting: {
 					enabled: false
 				},
