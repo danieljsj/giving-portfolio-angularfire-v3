@@ -40,7 +40,7 @@ angular.module('gpApp')
             taxs = {};
             var newTax;
 
-            newTax = {name: "Locality", terms: {} };
+            newTax = {name: "Level", terms: {} };
             newTax.terms[randId()] = {id:lastId(), name: "Local"},
             newTax.terms[randId()] = {id:lastId(), name: "State"},
             newTax.terms[randId()] = {id:lastId(), name: "National"},
@@ -48,7 +48,7 @@ angular.module('gpApp')
             taxs[randId()] = newTax;
             taxs[lastId()].id = lastId();
 
-            newTax = {name: "Modality", terms: {} };
+            newTax = {name: "Type", terms: {} };
             newTax.terms[randId()] = {id:lastId(), name: "Relief"},
             newTax.terms[randId()] = {id:lastId(), name: "Advocacy"},
             newTax.terms[randId()] = {id:lastId(), name: "Development"},
