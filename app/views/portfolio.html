@@ -12,10 +12,31 @@
  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    -->
 
 <div class="col-sm-6 col-sm-push-6">
+	<!-- chart(s) -->
 	<!-- <highchart-spacer></highchart-spacer> TODO/COMING SOON-->
 	<!-- <highchart ng-if="pie" id="givingChartFlat" config="pie.config"></highchart> -->
 	<highchart ng-if="donutPie" id="givingChartCategorized" config="donutPie.config"></highchart>
-	<!-- ng-if-NOT="{ chart~category }" -->
+
+	<!-- sort by -->
+	<div ng-if="orgs.selectedOrg" class="col-xs-12 text-center clearfix">
+		Sort by: 
+		<div class="btn-group">
+			<button ng-repeat="(taxId,tax) in taxTree.taxonomies"
+				ng-model="taxn.selectedTax"
+				class="tax-{{taxId}} btn btn-default btn-sm"
+				btn-radio="tax"
+				uncheckable
+				ng-change="taxn.selectedTax = tax; orgs.pushOrgState(orgs.selectedOrg);"
+				type="submit"
+			>
+				{{ tax.name }}
+			</button>
+		</div>
+	</div>
+	<sp/>
+
+
+	<!-- budget usage -->
 	<div class="panel text-center">
 		<sp/>
 		<div ng-if="budget.monthly()">
