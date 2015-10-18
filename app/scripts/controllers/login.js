@@ -44,11 +44,13 @@ angular.module('gpApp')
       }
 
       function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
+        var ref = Ref.child('users/'+user.uid), def = $q.defer(); //angularfire issue: Ref.child expects one param.
         ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
           $timeout(function() {
-            if( err ) {
+            console.log("err: ",err);
+            if( err && Object.keys(err).length ) { // PROBLEM: This is firing even on an error of {}. Okay, interesting. So, the error only happened when I tried to pull the ref of /users , userId... rather than /users/userId... expects 1 param, not 2... but why was that error showing up here? AND why was it coming back as empty? {}
               def.reject(err);
+            }
             }
             else {
               def.resolve(ref);
